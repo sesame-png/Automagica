@@ -1,0 +1,29 @@
+using UnityEngine;
+
+[CreateAssetMenu(menuName = "Rect/Rect Parameters")]
+public class RectParametersSO : ScriptableObject
+{
+    //position
+    public Vector2 defaultPosition { get { return _defaultPosition; } private set { _defaultPosition = value; } }
+    [SerializeField] private Vector2 _defaultPosition = new Vector2(0, 0);
+
+    public Vector2 cachedPosition = new Vector2(0, 0); //last stored position
+
+    public Vector2 minPosition { get { return _minPosition; } private set { _minPosition = value; } }
+    [SerializeField] private Vector2 _minPosition = new Vector2(-10000, -10000);
+
+    public Vector2 maxPosition { get { return _maxPosition; } private set { _maxPosition = value; } }
+    [SerializeField] private Vector2 _maxPosition = new Vector2(10000, 10000);
+
+    //size
+    public Vector2 defaultSize { get { return _defaultSize; } private set { _defaultSize = value; } }
+    [SerializeField] private Vector2 _defaultSize = new Vector2(500, 400);
+
+    public Vector2 cachedSize = new Vector2(500, 400); //last stored size
+
+    public Vector2 minSize { get { return _minSize; } private set { _minSize = value; } }
+    [SerializeField] private Vector2 _minSize = new Vector2(300, 300);
+
+    public Vector2 maxSize { get { return _maxSize; } private set { _maxSize = value; } }
+    [SerializeField] private Vector2 _maxSize = new Vector2(10000, 10000);
+}
