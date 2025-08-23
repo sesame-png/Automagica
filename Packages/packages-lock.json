@@ -1,10 +1,11 @@
 {
   "dependencies": {
     "ayellowpaper.serialized-dictionary": {
-      "version": "file:C:/Users/Camryn/Downloads/SerializedDictionary-main/SerializedDictionary-main",
+      "version": "https://github.com/ayellowpaper/SerializedDictionary.git",
       "depth": 0,
-      "source": "local",
-      "dependencies": {}
+      "source": "git",
+      "dependencies": {},
+      "hash": "f3ddbf09e20fc0c55b4468b86ccf05f0f5b04d25"
     },
     "com.unity.2d.animation": {
       "version": "10.1.3",
