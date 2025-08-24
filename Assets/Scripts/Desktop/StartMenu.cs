@@ -4,7 +4,7 @@ using DG.Tweening;
 public class StartMenu : ResizableRect
 {
     //variables
-    [SerializeField] private RectParametersSO rectParameters;
+    [SerializeField] new private RectParametersSO rectParameters;
     private bool isOpen;
 
     //components

@@ -12,7 +12,7 @@ public class CursorManager : Singleton<CursorManager>
     //instance
     public static CursorManager CM => Instance;
 
-    private void Awake()
+    new private void Awake()
     {
         SetCursor(CursorState.pointer);
     }

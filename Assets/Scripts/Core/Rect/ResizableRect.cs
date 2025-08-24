@@ -50,17 +50,9 @@ public class ResizableRect : MonoBehaviour
         {
             posDelta.x = (inputDelta.x / 2) * Mathf.Abs(dirX);
         }
-        else
-        {
-            posDelta.x = 0f;
-        }
         if (newSize.y > rectParameters.minSize.y && newSize.y < rectParameters.maxSize.y)
         {
             posDelta.y = (inputDelta.y / 2) * Mathf.Abs(dirY);
-        }
-        else
-        {
-            posDelta.y = 0f;
         }
         Vector2 newPos = position + posDelta;
 

@@ -18,7 +18,7 @@ public class Singleton<T> : MonoBehaviour where T : class
 
     private void OnDestroy()
     {
-        if (instance == this)
+        if (instance == (object)this)
         {
             instance = null;
         }
