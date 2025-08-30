@@ -40,18 +40,18 @@ public class WindowManager : Singleton<WindowManager>
             _windows.Add(newWindow);
 
             OnWindowOpened.Invoke(newWindow);
-            Debug.Log(app.appName + " opened.");
+            Debug.Log("Window " + app.appName + " opened.");
         }
     }
 
     public void CloseWindow(Window window)
     {
-        //SetNextActiveWindow();
         Destroy(window.gameObject);
         _windows.Remove(window);
+        SetActiveWindow();
 
         OnWindowClosed.Invoke(window);
-        Debug.Log(window.app.appName + " closed.");
+        Debug.Log("Window " + window.app.appName + " closed.");
     }
 
 
@@ -59,24 +59,25 @@ public class WindowManager : Singleton<WindowManager>
     /// <summary>
     /// Active window
     /// </summary>
-    public void SetActiveWindow(Window window)
+    public void SetActiveWindow(Window window = null)
     {
-        activeWindow = window;
-        window.transform.SetAsLastSibling();
-    }
+        activeWindow?.SetInactive();
 
-    public void SetNextActiveWindow()
-    {
-        //BUG: this does not work as wanted
-        //loop through windows backwards until you find one that isnt minimized?
-        if (transform.childCount > 2)
+        if (window)
         {
-            SetActiveWindow(transform.GetChild(transform.childCount - 2).GetComponent<Window>());
+            activeWindow = window;
+            window.transform.SetAsLastSibling();
+        }
+        else if (transform.childCount > 0)
+        {
+            activeWindow = transform.GetChild(transform.childCount - 1).GetComponent<Window>();
         }
         else
         {
-            SetActiveWindow(null);
+            activeWindow = null;
         }
+
+        activeWindow?.SetActive();
     }
 
 

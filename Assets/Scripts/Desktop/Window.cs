@@ -1,9 +1,9 @@
-using UnityEngine;
 using DG.Tweening;
+using TMPro;
+using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using TMPro;
 
 public class Window : ResizableRect, IPointerDownHandler
 {
@@ -14,6 +14,9 @@ public class Window : ResizableRect, IPointerDownHandler
     [HideInInspector] public TaskbarIcon taskbarIcon;
 
     //bool variables
+    public bool isActive { get { return _isActive; } private set { _isActive = value; } }
+    private bool _isActive = false;
+
     public bool isMaximized { get { return _isMaximized; } private set { _isMaximized = value; } }
     private bool _isMaximized = false;
 
@@ -27,6 +30,7 @@ public class Window : ResizableRect, IPointerDownHandler
     //components
     [SerializeField] private TMP_Text header;
     [SerializeField] private Image icon;
+    [SerializeField] private FadeTween dropShadow;
     private Canvas canvas;
     private CanvasGroup canvasGroup;
     private RectTransform parentRectTransform;
@@ -109,23 +113,23 @@ public class Window : ResizableRect, IPointerDownHandler
     {
         if (isMinimized) { return; }
         isMinimized = true;
-        
-        SetActiveWindow();
+
+        WindowManager.WM.SetActiveWindow(this);
         canvasGroup.blocksRaycasts = false;
         PivotUtility.SetPivotInWorldSpace(rectTransform, taskbarIcon.transform.position);
 
         alphaTween?.Kill();
         scaleTween?.Kill();
         alphaTween = canvasGroup.DOFade(0.0f, tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => canvas.enabled = false);
-        scaleTween = transform.DOScale(tweenScale, tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => WindowManager.WM.SetNextActiveWindow());
+        scaleTween = transform.DOScale(tweenScale, tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => Disable());
     }
 
     public void Unminimize()
     {
         if (!isMinimized) { return; }
         isMinimized = false;
-        
-        SetActiveWindow();
+
+        WindowManager.WM.SetActiveWindow(this);
         canvas.enabled = true;
 
         alphaTween?.Kill();
@@ -159,7 +163,7 @@ public class Window : ResizableRect, IPointerDownHandler
         moveable = false;
         resizable = false;
 
-        SetActiveWindow();
+        WindowManager.WM.SetActiveWindow(this);
         canvasGroup.blocksRaycasts = false;
         //rectTransform.anchorMin = new Vector2(0f, 0f);
         //rectTransform.anchorMax = new Vector2(1f, 1f);
@@ -178,7 +182,7 @@ public class Window : ResizableRect, IPointerDownHandler
         moveable = true;
         resizable = true;
 
-        SetActiveWindow();
+        WindowManager.WM.SetActiveWindow(this);
         canvasGroup.blocksRaycasts = false;
         //rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
         //rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
@@ -202,7 +206,7 @@ public class Window : ResizableRect, IPointerDownHandler
         }
         else
         {
-            SetActiveWindow();
+            WindowManager.WM.SetActiveWindow(this);
             canvasGroup.blocksRaycasts = false;
 
             alphaTween?.Kill();
@@ -217,15 +221,27 @@ public class Window : ResizableRect, IPointerDownHandler
 
 
     /// <summary>
-    /// Helper functions
+    /// Active Window
     /// </summary>
-    public void OnPointerDown(PointerEventData eventData)
+    public void SetActive()
     {
-        //BUG: any buttons within the window block this raycast, preventing it from becoming active
-        SetActiveWindow();
+        isActive = true;
+        dropShadow.PlayIn();
     }
 
-    public void SetActiveWindow()
+    public void SetInactive()
+    {
+        isActive = false;
+        dropShadow.PlayOut();
+    }
+
+    private void Disable()
+    {
+        WindowManager.WM.SetActiveWindow();
+        transform.SetAsFirstSibling();
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
     {
         WindowManager.WM.SetActiveWindow(this);
     }

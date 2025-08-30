@@ -9,6 +9,9 @@ public class RectParametersSO : ScriptableObject
 
     public Vector2 cachedPosition = new Vector2(0, 0); //last stored position
 
+    public bool constrainPosition { get { return _constrainPosition; } private set { _constrainPosition = value; } }
+    [SerializeField] private bool _constrainPosition = false;
+
     public Vector2 minPosition { get { return _minPosition; } private set { _minPosition = value; } }
     [SerializeField] private Vector2 _minPosition = new Vector2(-10000, -10000);
 
@@ -20,6 +23,9 @@ public class RectParametersSO : ScriptableObject
     [SerializeField] private Vector2 _defaultSize = new Vector2(500, 400);
 
     public Vector2 cachedSize = new Vector2(500, 400); //last stored size
+
+    public bool constrainSize { get { return _constrainSize; } private set { _constrainSize = value; } }
+    [SerializeField] private bool _constrainSize = true;
 
     public Vector2 minSize { get { return _minSize; } private set { _minSize = value; } }
     [SerializeField] private Vector2 _minSize = new Vector2(300, 300);
