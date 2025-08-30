@@ -4,7 +4,7 @@ using DG.Tweening;
 public class StartMenu : ResizableRect
 {
     //variables
-    [SerializeField] new private RectParametersSO rectParameters;
+    [SerializeField] new private RectParamsSO rectParams;
     private bool isOpen;
 
     //components
@@ -19,7 +19,7 @@ public class StartMenu : ResizableRect
 
     new protected void Awake()
     {
-        base.rectParameters = rectParameters;
+        base.rectParams = rectParams;
         base.Awake();
         canvas = transform.parent.GetComponent<Canvas>();
         canvasGroup = GetComponent<CanvasGroup>();
@@ -28,7 +28,7 @@ public class StartMenu : ResizableRect
         canvasGroup.alpha = 0;
         canvasGroup.blocksRaycasts = false;
 
-        SetSize(rectParameters.cachedSize);
+        SetSize(rectParams.cachedSize);
         rectTransform.sizeDelta = new Vector2(size.x, 0f);
     }
 

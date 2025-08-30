@@ -60,20 +60,20 @@ public class Window : ResizableRect, IPointerDownHandler
     public void Initialize(AppSO app)
     {
         this.app = app;
-        rectParameters = app.rectParameters;
+        rectParams = app.rectParams;
 
         header.text = "<font-weight=\"700\">" + app.appName + "</font-weight>";
         icon.sprite = app.icon;
 
         if (app.allowMultipleInstances)
         {
-            SetPosition(rectParameters.defaultPosition);
-            SetSize(rectParameters.defaultSize);
+            SetPosition(rectParams.defaultPosition);
+            SetSize(rectParams.defaultSize);
         }
         else
         {
-            SetPosition(rectParameters.cachedPosition);
-            SetSize(rectParameters.cachedSize);
+            SetPosition(rectParams.cachedPosition);
+            SetSize(rectParams.cachedSize);
         }
     }
 

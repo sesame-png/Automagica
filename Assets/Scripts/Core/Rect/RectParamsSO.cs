@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Rect/Rect Parameters")]
-public class RectParametersSO : ScriptableObject
+public class RectParamsSO : ScriptableObject
 {
     //position
     public Vector2 defaultPosition { get { return _defaultPosition; } private set { _defaultPosition = value; } }

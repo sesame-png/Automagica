@@ -5,8 +5,8 @@ public class AppSO : ScriptableObject
 {
     [SerializeField] public string appName;
 
-    public RectParametersSO rectParameters { get { return _rectParameters; } private set { _rectParameters = value; } }
-    [SerializeField] private RectParametersSO _rectParameters;
+    public RectParamsSO rectParams { get { return _rectParams; } private set { _rectParams = value; } }
+    [SerializeField] private RectParamsSO _rectParams;
 
     public GameObject windowPrefab { get { return _windowPrefab; } private set { _windowPrefab = value; } }
     [SerializeField] private GameObject _windowPrefab;

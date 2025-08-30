@@ -29,6 +29,7 @@ public class WindowManager : Singleton<WindowManager>
 
         if (openWindow && !app.allowMultipleInstances)
         {
+            openWindow.Unminimize();
             SetActiveWindow(openWindow);
         }
         else

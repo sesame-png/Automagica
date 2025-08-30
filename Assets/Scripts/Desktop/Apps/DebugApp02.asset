@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DebugApp02
   m_EditorClassIdentifier: 
   appName: Debug 02
-  _rectParameters: {fileID: 11400000, guid: 46d561b91857c5041a3ad7571820c25d, type: 2}
+  _rectParams: {fileID: 11400000, guid: 46d561b91857c5041a3ad7571820c25d, type: 2}
   _windowPrefab: {fileID: 37442229147973619, guid: 677931ecfe0a2e24fbbd622171870fe6, type: 3}
   _icon: {fileID: 21300000, guid: 449aab1f80a282e49ac096def21f1981, type: 3}
   _allowMultipleInstances: 0

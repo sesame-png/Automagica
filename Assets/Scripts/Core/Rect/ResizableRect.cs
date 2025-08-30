@@ -7,8 +7,8 @@ public class ResizableRect : MonoBehaviour
     [HideInInspector] public bool resizable = true;
 
     //position & size
-    public RectParametersSO rectParameters { get { return _rectParameters; } protected set { _rectParameters = value; } }
-    private RectParametersSO _rectParameters;
+    public RectParamsSO rectParams { get { return _rectParams; } protected set { _rectParams = value; } }
+    private RectParamsSO _rectParams;
 
     public Vector2 position { get { return _position; } protected set { _position = value; } }
     private Vector2 _position;
@@ -46,11 +46,11 @@ public class ResizableRect : MonoBehaviour
         Vector2 newSize = size + sizeDelta;
 
         Vector2 posDelta = Vector2.zero;
-        if (newSize.x > rectParameters.minSize.x && newSize.x < rectParameters.maxSize.x)
+        if (newSize.x > rectParams.minSize.x && newSize.x < rectParams.maxSize.x)
         {
             posDelta.x = (inputDelta.x / 2) * Mathf.Abs(dirX);
         }
-        if (newSize.y > rectParameters.minSize.y && newSize.y < rectParameters.maxSize.y)
+        if (newSize.y > rectParams.minSize.y && newSize.y < rectParams.maxSize.y)
         {
             posDelta.y = (inputDelta.y / 2) * Mathf.Abs(dirY);
         }
@@ -62,15 +62,15 @@ public class ResizableRect : MonoBehaviour
 
     public void SetPosition(Vector2 newPos)
     {
-        position = new Vector2(Mathf.Clamp(newPos.x, rectParameters.minPosition.x, rectParameters.maxPosition.x), Mathf.Clamp(newPos.y, rectParameters.minPosition.y, rectParameters.maxPosition.y));
+        position = new Vector2(Mathf.Clamp(newPos.x, rectParams.minPosition.x, rectParams.maxPosition.x), Mathf.Clamp(newPos.y, rectParams.minPosition.y, rectParams.maxPosition.y));
         transform.localPosition = position;
-        rectParameters.cachedPosition = position;
+        rectParams.cachedPosition = position;
     }
 
     public void SetSize(Vector2 newSize)
     {
-        size = new Vector2(Mathf.Clamp(newSize.x, rectParameters.minSize.x, rectParameters.maxSize.x), Mathf.Clamp(newSize.y, rectParameters.minSize.y, rectParameters.maxSize.y));
+        size = new Vector2(Mathf.Clamp(newSize.x, rectParams.minSize.x, rectParams.maxSize.x), Mathf.Clamp(newSize.y, rectParams.minSize.y, rectParams.maxSize.y));
         rectTransform.sizeDelta = size;
-        rectParameters.cachedSize = size;
+        rectParams.cachedSize = size;
     }
 }
