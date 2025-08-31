@@ -1,5 +1,7 @@
 using UnityEngine;
 
+#pragma warning disable CS0618
+
 [ExecuteAlways]
 public class BlurRenderTexture : MonoBehaviour
 {
@@ -9,26 +11,28 @@ public class BlurRenderTexture : MonoBehaviour
 
     private void Awake()
     {
-        /*if (!targetTexture)
+        if (!targetTexture)
         {
             targetTexture = new RenderTexture(Screen.width, Screen.height, 16);
             targetTexture.Create();
-        }*/
-    }
-
-    private void OnDisable()
-    {
-        targetTexture.Release();
+        }
     }
 
     private void Update()
     {
         targetTexture.Release();
-        targetTexture.width = sourceTexture.width;
-        targetTexture.height = sourceTexture.height;
-        Graphics.Blit(sourceTexture, targetTexture, blurMaterial, -1);
-        //targetTexture.Create();
-        //Graphics.CopyTexture(sourceTexture, targetTexture);
-        //Graphics.Blit(sourceTexture, targetTexture);
+        targetTexture.width = Screen.width;
+        targetTexture.height = Screen.height;
+    }
+
+    private void OnRenderImage(RenderTexture src, RenderTexture dest)
+    {
+        Graphics.Blit(src, targetTexture, blurMaterial);
+        Graphics.Blit(src, dest);
+    }
+
+    private void OnDisable()
+    {
+        targetTexture.Release();
     }
 }

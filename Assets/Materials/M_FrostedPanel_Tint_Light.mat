@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_GaussianBlur
-  m_Shader: {fileID: 4800000, guid: 820ee26ec800f844c94e57f884f78fdc, type: 3}
+  m_Name: M_FrostedPanel_Tint_Light
+  m_Shader: {fileID: -6465566751694194690, guid: 5f698dc92d48e4d4a9b43aa968e1b689, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -16,41 +16,24 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 8600000, guid: 510473238777f604fb225cb2771317ca, type: 2}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Texture2D:
+    - _Background_Texture:
         m_Texture: {fileID: 8600000, guid: 8156a4f7c84181b4f891ac9ff3aaf9f9, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - unity_Lightmaps:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_LightmapsInd:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_ShadowMasks:
+    - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Directions: 16
-    - Quality: 6
     - _ColorMask: 15
-    - _Directions: 20
-    - _Quality: 5
-    - _Size: 0.025
     - _Stencil: 0
     - _StencilComp: 8
     - _StencilOp: 0
@@ -60,5 +43,8 @@ Material:
     - _UIMaskSoftnessY: 1
     m_Colors:
     - _ClipRect: {r: 0, g: 0, b: 0, a: 0}
+    - _Primary_Color: {r: 0, g: 0, b: 0, a: 1}
+    - _Secondary_Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Tint: {r: 1, g: 1, b: 1, a: 0.21176471}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

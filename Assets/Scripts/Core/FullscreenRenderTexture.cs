@@ -22,16 +22,16 @@ public class FullscreenRenderTexture : MonoBehaviour
         }
     }
 
-    private void OnDisable()
-    {
-        renderTexture.Release();
-    }
-
     private void Update()
     {
         renderTexture.Release();
         renderTexture.width = Screen.width;
         renderTexture.height = Screen.height;
         renderCamera.ResetAspect();
+    }
+
+    private void OnDisable()
+    {
+        renderTexture.Release();
     }
 }
