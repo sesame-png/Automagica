@@ -12,7 +12,7 @@ CustomRenderTexture:
     Hash: 00000000000000000000000000000000
   m_IsAlphaChannelOptional: 0
   serializedVersion: 6
-  m_Width: 1359
+  m_Width: 1324
   m_Height: 970
   m_AntiAliasing: 1
   m_MipCount: -1
@@ -42,7 +42,7 @@ CustomRenderTexture:
   m_InitMaterial: {fileID: 0}
   m_InitColor: {r: 1, g: 1, b: 1, a: 1}
   m_InitTexture: {fileID: 0}
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_InitializationMode: 2
   m_UpdateZoneSpace: 0
   m_CurrentUpdateZoneSpace: 0
