@@ -985,6 +985,7 @@ GameObject:
   - component: {fileID: 834499061}
   - component: {fileID: 834499062}
   - component: {fileID: 834499065}
+  - component: {fileID: 834499066}
   m_Layer: 0
   m_Name: BackgroundCamera
   m_TagString: MainCamera
@@ -1114,6 +1115,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 368cf7bdf3f37054d9f5fd4fccb748a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &834499066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 834499060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb42d96d3348fcf4ab31b9b8cf06904f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sourceTexture: {fileID: 8600000, guid: 510473238777f604fb225cb2771317ca, type: 2}
+  targetTexture: {fileID: 8600000, guid: 8156a4f7c84181b4f891ac9ff3aaf9f9, type: 2}
+  blurMaterial: {fileID: 2100000, guid: c9820a2fe2e638f408d9a9a714718dce, type: 2}
 --- !u!1 &878503717
 GameObject:
   m_ObjectHideFlags: 0
@@ -2845,7 +2861,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 866}
+  m_SizeDelta: {x: 0, y: 905}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &654549556867107148
 RectTransform:
@@ -4066,7 +4082,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b46faa56405cb4458d7ac0074ac08b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 208aa33d2c4452748b2232ad07ef220f, type: 2}
   m_Color: {r: 0.5058824, g: 0.53333336, b: 0.5568628, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -4287,7 +4303,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 701.54004, y: 0}
+  m_SizeDelta: {x: 746.54004, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8677072758987838025
 MonoBehaviour:
