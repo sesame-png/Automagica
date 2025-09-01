@@ -15,7 +15,7 @@ public class TaskbarIcon : MonoBehaviour
 
     public void ToggleMinimized()
     {
-        if (window.isMaximized && WindowManager.WM.activeWindow != window)
+        if (!window.isMinimized && WindowManager.WM.activeWindow != window)
         {
             WindowManager.WM.SetActiveWindow(window);
         }
