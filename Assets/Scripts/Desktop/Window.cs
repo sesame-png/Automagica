@@ -113,6 +113,8 @@ public class Window : ResizableRect, IPointerDownHandler
     {
         if (isMinimized) { return; }
         isMinimized = true;
+        isMoveable = false;
+        isResizable = false;
 
         WindowManager.WM.SetActiveWindow(this);
         canvasGroup.blocksRaycasts = false;
@@ -128,9 +130,12 @@ public class Window : ResizableRect, IPointerDownHandler
     {
         if (!isMinimized) { return; }
         isMinimized = false;
+        isMoveable = true;
+        isResizable = true;
 
         WindowManager.WM.SetActiveWindow(this);
         canvas.enabled = true;
+        PivotUtility.SetPivotInWorldSpace(rectTransform, taskbarIcon.transform.position);
 
         alphaTween?.Kill();
         scaleTween?.Kill();
@@ -160,8 +165,8 @@ public class Window : ResizableRect, IPointerDownHandler
         if (isMinimized) { Unminimize(); }
         if (isMaximized) { return; }
         isMaximized = true;
-        moveable = false;
-        resizable = false;
+        isMoveable = false;
+        isResizable = false;
 
         WindowManager.WM.SetActiveWindow(this);
         canvasGroup.blocksRaycasts = false;
@@ -179,8 +184,8 @@ public class Window : ResizableRect, IPointerDownHandler
         if (isMinimized) { return; }
         if (!isMaximized) { return; }
         isMaximized = false;
-        moveable = true;
-        resizable = true;
+        isMoveable = true;
+        isResizable = true;
 
         WindowManager.WM.SetActiveWindow(this);
         canvasGroup.blocksRaycasts = false;
@@ -191,6 +196,9 @@ public class Window : ResizableRect, IPointerDownHandler
         sizeTween?.Kill();
         positionTween = rectTransform.DOAnchorPos(position, tweenDuration).SetEase(Ease.OutExpo);
         sizeTween = rectTransform.DOSizeDelta(size, tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => canvasGroup.blocksRaycasts = true);
+
+        //var dragTween = rectTransform.DOAnchorPos(position, tweenDuration).SetEase(Ease.OutExpo);
+        //dragTween.OnUpdate(() => dragTween.ChangeEndValue(position, true));
     }
 
 
@@ -221,7 +229,7 @@ public class Window : ResizableRect, IPointerDownHandler
 
 
     /// <summary>
-    /// Active Window
+    /// Activating & Deactivating
     /// </summary>
     public void SetActive()
     {
@@ -244,5 +252,30 @@ public class Window : ResizableRect, IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         WindowManager.WM.SetActiveWindow(this);
+    }
+
+
+
+    /// <summary>
+    /// Drag
+    /// </summary>
+    public void OnBeginDrag(Vector2 pos)
+    {
+        if (isMaximized) { Unmaximize(); }
+
+        //Vector2 screenPosition = new Vector2();
+        //RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform, pos, Camera.main, out screenPosition);
+        //PivotUtility.SetPivotInWorldSpace(rectTransform, screenPosition);
+        //PivotUtility.SetPivot(rectTransform, screenPosition);
+    }
+
+    public void OnDrag(Vector2 posDelta)
+    {
+        MovePosition(posDelta);
+    }
+
+    public void OnEndDrag(Vector2 pos)
+    {
+        PivotUtility.SetPivot(rectTransform, new Vector2(0.5f, 0.5f));
     }
 }

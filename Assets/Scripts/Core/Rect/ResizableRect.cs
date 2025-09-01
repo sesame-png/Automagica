@@ -3,8 +3,8 @@ using UnityEngine;
 public class ResizableRect : MonoBehaviour
 {
     //variables
-    [HideInInspector] public bool moveable = true;
-    [HideInInspector] public bool resizable = true;
+    [HideInInspector] public bool isMoveable = true;
+    [HideInInspector] public bool isResizable = true;
 
     //position & size
     public RectParamsSO rectParams { get { return _rectParams; } protected set { _rectParams = value; } }
@@ -33,14 +33,14 @@ public class ResizableRect : MonoBehaviour
     /// </summary>
     public virtual void MovePosition(Vector2 posDelta)
     {
-        if (!moveable) { return; }
+        if (!isMoveable) { return; }
 
         SetPosition(position + posDelta);
     }
 
     public virtual void Resize(Vector2 inputDelta, int dirX, int dirY)
     {
-        if (!resizable) { return; }
+        if (!isResizable) { return; }
 
         Vector2 sizeDelta = new Vector2(inputDelta.x * dirX, inputDelta.y * dirY);
         Vector2 newSize = size + sizeDelta;

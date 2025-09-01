@@ -856,13 +856,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BeginDrag:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1954188611205499375}
+        m_TargetAssemblyTypeName: Window, Assembly-CSharp
+        m_MethodName: OnBeginDrag
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   Dragged:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1954188611205499375}
         m_TargetAssemblyTypeName: Window, Assembly-CSharp
-        m_MethodName: MovePosition
+        m_MethodName: OnDrag
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -874,7 +886,19 @@ MonoBehaviour:
         m_CallState: 2
   EndDrag:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1954188611205499375}
+        m_TargetAssemblyTypeName: Window, Assembly-CSharp
+        m_MethodName: OnEndDrag
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1683582406548018563
 GameObject:
   m_ObjectHideFlags: 0
@@ -1773,8 +1797,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbac20a5f23ae7547b699021e1e12d86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveable: 1
-  resizable: 1
+  isMoveable: 1
+  isResizable: 1
   taskbarIcon: {fileID: 0}
   OnWindowOpened:
     m_PersistentCalls:
