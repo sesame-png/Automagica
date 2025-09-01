@@ -67,7 +67,7 @@ MonoBehaviour:
   fromValue: 0.45
   toValue: 0.65
   duration: 0.15
-  ease: 13
+  ease: 7
   tweenStarted:
     m_PersistentCalls:
       m_Calls: []

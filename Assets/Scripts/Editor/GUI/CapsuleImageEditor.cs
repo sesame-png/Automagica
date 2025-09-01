@@ -22,8 +22,6 @@ namespace UnityEditor.UI
 
             m_SpriteContent = EditorGUIUtility.TrTextContent("Source Image");
             m_Sprite = serializedObject.FindProperty("m_Sprite");
-
-            m_Axis = serializedObject.FindProperty("m_Axis");
             m_PPUMultiplierOffset = serializedObject.FindProperty("m_PPUMultiplierOffset");
         }
 
@@ -36,7 +34,6 @@ namespace UnityEditor.UI
             AppearanceControlsGUI();
             RaycastControlsGUI();
 
-            EditorGUILayout.PropertyField(m_Axis, true);
             EditorGUILayout.PropertyField(m_PPUMultiplierOffset, true);
 
             serializedObject.ApplyModifiedProperties();
