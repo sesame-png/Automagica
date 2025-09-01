@@ -1,9 +1,12 @@
-using UnityEngine;
 using DG.Tweening;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class StartMenu : ResizableRect
 {
     //variables
+    [SerializeField] private InputReaderSO inputReader;
     [SerializeField] new private RectParamsSO rectParams;
     private bool isOpen;
 
@@ -15,6 +18,8 @@ public class StartMenu : ResizableRect
     private Tween alphaTween;
     private Tween sizeTween;
     private float tweenDuration = 0.2f;
+
+
 
 
     new protected void Awake()
@@ -35,20 +40,23 @@ public class StartMenu : ResizableRect
 
 
     /// <summary>
-    /// Open & Close
+    /// Enable & Disable
     /// </summary>
-    public void ToggleOpen()
+    /*private void OnEnable()
     {
-        if (isOpen)
-        {
-            Close();
-        }
-        else
-        {
-            Open();
-        }
+        inputReader.click += OnClick;
     }
 
+    private void OnDisable()
+    {
+        inputReader.click -= OnClick;
+    }*/
+
+
+
+    /// <summary>
+    /// Open & Close
+    /// </summary>
     public void Open()
     {
         if (isOpen) { return; }
@@ -72,6 +80,14 @@ public class StartMenu : ResizableRect
         alphaTween?.Kill();
         sizeTween?.Kill();
         alphaTween = canvasGroup.DOFade(0.0f, tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => canvas.enabled = false);
-        sizeTween = rectTransform.DOSizeDelta(new Vector2(size.x, 0f), tweenDuration).SetEase(Ease.OutExpo);
+        sizeTween = rectTransform.DOSizeDelta(new Vector2(size.x, 0f), tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => Destroy(gameObject));
     }
+
+    /*private void OnClick(InputAction.CallbackContext context)
+    {
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            Debug.Log("Clicked on the UI");
+        }
+    }*/
 }

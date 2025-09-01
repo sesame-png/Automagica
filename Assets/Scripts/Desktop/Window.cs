@@ -229,7 +229,7 @@ public class Window : ResizableRect, IPointerDownHandler
 
 
     /// <summary>
-    /// Activating & Deactivating
+    /// Focusing & Unfocusing
     /// </summary>
     public void SetActive()
     {
