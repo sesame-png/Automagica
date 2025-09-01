@@ -18,6 +18,7 @@ public class FullscreenRenderTexture : MonoBehaviour
         else
         {
             renderTexture = new RenderTexture(Screen.width, Screen.height, 16);
+            renderCamera.targetTexture = renderTexture;
             renderTexture.Create();
         }
     }
