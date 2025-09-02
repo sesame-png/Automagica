@@ -1,2 +1,12 @@
 fileFormatVersion: 2
 guid: 4c34c2e8427741945bf61a545b7b70bf
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - taskbarIconPrefab: {fileID: 366373565736620123, guid: 6084396c1faf19641878c4c673d9acd2, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

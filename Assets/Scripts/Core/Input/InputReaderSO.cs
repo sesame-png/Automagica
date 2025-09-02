@@ -9,11 +9,12 @@ public class InputReaderSO : ScriptableObject, InputActions.IUIActions
     public InputActions inputActions;
 
     // Global actions
-    public event Action<InputAction.CallbackContext> anyActionEvent = delegate { };
+    public event Action<InputAction.CallbackContext> anyAction = delegate { };
 
     // UI actions
     public event Action<InputAction.CallbackContext> point = delegate { };
-    public event Action<InputAction.CallbackContext> click = delegate { };
+    public event Action<InputAction.CallbackContext> anyClick = delegate { };
+    public event Action<InputAction.CallbackContext> leftClick = delegate { };
     public event Action<InputAction.CallbackContext> middleClick = delegate { };
     public event Action<InputAction.CallbackContext> rightClick = delegate { };
     public event Action<InputAction.CallbackContext> scrollWheel = delegate { };
@@ -66,7 +67,7 @@ public class InputReaderSO : ScriptableObject, InputActions.IUIActions
     #region Event Callbacks
     private void OnAnyAction(InputAction.CallbackContext context)
     {
-        anyActionEvent.Invoke(context);
+        anyAction.Invoke(context);
     }
 
     public void OnPoint(InputAction.CallbackContext context)
@@ -74,9 +75,14 @@ public class InputReaderSO : ScriptableObject, InputActions.IUIActions
         point?.Invoke(context);
     }
 
-    public void OnClick(InputAction.CallbackContext context)
+    public void OnAnyClick(InputAction.CallbackContext context)
     {
-        click?.Invoke(context);
+        anyClick?.Invoke(context);
+    }
+
+    public void OnLeftClick(InputAction.CallbackContext context)
+    {
+        leftClick?.Invoke(context);
     }
 
     public void OnMiddleClick(InputAction.CallbackContext context)

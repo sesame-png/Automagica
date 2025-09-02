@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -42,21 +43,33 @@ public class StartMenu : ResizableRect
     /// <summary>
     /// Enable & Disable
     /// </summary>
-    /*private void OnEnable()
+    private void OnEnable()
     {
-        inputReader.click += OnClick;
+        inputReader.anyClick += OnClick;
     }
 
     private void OnDisable()
     {
-        inputReader.click -= OnClick;
-    }*/
+        inputReader.anyClick -= OnClick;
+    }
 
 
 
     /// <summary>
     /// Open & Close
     /// </summary>
+    public void ToggleOpen()
+    {
+        if (isOpen)
+        {
+            Close();
+        }
+        else
+        {
+            Open();
+        }
+    }
+
     public void Open()
     {
         if (isOpen) { return; }
@@ -80,14 +93,18 @@ public class StartMenu : ResizableRect
         alphaTween?.Kill();
         sizeTween?.Kill();
         alphaTween = canvasGroup.DOFade(0.0f, tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => canvas.enabled = false);
-        sizeTween = rectTransform.DOSizeDelta(new Vector2(size.x, 0f), tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => Destroy(gameObject));
+        sizeTween = rectTransform.DOSizeDelta(new Vector2(size.x, 0f), tweenDuration).SetEase(Ease.OutExpo);
     }
 
-    /*private void OnClick(InputAction.CallbackContext context)
+    private void OnClick(InputAction.CallbackContext context)
     {
-        if (EventSystem.current.IsPointerOverGameObject())
-        {
-            Debug.Log("Clicked on the UI");
+        if (!isOpen) { return; }
+        if (context.canceled) 
+        { 
+            /*foreach (RaycastResult hit in Raycaster.current.raycastHits)
+            {
+                Debug.Log(hit);
+            }*/
         }
-    }*/
+    }
 }

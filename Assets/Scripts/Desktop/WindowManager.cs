@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class WindowManager : Singleton<WindowManager>
 {
@@ -16,7 +18,7 @@ public class WindowManager : Singleton<WindowManager>
     [HideInInspector] public UnityEvent<Window> OnWindowClosed;
 
     //instance
-    public static WindowManager WM => Instance;
+    public static WindowManager current => Instance;
 
 
 

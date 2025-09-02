@@ -5,7 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Window : ResizableRect, IPointerDownHandler
+public class Window : ResizableRect
 {
     //variables
     public AppSO app { get { return _app; } private set { _app = value; } }
@@ -116,7 +116,7 @@ public class Window : ResizableRect, IPointerDownHandler
         isMoveable = false;
         isResizable = false;
 
-        WindowManager.WM.SetActiveWindow(this);
+        WindowManager.current.SetActiveWindow(this);
         canvasGroup.blocksRaycasts = false;
         PivotUtility.SetPivotInWorldSpace(rectTransform, taskbarIcon.transform.position);
 
@@ -133,7 +133,7 @@ public class Window : ResizableRect, IPointerDownHandler
         isMoveable = true;
         isResizable = true;
 
-        WindowManager.WM.SetActiveWindow(this);
+        WindowManager.current.SetActiveWindow(this);
         canvas.enabled = true;
         PivotUtility.SetPivotInWorldSpace(rectTransform, taskbarIcon.transform.position);
 
@@ -168,7 +168,7 @@ public class Window : ResizableRect, IPointerDownHandler
         isMoveable = false;
         isResizable = false;
 
-        WindowManager.WM.SetActiveWindow(this);
+        WindowManager.current.SetActiveWindow(this);
         canvasGroup.blocksRaycasts = false;
         //rectTransform.anchorMin = new Vector2(0f, 0f);
         //rectTransform.anchorMax = new Vector2(1f, 1f);
@@ -187,7 +187,7 @@ public class Window : ResizableRect, IPointerDownHandler
         isMoveable = true;
         isResizable = true;
 
-        WindowManager.WM.SetActiveWindow(this);
+        WindowManager.current.SetActiveWindow(this);
         canvasGroup.blocksRaycasts = false;
         //rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
         //rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
@@ -210,17 +210,17 @@ public class Window : ResizableRect, IPointerDownHandler
     {
         if (isMinimized)
         {
-            WindowManager.WM.CloseWindow(this);
+            WindowManager.current.CloseWindow(this);
         }
         else
         {
-            WindowManager.WM.SetActiveWindow(this);
+            WindowManager.current.SetActiveWindow(this);
             canvasGroup.blocksRaycasts = false;
 
             alphaTween?.Kill();
             scaleTween?.Kill();
             alphaTween = canvasGroup.DOFade(0.0f, tweenDuration).SetEase(Ease.OutExpo);
-            scaleTween = transform.DOScale(tweenScale, tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => WindowManager.WM.CloseWindow(this));
+            scaleTween = transform.DOScale(tweenScale, tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => WindowManager.current.CloseWindow(this));
         }
 
         OnWindowClosed.Invoke();
@@ -245,13 +245,8 @@ public class Window : ResizableRect, IPointerDownHandler
 
     private void Disable()
     {
-        WindowManager.WM.SetActiveWindow();
+        WindowManager.current.SetActiveWindow();
         transform.SetAsFirstSibling();
-    }
-
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        WindowManager.WM.SetActiveWindow(this);
     }
 
 

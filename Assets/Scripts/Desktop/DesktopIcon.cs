@@ -13,6 +13,6 @@ public class DesktopIcon : MonoBehaviour
 
     public void OpenWindow()
     {
-        WindowManager.WM.OpenWindow(app);
+        WindowManager.current.OpenWindow(app);
     }
 }
