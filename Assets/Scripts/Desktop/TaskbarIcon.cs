@@ -13,11 +13,21 @@ public class TaskbarIcon : MonoBehaviour
         GetComponent<Image>().sprite = window.app.icon;
     }
 
+    private void OnEnable()
+    {
+        window?.OnWindowClosed.AddListener(OnWindowClosed);
+    }
+
+    private void OnDisable()
+    {
+        window?.OnWindowClosed.RemoveListener(OnWindowClosed);
+    }
+
     public void ToggleMinimized()
     {
-        if (!window.isMinimized && WindowManager.current.activeWindow != window)
+        if (!window.isMinimized && WindowManager.current.focusedWindow != window)
         {
-            WindowManager.current.SetActiveWindow(window);
+            WindowManager.current.SetFocusedWindow(window);
         }
         else
         {

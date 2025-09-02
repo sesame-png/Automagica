@@ -6,49 +6,63 @@ using UnityEngine.InputSystem;
 
 public class Raycaster : Singleton<Raycaster>
 {
-    //variables
+    /// Variables
     [SerializeField] private InputReaderSO inputReader;
 
-    //events
-    [HideInInspector] public UnityEvent OnRaycastLeftClick;
-    [HideInInspector] public UnityEvent OnRaycastMiddleClick;
-    [HideInInspector] public UnityEvent OnRaycastRightClick;
+    /// Events
+    [HideInInspector] public UnityEvent<List<RaycastResult>, InputAction.CallbackContext> OnAnyClick;
+    //[HideInInspector] public UnityEvent<List<RaycastResult>, InputAction.CallbackContext> OnLeftClick;
+    //[HideInInspector] public UnityEvent<List<RaycastResult>, InputAction.CallbackContext> OnMiddleClick;
+    //[HideInInspector] public UnityEvent<List<RaycastResult>, InputAction.CallbackContext> OnRightClick;
 
-    //instance
+    /// Instance
     public static Raycaster current => Instance;
 
+
+
+    /// Enable & Disable
     private void OnEnable()
     {
-        inputReader.leftClick += OnLeftClick;
-        inputReader.rightClick += OnMiddleClick;
-        inputReader.middleClick += OnRightClick;
+        inputReader.anyClick += RaycastAnyClick;
+        //inputReader.leftClick += RaycastLeftClick;
+        //inputReader.rightClick += RaycastMiddleClick;
+        //inputReader.middleClick += RaycastRightClick;
     }
 
     private void OnDisable()
     {
-        inputReader.leftClick -= OnLeftClick;
-        inputReader.rightClick -= OnMiddleClick;
-        inputReader.middleClick -= OnRightClick;
+        inputReader.anyClick -= RaycastAnyClick;
+        //inputReader.leftClick -= RaycastLeftClick;
+        //inputReader.rightClick -= RaycastMiddleClick;
+        //inputReader.middleClick -= RaycastRightClick;
     }
 
-    private void OnLeftClick(InputAction.CallbackContext context)
+
+
+    /// Event Callbacks
+    private void RaycastAnyClick(InputAction.CallbackContext context)
     {
-        List<RaycastResult> raycastHits = RaycastAll();
-        OnRaycastLeftClick.Invoke();
+        OnAnyClick.Invoke(RaycastAll(), context);
     }
 
-    private void OnMiddleClick(InputAction.CallbackContext context)
+    /*private void RaycastLeftClick(InputAction.CallbackContext context)
     {
-        List<RaycastResult> raycastHits = RaycastAll();
-        OnRaycastMiddleClick.Invoke();
-    }
+        OnLeftClick.Invoke(RaycastAll(), context);
+    }*/
 
-    private void OnRightClick(InputAction.CallbackContext context)
+    /*private void RaycastMiddleClick(InputAction.CallbackContext context)
     {
-        List<RaycastResult> raycastHits = RaycastAll();
-        OnRaycastRightClick.Invoke();
-    }
+        OnMiddleClick.Invoke(RaycastAll(), context);
+    }*/
 
+    /*private void RaycastRightClick(InputAction.CallbackContext context)
+    {
+        OnRightClick.Invoke(RaycastAll(), context);
+    }*/
+
+
+
+    /// Raycast
     private List<RaycastResult> RaycastAll()
     {
         PointerEventData eventData = new PointerEventData(null);

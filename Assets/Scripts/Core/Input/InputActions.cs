@@ -46,7 +46,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""LeftClick"",
+                    ""name"": ""Click"",
                     ""type"": ""PassThrough"",
                     ""id"": ""3c7022bf-7922-4f7c-a998-c437916075ad"",
                     ""expectedControlType"": ""Button"",
@@ -139,7 +139,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""LeftClick"",
+                    ""action"": ""Click"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -312,7 +312,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Point = m_UI.FindAction("Point", throwIfNotFound: true);
         m_UI_AnyClick = m_UI.FindAction("AnyClick", throwIfNotFound: true);
-        m_UI_LeftClick = m_UI.FindAction("LeftClick", throwIfNotFound: true);
+        m_UI_Click = m_UI.FindAction("Click", throwIfNotFound: true);
         m_UI_MiddleClick = m_UI.FindAction("MiddleClick", throwIfNotFound: true);
         m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
         m_UI_ScrollWheel = m_UI.FindAction("ScrollWheel", throwIfNotFound: true);
@@ -387,7 +387,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
     private readonly InputAction m_UI_Point;
     private readonly InputAction m_UI_AnyClick;
-    private readonly InputAction m_UI_LeftClick;
+    private readonly InputAction m_UI_Click;
     private readonly InputAction m_UI_MiddleClick;
     private readonly InputAction m_UI_RightClick;
     private readonly InputAction m_UI_ScrollWheel;
@@ -400,7 +400,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         public UIActions(@InputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Point => m_Wrapper.m_UI_Point;
         public InputAction @AnyClick => m_Wrapper.m_UI_AnyClick;
-        public InputAction @LeftClick => m_Wrapper.m_UI_LeftClick;
+        public InputAction @Click => m_Wrapper.m_UI_Click;
         public InputAction @MiddleClick => m_Wrapper.m_UI_MiddleClick;
         public InputAction @RightClick => m_Wrapper.m_UI_RightClick;
         public InputAction @ScrollWheel => m_Wrapper.m_UI_ScrollWheel;
@@ -422,9 +422,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @AnyClick.started += instance.OnAnyClick;
             @AnyClick.performed += instance.OnAnyClick;
             @AnyClick.canceled += instance.OnAnyClick;
-            @LeftClick.started += instance.OnLeftClick;
-            @LeftClick.performed += instance.OnLeftClick;
-            @LeftClick.canceled += instance.OnLeftClick;
+            @Click.started += instance.OnClick;
+            @Click.performed += instance.OnClick;
+            @Click.canceled += instance.OnClick;
             @MiddleClick.started += instance.OnMiddleClick;
             @MiddleClick.performed += instance.OnMiddleClick;
             @MiddleClick.canceled += instance.OnMiddleClick;
@@ -453,9 +453,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @AnyClick.started -= instance.OnAnyClick;
             @AnyClick.performed -= instance.OnAnyClick;
             @AnyClick.canceled -= instance.OnAnyClick;
-            @LeftClick.started -= instance.OnLeftClick;
-            @LeftClick.performed -= instance.OnLeftClick;
-            @LeftClick.canceled -= instance.OnLeftClick;
+            @Click.started -= instance.OnClick;
+            @Click.performed -= instance.OnClick;
+            @Click.canceled -= instance.OnClick;
             @MiddleClick.started -= instance.OnMiddleClick;
             @MiddleClick.performed -= instance.OnMiddleClick;
             @MiddleClick.canceled -= instance.OnMiddleClick;
@@ -540,7 +540,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     {
         void OnPoint(InputAction.CallbackContext context);
         void OnAnyClick(InputAction.CallbackContext context);
-        void OnLeftClick(InputAction.CallbackContext context);
+        void OnClick(InputAction.CallbackContext context);
         void OnMiddleClick(InputAction.CallbackContext context);
         void OnRightClick(InputAction.CallbackContext context);
         void OnScrollWheel(InputAction.CallbackContext context);

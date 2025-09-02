@@ -6,12 +6,12 @@ public class TaskbarManager : MonoBehaviour
 
     private void OnEnable()
     {
-        WindowManager.current.OnWindowOpened.AddListener(AddWindow);
+        WindowManager.current?.OnWindowOpened.AddListener(AddWindow);
     }
 
     private void OnDisable()
     {
-        WindowManager.current.OnWindowOpened.RemoveListener(AddWindow);
+        WindowManager.current?.OnWindowOpened.RemoveListener(AddWindow);
     }
 
     private void AddWindow(Window window)

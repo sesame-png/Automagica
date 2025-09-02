@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class ResizableRect : MonoBehaviour
 {
-    //variables
+    /// Variables
     [HideInInspector] public bool isMoveable = true;
     [HideInInspector] public bool isResizable = true;
 
-    //position & size
+    /// Position & Size
     public RectParamsSO rectParams { get { return _rectParams; } protected set { _rectParams = value; } }
     private RectParamsSO _rectParams;
 
@@ -16,11 +16,12 @@ public class ResizableRect : MonoBehaviour
     public Vector2 size { get { return _size; } protected set { _size = value; } }
     private Vector2 _size;
 
-    //components
+    /// Components
     protected RectTransform rectTransform;
 
 
 
+    /// Initialization
     protected void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -28,9 +29,7 @@ public class ResizableRect : MonoBehaviour
 
 
 
-    /// <summary>
     /// Transform Rect
-    /// </summary>
     public virtual void MovePosition(Vector2 posDelta)
     {
         if (!isMoveable) { return; }

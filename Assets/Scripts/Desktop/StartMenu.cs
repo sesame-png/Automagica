@@ -6,23 +6,22 @@ using UnityEngine.InputSystem;
 
 public class StartMenu : ResizableRect
 {
-    //variables
-    [SerializeField] private InputReaderSO inputReader;
+    /// Variables
     [SerializeField] new private RectParamsSO rectParams;
     private bool isOpen;
 
-    //components
+    /// Components
     private Canvas canvas;
     private CanvasGroup canvasGroup;
 
-    //tweens
+    /// Tweens
     private Tween alphaTween;
     private Tween sizeTween;
     private float tweenDuration = 0.2f;
 
 
 
-
+    /// Initialization
     new protected void Awake()
     {
         base.rectParams = rectParams;
@@ -40,24 +39,20 @@ public class StartMenu : ResizableRect
 
 
 
-    /// <summary>
     /// Enable & Disable
-    /// </summary>
     private void OnEnable()
     {
-        inputReader.anyClick += OnClick;
+        Raycaster.current?.OnAnyClick.AddListener(OnClick);
     }
 
     private void OnDisable()
     {
-        inputReader.anyClick -= OnClick;
+        Raycaster.current?.OnAnyClick.RemoveListener(OnClick);
     }
 
 
 
-    /// <summary>
     /// Open & Close
-    /// </summary>
     public void ToggleOpen()
     {
         if (isOpen)
@@ -96,15 +91,19 @@ public class StartMenu : ResizableRect
         sizeTween = rectTransform.DOSizeDelta(new Vector2(size.x, 0f), tweenDuration).SetEase(Ease.OutExpo);
     }
 
-    private void OnClick(InputAction.CallbackContext context)
+    public void OnClick(List<RaycastResult> raycastHits, InputAction.CallbackContext context)
     {
         if (!isOpen) { return; }
-        if (context.canceled) 
-        { 
-            /*foreach (RaycastResult hit in Raycaster.current.raycastHits)
+        if (!context.canceled) { return; }
+
+        foreach (RaycastResult hit in raycastHits)
+        {
+            if (hit.gameObject.CompareTag("StartMenu"))
             {
-                Debug.Log(hit);
-            }*/
+                return;
+            }
         }
+
+        Close();
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine.Pool;
 namespace UnityEngine.UI
 {
     /// <summary>
-    /// This is a specialized graphics component that controls an SDF shader.
+    /// A specialized graphics component that controls an SDF shader.
     /// </summary>
     [ExecuteAlways]
     [RequireComponent(typeof(CanvasRenderer))]
@@ -37,9 +37,7 @@ namespace UnityEngine.UI
 
 
 
-        /// <summary>
-        /// Awake & Destroy
-        /// </summary>
+        /// Update Material
         protected override void Awake()
         {
             base.Awake();
@@ -68,9 +66,7 @@ namespace UnityEngine.UI
 
 
 
-        /// <summary>
         /// Setters
-        /// </summary>
         protected override void OnRectTransformDimensionsChange()
         {
             base.OnRectTransformDimensionsChange();

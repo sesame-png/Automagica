@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// I don't remember where I found this but it's not mine.
+/// </summary>
 [RequireComponent(typeof(RectTransform))]
 [RequireComponent(typeof(Image))]
 [RequireComponent(typeof(Mask))]
@@ -22,7 +25,7 @@ public class RaycastMask : MonoBehaviour, ICanvasRaycastFilter
         Vector2 localPositionPivotRelative;
         RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)transform, sp, eventCamera, out localPositionPivotRelative);
 
-        // convert to bottom-left origin coordinates
+        // Convert to bottom-left origin coordinates.
         var localPosition = new Vector2(localPositionPivotRelative.x + rectTransform.pivot.x * rectTransform.rect.width,
             localPositionPivotRelative.y + rectTransform.pivot.y * rectTransform.rect.height);
 
@@ -31,14 +34,14 @@ public class RaycastMask : MonoBehaviour, ICanvasRaycastFilter
 
         var x = 0;
         var y = 0;
-        // convert to texture space
+        // Convert to texture space.
         switch (_image.type)
         {
 
             case Image.Type.Sliced:
                 {
                     var border = _sprite.border;
-                    // x slicing
+                    // X Slicing.
                     if (localPosition.x < border.x)
                     {
                         x = Mathf.FloorToInt(spriteRect.x + localPosition.x);
@@ -54,7 +57,7 @@ public class RaycastMask : MonoBehaviour, ICanvasRaycastFilter
                                              (maskRect.width - border.x - border.z)) *
                                              (spriteRect.width - border.x - border.z));
                     }
-                    // y slicing
+                    // Y Slicing.
                     if (localPosition.y < border.y)
                     {
                         y = Mathf.FloorToInt(spriteRect.y + localPosition.y);
@@ -75,14 +78,14 @@ public class RaycastMask : MonoBehaviour, ICanvasRaycastFilter
             case Image.Type.Simple:
             default:
                 {
-                    // conversion to uniform UV space
+                    // Conversion to uniform UV space.
                     x = Mathf.FloorToInt(spriteRect.x + spriteRect.width * localPosition.x / maskRect.width);
                     y = Mathf.FloorToInt(spriteRect.y + spriteRect.height * localPosition.y / maskRect.height);
                 }
                 break;
         }
 
-        // destroy component if texture import settings are wrong
+        // Destroy component if texture import settings are wrong.
         try
         {
             return _sprite.texture.GetPixel(x, y).a > 0;

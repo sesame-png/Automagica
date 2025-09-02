@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class DesktopManager : MonoBehaviour
 {
-    public List<AppSO> apps = new List<AppSO>(); //TODO: add security here so that AddApp() and RemoveApp() must be used
+    public List<AppSO> apps = new List<AppSO>(); //TODO: convert to AppListSO
 
     [SerializeField] private GameObject desktopIconPrefab;
 

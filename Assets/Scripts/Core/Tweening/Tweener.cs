@@ -2,27 +2,27 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 
-public abstract class Tweener : MonoBehaviour
+public abstract class UITween : MonoBehaviour
 {
-    //variables
+    /// Variables
     [SerializeField] protected bool playOnStart;
     [SerializeField] protected bool startIn;
     [SerializeField] protected float fromValue = 0f;
     [SerializeField] protected float toValue = 1f;
     [SerializeField] protected float duration = 1f;
     [SerializeField] protected Ease ease;
+    private bool isPlayingIn;
 
-    //tween
+    /// Tween
     protected Tween tween;
 
-    //events
-    [HideInInspector] public UnityEvent tweenStarted;
-    [HideInInspector] public UnityEvent tweenComplete;
-    //public Event<bool> tweenStarted = new Event<bool>();
-    //public Event<bool> tweenComplete = new Event<bool>();
+    /// Events
+    [HideInInspector] public UnityEvent<bool> OnTweenStarted;
+    [HideInInspector] public UnityEvent<bool> OnTweenComplete;
 
 
 
+    /// Initialization
     protected abstract void Awake();
 
     protected virtual void Start()
@@ -40,16 +40,24 @@ public abstract class Tweener : MonoBehaviour
         }
     }
 
+
+
+    /// Play
     public virtual void PlayIn()
     {
-        tweenStarted.Invoke();
+        isPlayingIn = true;
+        OnTweenStarted.Invoke(isPlayingIn);
     }
 
     public virtual void PlayOut()
     {
-        tweenStarted.Invoke();
+        isPlayingIn = false;
+        OnTweenStarted.Invoke(isPlayingIn);
     }
 
+
+
+    /// Complete
     public void Complete()
     {
         tween?.Complete();
@@ -62,7 +70,7 @@ public abstract class Tweener : MonoBehaviour
 
     protected virtual void OnComplete()
     {
-        tweenComplete.Invoke();
+        OnTweenComplete.Invoke(isPlayingIn);
     }
 
     private void OnDestroy()

@@ -5,16 +5,11 @@ namespace UnityEngine.UI
     /// </summary>
     public class ExpandableHorizontalLayoutGroup : HorizontalLayoutGroup
     {
+        /// Expandable Object
         [SerializeField] protected RectTransform m_ExpandableObject;
-
-        /// <summary>
-        /// Object to expand to fill available space.
-        /// </summary>
         public RectTransform expandableObject { get { return m_ExpandableObject; } set { SetProperty(ref m_ExpandableObject, value); } }
 
-        /// <summary>
-        /// Overridden variables.
-        /// </summary>
+        /// Overridden variables
         new public bool childForceExpandWidth { get { return m_ChildForceExpandWidth; } private set { SetProperty(ref m_ChildForceExpandWidth, value); } }
         new public bool childControlWidth { get { return m_ChildControlWidth; } private set { SetProperty(ref m_ChildControlWidth, value); } }
         new public bool childScaleWidth { get { return m_ChildScaleWidth; } private set { SetProperty(ref m_ChildScaleWidth, value); } }
@@ -28,6 +23,7 @@ namespace UnityEngine.UI
 
 
 
+        /// Set Dirty
         protected override void OnEnable()
         {
             base.OnEnable();
@@ -58,6 +54,7 @@ namespace UnityEngine.UI
 
 
 
+        /// Set Layout
         public override void SetLayoutHorizontal()
         {
             UpdateExpandableObject();

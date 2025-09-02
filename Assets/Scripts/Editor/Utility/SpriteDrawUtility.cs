@@ -137,10 +137,10 @@ namespace UnityEditor.UI
             if (drawArea.width > outerRect.width)
                 outerRect.x += (drawArea.width - outerRect.width) * 0.5f;
 
-            // Draw the background
+            // Draw the background.
             EditorGUI.DrawTextureTransparent(outerRect, null, ScaleMode.ScaleToFit, outer.width / outer.height);
 
-            // Draw the Image
+            // Draw the Image.
             GUI.color = color;
 
             Rect paddedTexArea = new Rect(
@@ -161,7 +161,7 @@ namespace UnityEditor.UI
                 EditorGUI.DrawPreviewTexture(paddedTexArea, tex, mat);
             }
 
-            // Draw the border indicator lines
+            // Draw the border indicator lines.
             GUI.BeginGroup(outerRect);
             {
                 tex = contrastTexture;
@@ -181,7 +181,7 @@ namespace UnityEditor.UI
 
                 if (inner.yMin != outer.yMin)
                 {
-                    // GUI.DrawTexture is top-left based rather than bottom-left
+                    // GUI.DrawTexture is top-left based rather than bottom-left.
                     float y = (inner.yMin - outer.yMin) / outer.height * outerRect.height - 1;
                     DrawTiledTexture(new Rect(0f, outerRect.height - y, outerRect.width, 1f), tex);
                 }

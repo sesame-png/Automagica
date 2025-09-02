@@ -7,27 +7,26 @@ using UnityEngine.UI;
 
 public class Window : ResizableRect
 {
-    //variables
+    /// Variables
     public AppSO app { get { return _app; } private set { _app = value; } }
     private AppSO _app;
 
     [HideInInspector] public TaskbarIcon taskbarIcon;
 
-    //bool variables
-    public bool isActive { get { return _isActive; } private set { _isActive = value; } }
-    private bool _isActive = false;
-
+    /// Bools
     public bool isMaximized { get { return _isMaximized; } private set { _isMaximized = value; } }
     private bool _isMaximized = false;
 
     public bool isMinimized { get { return _isMinimized; } private set { _isMinimized = value; } }
     private bool _isMinimized = false;
 
-    //events
-    [HideInInspector] public UnityEvent OnWindowOpened;
+    /// Events
+    //[HideInInspector] public UnityEvent OnWindowOpening;
+    //[HideInInspector] public UnityEvent OnWindowOpened;
+    //[HideInInspector] public UnityEvent OnWindowClosing;
     [HideInInspector] public UnityEvent OnWindowClosed;
 
-    //components
+    /// Components
     [SerializeField] private TMP_Text header;
     [SerializeField] private Image icon;
     [SerializeField] private FadeTween dropShadow;
@@ -35,7 +34,7 @@ public class Window : ResizableRect
     private CanvasGroup canvasGroup;
     private RectTransform parentRectTransform;
 
-    //tweens
+    /// Tweens
     private Tween sizeTween;
     private Tween positionTween;
     private Tween alphaTween;
@@ -45,6 +44,7 @@ public class Window : ResizableRect
 
 
 
+    /// Initialization
     new protected void Awake()
     {
         base.Awake();
@@ -79,24 +79,20 @@ public class Window : ResizableRect
 
 
 
-    /// <summary>
     /// Open
-    /// </summary>
     public void Open()
     {
+        //OnWindowOpening.Invoke();
+
         alphaTween?.Kill();
         scaleTween?.Kill();
         alphaTween = canvasGroup.DOFade(1.0f, tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => canvasGroup.blocksRaycasts = true);
-        scaleTween = transform.DOScale(1.0f, tweenDuration).SetEase(Ease.OutExpo);
-
-        OnWindowOpened.Invoke();
+        scaleTween = transform.DOScale(1.0f, tweenDuration).SetEase(Ease.OutExpo);//.OnComplete(() => OnWindowOpened.Invoke());
     }
 
 
 
-    /// <summary>
     /// Minimize & Unminimize
-    /// </summary>
     public void ToggleMinimized()
     {
         if (isMinimized)
@@ -116,14 +112,14 @@ public class Window : ResizableRect
         isMoveable = false;
         isResizable = false;
 
-        WindowManager.current.SetActiveWindow(this);
+        WindowManager.current.SetFocusedWindow(this);
         canvasGroup.blocksRaycasts = false;
         PivotUtility.SetPivotInWorldSpace(rectTransform, taskbarIcon.transform.position);
 
         alphaTween?.Kill();
         scaleTween?.Kill();
         alphaTween = canvasGroup.DOFade(0.0f, tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => canvas.enabled = false);
-        scaleTween = transform.DOScale(tweenScale, tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => Disable());
+        scaleTween = transform.DOScale(tweenScale, tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => MoveToBack());
     }
 
     public void Unminimize()
@@ -133,7 +129,7 @@ public class Window : ResizableRect
         isMoveable = true;
         isResizable = true;
 
-        WindowManager.current.SetActiveWindow(this);
+        WindowManager.current.SetFocusedWindow(this);
         canvas.enabled = true;
         PivotUtility.SetPivotInWorldSpace(rectTransform, taskbarIcon.transform.position);
 
@@ -145,9 +141,7 @@ public class Window : ResizableRect
 
 
 
-    /// <summary>
     /// Maximize & Unmaximize
-    /// </summary>
     public void ToggleMaximized()
     {
         if (isMaximized)
@@ -168,7 +162,7 @@ public class Window : ResizableRect
         isMoveable = false;
         isResizable = false;
 
-        WindowManager.current.SetActiveWindow(this);
+        WindowManager.current.SetFocusedWindow(this);
         canvasGroup.blocksRaycasts = false;
         //rectTransform.anchorMin = new Vector2(0f, 0f);
         //rectTransform.anchorMax = new Vector2(1f, 1f);
@@ -187,7 +181,7 @@ public class Window : ResizableRect
         isMoveable = true;
         isResizable = true;
 
-        WindowManager.current.SetActiveWindow(this);
+        WindowManager.current.SetFocusedWindow(this);
         canvasGroup.blocksRaycasts = false;
         //rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
         //rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
@@ -203,65 +197,63 @@ public class Window : ResizableRect
 
 
 
-    /// <summary>
     /// Close
-    /// </summary>
     public void Close()
     {
+        //OnWindowClosing.Invoke();
+
         if (isMinimized)
         {
+            OnWindowClosed.Invoke();
             WindowManager.current.CloseWindow(this);
         }
         else
         {
-            WindowManager.current.SetActiveWindow(this);
+            WindowManager.current.SetFocusedWindow(this);
             canvasGroup.blocksRaycasts = false;
 
             alphaTween?.Kill();
             scaleTween?.Kill();
-            alphaTween = canvasGroup.DOFade(0.0f, tweenDuration).SetEase(Ease.OutExpo);
+            alphaTween = canvasGroup.DOFade(0.0f, tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => OnWindowClosed.Invoke());
             scaleTween = transform.DOScale(tweenScale, tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => WindowManager.current.CloseWindow(this));
         }
-
-        OnWindowClosed.Invoke();
     }
 
 
 
-    /// <summary>
-    /// Focusing & Unfocusing
-    /// </summary>
-    public void SetActive()
+    /// Focus & Unfocus
+    public void SetFocused()
     {
-        isActive = true;
         dropShadow.PlayIn();
     }
 
-    public void SetInactive()
+    public void SetUnfocused()
     {
-        isActive = false;
         dropShadow.PlayOut();
     }
 
-    private void Disable()
+    private void MoveToBack()
     {
-        WindowManager.current.SetActiveWindow();
         transform.SetAsFirstSibling();
+        WindowManager.current.SetFocusedWindow();
     }
 
 
 
-    /// <summary>
     /// Drag
-    /// </summary>
     public void OnBeginDrag(Vector2 pos)
     {
         if (isMaximized) { Unmaximize(); }
 
+        //Debug.Log("Window Position: " + position);
+        //Debug.Log("Mouse Position: " + pos);
         //Vector2 screenPosition = new Vector2();
         //RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform, pos, Camera.main, out screenPosition);
+        //Debug.Log("ScreenPointToLocalPointInRectangle: " + screenPosition);
         //PivotUtility.SetPivotInWorldSpace(rectTransform, screenPosition);
+        //Debug.Log("SetPivotInWorldSpace: " + position);
         //PivotUtility.SetPivot(rectTransform, screenPosition);
+        //Debug.Log("SetPivot: " + position);
     }
 
     public void OnDrag(Vector2 posDelta)

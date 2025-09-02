@@ -4,7 +4,7 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - activeWindowList: {fileID: 11400000, guid: d07974888fb3f434480c922bbd1b82ad, type: 2}
+  - inputReader: {fileID: 11400000, guid: e7a3ef594049fc746918aad4882bcbcc, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -3,11 +3,11 @@ using UnityEngine.UI;
 
 namespace UnityEditor.UI
 {
-    [CustomEditor(typeof(ExpandableVerticalLayoutGroup), true)]
-    [CanEditMultipleObjects]
     /// <summary>
     /// Custom Editor for the ExpandableVerticalLayoutGroup Component.
     /// </summary>
+    [CustomEditor(typeof(ExpandableVerticalLayoutGroup), true)]
+    [CanEditMultipleObjects]
     public class ExpandableVerticalLayoutGroupEditor : Editor
     {
         SerializedProperty m_ExpandableObject;

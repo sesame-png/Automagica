@@ -3,11 +3,11 @@ using UnityEngine.UI;
 
 namespace UnityEditor.UI
 {
+    /// <summary>
+    /// Custom Editor for the CapsuleImage Component.
+    /// </summary>
     [CustomEditor(typeof(CapsuleImage), true)]
     [CanEditMultipleObjects]
-    /// <summary>
-    /// Custom Editor for the Capsule Image Component.
-    /// </summary>
     public class CapsuleImageEditor : GraphicEditor
     {
         GUIContent m_SpriteContent;
@@ -39,14 +39,10 @@ namespace UnityEditor.UI
             serializedObject.ApplyModifiedProperties();
         }
 
-        /// <summary>
-        /// All graphics have a preview.
-        /// </summary>
+        // All graphics have a preview.
         public override bool HasPreviewGUI() { return true; }
 
-        /// <summary>
-        /// Draw the Image preview.
-        /// </summary>
+        // Draw the Image preview.
         public override void OnPreviewGUI(Rect rect, GUIStyle background)
         {
             Image image = target as Image;
@@ -58,9 +54,7 @@ namespace UnityEditor.UI
             SpriteDrawUtility.DrawSprite(sf, rect, image.canvasRenderer.GetColor());
         }
 
-        /// <summary>
-        /// A string containing the Image details to be used as a overlay on the component Preview.
-        /// </summary>
+        // A string containing the Image details to be used as a overlay on the component Preview.
         public override string GetInfoString()
         {
             Image image = target as Image;

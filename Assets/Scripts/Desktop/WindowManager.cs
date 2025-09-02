@@ -6,25 +6,37 @@ using UnityEngine.InputSystem;
 
 public class WindowManager : Singleton<WindowManager>
 {
-    //variables
+    /// Variables
+    //[SerializeField] private InputReaderSO inputReader;
     public IReadOnlyList<Window> windows => _windows;
     private List<Window> _windows = new List<Window>();
 
-    public Window activeWindow { get { return _activeWindow; } private set { _activeWindow = value; } }
-    private Window _activeWindow;
+    public Window focusedWindow { get { return _focusedWindow; } private set { _focusedWindow = value; } }
+    private Window _focusedWindow;
 
-    //events
+    /// Events
     [HideInInspector] public UnityEvent<Window> OnWindowOpened;
-    [HideInInspector] public UnityEvent<Window> OnWindowClosed;
+    //[HideInInspector] public UnityEvent<Window> OnWindowClosed;
 
-    //instance
+    /// Instance
     public static WindowManager current => Instance;
 
 
 
-    /// <summary>
+    /// Enable & Disable
+    private void OnEnable()
+    {
+        Raycaster.current?.OnAnyClick.AddListener(OnClick);
+    }
+
+    private void OnDisable()
+    {
+        Raycaster.current?.OnAnyClick.RemoveListener(OnClick);
+    }
+
+
+
     /// Open & Close
-    /// </summary>
     public void OpenWindow(AppSO app)
     {
         Window openWindow = FindApp(app);
@@ -32,14 +44,14 @@ public class WindowManager : Singleton<WindowManager>
         if (openWindow && !app.allowMultipleInstances)
         {
             openWindow.Unminimize();
-            SetActiveWindow(openWindow);
+            SetFocusedWindow(openWindow);
         }
         else
         {
             Window newWindow = Instantiate(app.windowPrefab, transform).GetComponent<Window>();
             newWindow.Initialize(app);
             newWindow.Open();
-            SetActiveWindow(newWindow);
+            SetFocusedWindow(newWindow);
             _windows.Add(newWindow);
 
             OnWindowOpened.Invoke(newWindow);
@@ -51,43 +63,63 @@ public class WindowManager : Singleton<WindowManager>
     {
         Destroy(window.gameObject);
         _windows.Remove(window);
-        SetActiveWindow();
+        SetFocusedWindow();
 
-        OnWindowClosed.Invoke(window);
+        //OnWindowClosed.Invoke(window);
         Debug.Log("Window " + window.app.appName + " closed.");
     }
 
 
 
-    /// <summary>
-    /// Active window
-    /// </summary>
-    public void SetActiveWindow(Window window = null)
+    /// Focused window
+    public void OnClick(List<RaycastResult> raycastHits, InputAction.CallbackContext context)
     {
-        activeWindow?.SetInactive();
+        if (!context.started) { return; }
+
+        foreach (RaycastResult hit in raycastHits)
+        {
+            if (hit.gameObject.CompareTag("Window"))
+            {
+                SetFocusedWindow(hit.gameObject.GetComponentInParent<Window>());
+                return;
+            }
+        }
+
+        RemoveFocusedWindow();
+    }
+
+    public void SetFocusedWindow(Window window = null)
+    {
+        if (focusedWindow == window) { return; }
+
+        focusedWindow?.SetUnfocused();
 
         if (window)
         {
-            activeWindow = window;
+            focusedWindow = window;
             window.transform.SetAsLastSibling();
+            focusedWindow.SetFocused();
         }
         else if (transform.childCount > 0)
         {
-            activeWindow = transform.GetChild(transform.childCount - 1).GetComponent<Window>();
+            focusedWindow = transform.GetChild(transform.childCount - 1).GetComponent<Window>();
+            focusedWindow.SetFocused();
         }
         else
         {
-            activeWindow = null;
+            RemoveFocusedWindow();
         }
+    }
 
-        activeWindow?.SetActive();
+    public void RemoveFocusedWindow()
+    {
+        focusedWindow?.SetUnfocused();
+        focusedWindow = null;
     }
 
 
 
-    /// <summary>
-    /// Helper functions
-    /// </summary>
+    /// Helper Functions
     public Window FindApp(AppSO app)
     {
         return _windows.Find(window => window.app == app);

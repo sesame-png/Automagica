@@ -5,16 +5,11 @@ namespace UnityEngine.UI
     /// </summary>
     public class ExpandableVerticalLayoutGroup : VerticalLayoutGroup
     {
+        /// Expandable Object
         [SerializeField] protected RectTransform m_ExpandableObject;
-
-        /// <summary>
-        /// Object to expand to fill available space.
-        /// </summary>
         public RectTransform expandableObject { get { return m_ExpandableObject; } set { SetProperty(ref m_ExpandableObject, value); } }
 
-        /// <summary>
-        /// Overridden variables.
-        /// </summary>
+        /// Overridden Variables
         new public bool childForceExpandHeight { get { return m_ChildForceExpandHeight; } private set { SetProperty(ref m_ChildForceExpandHeight, value); } }
         new public bool childControlHeight { get { return m_ChildControlHeight; } private set { SetProperty(ref m_ChildControlHeight, value); } }
         new public bool childScaleHeight { get { return m_ChildScaleHeight; } private set { SetProperty(ref m_ChildScaleHeight, value); } }
@@ -28,6 +23,7 @@ namespace UnityEngine.UI
 
 
 
+        /// Set Dirty
         protected override void OnEnable()
         {
             base.OnEnable();
@@ -58,6 +54,7 @@ namespace UnityEngine.UI
 
 
 
+        /// Set Layout
         public override void SetLayoutVertical()
         {
             UpdateExpandableObject();
@@ -66,7 +63,7 @@ namespace UnityEngine.UI
 
         void UpdateExpandableObject()
         {
-            float totalHeight = this.GetComponent<RectTransform>().rect.height; //can this be better?
+            float totalHeight = rectTransform.rect.height;
             float childrenHeight = padding.top + padding.bottom + (spacing * (transform.childCount - 1));
 
             foreach (RectTransform child in transform)

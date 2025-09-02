@@ -6,12 +6,13 @@ using UnityEditor;
 [CreateAssetMenu(menuName = "Singletons/InputReader")]
 public class InputReaderSO : ScriptableObject, InputActions.IUIActions
 {
+    /// Input Actions
     public InputActions inputActions;
 
-    // Global actions
+    /// Global Actions
     public event Action<InputAction.CallbackContext> anyAction = delegate { };
 
-    // UI actions
+    /// UI Actions
     public event Action<InputAction.CallbackContext> point = delegate { };
     public event Action<InputAction.CallbackContext> anyClick = delegate { };
     public event Action<InputAction.CallbackContext> leftClick = delegate { };
@@ -22,6 +23,9 @@ public class InputReaderSO : ScriptableObject, InputActions.IUIActions
     public event Action<InputAction.CallbackContext> submit = delegate { };
     public event Action<InputAction.CallbackContext> cancel = delegate { };
 
+
+
+    /// Enable & Disable
     private void OnEnable()
     {
         if (inputActions == null)
@@ -52,7 +56,9 @@ public class InputReaderSO : ScriptableObject, InputActions.IUIActions
         inputActions.Disable();
     }
 
-    #region Enable/Disable
+
+
+    /// Enable & Disable Controls
     public void EnableUIControls()
     {
         inputActions.UI.Enable();
@@ -62,12 +68,13 @@ public class InputReaderSO : ScriptableObject, InputActions.IUIActions
     {
         inputActions.UI.Disable();
     }
-    #endregion
 
-    #region Event Callbacks
+    
+    
+    /// Event Callbacks
     private void OnAnyAction(InputAction.CallbackContext context)
     {
-        anyAction.Invoke(context);
+        anyAction?.Invoke(context);
     }
 
     public void OnPoint(InputAction.CallbackContext context)
@@ -80,7 +87,7 @@ public class InputReaderSO : ScriptableObject, InputActions.IUIActions
         anyClick?.Invoke(context);
     }
 
-    public void OnLeftClick(InputAction.CallbackContext context)
+    public void OnClick(InputAction.CallbackContext context)
     {
         leftClick?.Invoke(context);
     }
@@ -114,5 +121,4 @@ public class InputReaderSO : ScriptableObject, InputActions.IUIActions
     {
         cancel?.Invoke(context);
     }
-    #endregion
 }
