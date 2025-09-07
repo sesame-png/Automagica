@@ -10,13 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36ad274e1be0f0d4ca01068921f74af7, type: 3}
-  m_Name: DebugApp03Parameters
+  m_Name: DebugMenuParams
   m_EditorClassIdentifier: 
   _defaultPosition: {x: 0, y: 0}
-  cachedPosition: {x: 0, y: 0}
+  cachedPosition: {x: 264.31372, y: 15.6862335}
+  _constrainPosition: 0
   _minPosition: {x: -10000, y: -10000}
   _maxPosition: {x: 10000, y: 10000}
   _defaultSize: {x: 500, y: 400}
-  cachedSize: {x: 500, y: 400}
-  _minSize: {x: 300, y: 300}
-  _maxSize: {x: 10000, y: 10000}
+  cachedSize: {x: 463.92163, y: 580.7843}
+  _constrainSize: 1
+  _minSize: {x: 500, y: 600}
+  _maxSize: {x: 500, y: 600}

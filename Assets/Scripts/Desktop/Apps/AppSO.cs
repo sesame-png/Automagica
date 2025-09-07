@@ -16,4 +16,7 @@ public class AppSO : ScriptableObject
 
     public bool allowMultipleInstances { get { return _allowMultipleInstances; } private set { _allowMultipleInstances = value; } }
     [SerializeField] private bool _allowMultipleInstances = false;
+
+    public bool allowMaximize { get { return _allowMaximize; } private set { _allowMaximize = value; } }
+    [SerializeField] private bool _allowMaximize = false;
 }

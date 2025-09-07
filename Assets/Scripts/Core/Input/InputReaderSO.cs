@@ -22,6 +22,7 @@ public class InputReaderSO : ScriptableObject, InputActions.IUIActions
     public event Action<InputAction.CallbackContext> navigate = delegate { };
     public event Action<InputAction.CallbackContext> submit = delegate { };
     public event Action<InputAction.CallbackContext> cancel = delegate { };
+    public event Action<InputAction.CallbackContext> debug = delegate { };
 
 
 
@@ -120,5 +121,10 @@ public class InputReaderSO : ScriptableObject, InputActions.IUIActions
     public void OnCancel(InputAction.CallbackContext context)
     {
         cancel?.Invoke(context);
+    }
+
+    public void OnDebug(InputAction.CallbackContext context)
+    {
+        debug?.Invoke(context);
     }
 }

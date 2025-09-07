@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Rect/Rect Parameters")]
+[CreateAssetMenu(menuName = "Rect/Rect Params")]
 public class RectParamsSO : ScriptableObject
 {
     /// Position

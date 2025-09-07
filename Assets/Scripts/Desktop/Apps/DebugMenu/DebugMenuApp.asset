@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: abad1d40f06bf954a9ffa67f420e8a7b, type: 3}
-  m_Name: DebugApp01
+  m_Name: DebugMenuApp
   m_EditorClassIdentifier: 
-  appName: Debug 01
-  _rectParams: {fileID: 11400000, guid: c90a38eefcb9d1c47ae525fbe6c3ae66, type: 2}
-  _windowPrefab: {fileID: 5270292758802850823, guid: b5908c5a82a256e41996117e3ca93fd5, type: 3}
-  _icon: {fileID: 21300000, guid: e3be584ea758129478f5b558c33bc5f3, type: 3}
-  _allowMultipleInstances: 1
+  appName: Debug Menu
+  _rectParams: {fileID: 11400000, guid: 3e3191d894693a447a1b8b73a57078ce, type: 2}
+  _windowPrefab: {fileID: 3897535918275030746, guid: 809e4b196daaa99478cfd4d278668ae7, type: 3}
+  _icon: {fileID: -7838540728863451624, guid: 4100664041bab824592c4185a01a58c5, type: 3}
+  _allowMultipleInstances: 0

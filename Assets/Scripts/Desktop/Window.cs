@@ -2,7 +2,6 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Window : ResizableRect
@@ -39,7 +38,7 @@ public class Window : ResizableRect
     private Tween positionTween;
     private Tween alphaTween;
     private Tween scaleTween;
-    private float tweenDuration = 0.2f;
+    private float tweenDuration = 0.3f;
     private float tweenScale = 0.9f;
 
 

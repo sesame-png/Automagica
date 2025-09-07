@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -7,7 +8,6 @@ using UnityEngine.InputSystem;
 public class WindowManager : Singleton<WindowManager>
 {
     /// Variables
-    //[SerializeField] private InputReaderSO inputReader;
     public IReadOnlyList<Window> windows => _windows;
     private List<Window> _windows = new List<Window>();
 
@@ -37,7 +37,7 @@ public class WindowManager : Singleton<WindowManager>
 
 
     /// Open & Close
-    public void OpenWindow(AppSO app)
+    public Window OpenWindow(AppSO app)
     {
         Window openWindow = FindApp(app);
 
@@ -45,6 +45,7 @@ public class WindowManager : Singleton<WindowManager>
         {
             openWindow.Unminimize();
             SetFocusedWindow(openWindow);
+            return openWindow;
         }
         else
         {
@@ -56,6 +57,7 @@ public class WindowManager : Singleton<WindowManager>
 
             OnWindowOpened.Invoke(newWindow);
             Debug.Log("Window " + app.appName + " opened.");
+            return newWindow;
         }
     }
 
@@ -78,7 +80,11 @@ public class WindowManager : Singleton<WindowManager>
 
         foreach (RaycastResult hit in raycastHits)
         {
-            if (hit.gameObject.CompareTag("Window"))
+            if (hit.gameObject.CompareTag("RaycastBlocker"))
+            {
+                break;
+            }
+            else if (hit.gameObject.CompareTag("Window"))
             {
                 SetFocusedWindow(hit.gameObject.GetComponentInParent<Window>());
                 return;

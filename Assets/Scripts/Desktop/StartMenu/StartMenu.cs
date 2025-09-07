@@ -8,16 +8,16 @@ public class StartMenu : ResizableRect
 {
     /// Variables
     [SerializeField] new private RectParamsSO rectParams;
-    private bool isOpen;
+    public bool isOpen { get { return _isOpen; } private set { _isOpen = value; } }
+    private bool _isOpen;
 
     /// Components
-    private Canvas canvas;
     private CanvasGroup canvasGroup;
 
     /// Tweens
     private Tween alphaTween;
     private Tween sizeTween;
-    private float tweenDuration = 0.2f;
+    private float tweenDuration = 0.3f;
 
 
 
@@ -26,10 +26,8 @@ public class StartMenu : ResizableRect
     {
         base.rectParams = rectParams;
         base.Awake();
-        canvas = transform.parent.GetComponent<Canvas>();
         canvasGroup = GetComponent<CanvasGroup>();
 
-        canvas.enabled = false;
         canvasGroup.alpha = 0;
         canvasGroup.blocksRaycasts = false;
 
@@ -70,12 +68,10 @@ public class StartMenu : ResizableRect
         if (isOpen) { return; }
         isOpen = true;
 
-        canvas.enabled = true;
-
         alphaTween?.Kill();
         sizeTween?.Kill();
-        alphaTween = canvasGroup.DOFade(1.0f, tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => canvasGroup.blocksRaycasts = true);
-        sizeTween = rectTransform.DOSizeDelta(size, tweenDuration).SetEase(Ease.OutExpo);
+        alphaTween = canvasGroup.DOFade(1.0f, tweenDuration).SetEase(Ease.OutExpo);
+        sizeTween = rectTransform.DOSizeDelta(size, tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => canvasGroup.blocksRaycasts = true);
     }
 
     public void Close()
@@ -87,8 +83,8 @@ public class StartMenu : ResizableRect
 
         alphaTween?.Kill();
         sizeTween?.Kill();
-        alphaTween = canvasGroup.DOFade(0.0f, tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => canvas.enabled = false);
-        sizeTween = rectTransform.DOSizeDelta(new Vector2(size.x, 0f), tweenDuration).SetEase(Ease.OutExpo);
+        alphaTween = canvasGroup.DOFade(0.0f, tweenDuration).SetEase(Ease.OutExpo);
+        sizeTween = rectTransform.DOSizeDelta(new Vector2(size.x, 0f), tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => Destroy(gameObject));
     }
 
     public void OnClick(List<RaycastResult> raycastHits, InputAction.CallbackContext context)
@@ -98,7 +94,11 @@ public class StartMenu : ResizableRect
 
         foreach (RaycastResult hit in raycastHits)
         {
-            if (hit.gameObject.CompareTag("StartMenu"))
+            if (hit.gameObject.CompareTag("RaycastBlocker"))
+            {
+                break;
+            }
+            else if (hit.gameObject.CompareTag("StartMenu"))
             {
                 return;
             }
