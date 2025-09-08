@@ -12,7 +12,7 @@ public class NotificationManager : Singleton<NotificationManager>
 
     public static NotificationManager current => Instance;
 
-    public void SendNotification(Sprite sprite, string header, string body)
+    public void SendNotification(Sprite sprite, string header, string body, AppSO source)
     {
         if (notificationPopup)
         {
@@ -20,7 +20,7 @@ public class NotificationManager : Singleton<NotificationManager>
         }
 
         notificationPopup = Instantiate(notificationPrefab, popupCanvas).GetComponent<NotificationPopup>();
-        notificationPopup.Initialize(sprite, header, body);
+        notificationPopup.Initialize(sprite, header, body, source);
         notificationPopup.Open();
     }
 }

@@ -73,7 +73,7 @@ public class WindowManager : Singleton<WindowManager>
 
 
 
-    /// Focused window
+    /// Focus window
     public void OnClick(List<RaycastResult> raycastHits, InputAction.CallbackContext context)
     {
         if (!context.started) { return; }
@@ -92,6 +92,20 @@ public class WindowManager : Singleton<WindowManager>
         }
 
         RemoveFocusedWindow();
+    }
+
+    public void SetFocusedApp(AppSO app)
+    {
+        Window window = FindApp(app);
+
+        if (window)
+        {
+            SetFocusedWindow(window);
+        }
+        else
+        {
+            OpenWindow(app);
+        }
     }
 
     public void SetFocusedWindow(Window window = null)

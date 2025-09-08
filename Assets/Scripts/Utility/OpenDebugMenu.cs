@@ -1,5 +1,5 @@
-using System;
 using UnityEngine;
+using UnityEditor;
 using UnityEngine.InputSystem;
 
 public class OpenDebugMenu : MonoBehaviour
@@ -20,15 +20,18 @@ public class OpenDebugMenu : MonoBehaviour
 
     private void ToggleOpen(InputAction.CallbackContext context)
     {
-        if (!context.performed) { return; }
+        if (Debug.isDebugBuild)
+        {
+            if (!context.performed) { return; }
 
-        if (debugWindow)
-        {
-            debugWindow.Close();
-        }
-        else
-        {
-            debugWindow = WindowManager.current.OpenWindow(debugApp);
+            if (debugWindow)
+            {
+                debugWindow.Close();
+            }
+            else
+            {
+                debugWindow = WindowManager.current.OpenWindow(debugApp);
+            }
         }
     }
 }

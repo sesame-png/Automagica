@@ -24,6 +24,8 @@ public class Window : ResizableRect
     //[HideInInspector] public UnityEvent OnWindowOpened;
     //[HideInInspector] public UnityEvent OnWindowClosing;
     [HideInInspector] public UnityEvent OnWindowClosed;
+    //[HideInInspector] public UnityEvent OnWindowFocused;
+    //[HideInInspector] public UnityEvent OnWindowUnfocused;
 
     /// Components
     [SerializeField] private TMP_Text header;
@@ -155,6 +157,7 @@ public class Window : ResizableRect
 
     public void Maximize()
     {
+        if (!app.allowMaximize) { return; }
         if (isMinimized) { Unminimize(); }
         if (isMaximized) { return; }
         isMaximized = true;
@@ -224,11 +227,13 @@ public class Window : ResizableRect
     public void SetFocused()
     {
         dropShadow.PlayIn();
+        //OnWindowFocused.Invoke();
     }
 
     public void SetUnfocused()
     {
         dropShadow.PlayOut();
+        //OnWindowUnfocused.Invoke();
     }
 
     private void MoveToBack()

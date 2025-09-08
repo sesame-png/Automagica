@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _defaultPosition: {x: 0, y: 0}
   cachedPosition: {x: 0, y: 0}
-  _constrainPosition: 1
+  _clampPosition: 1
   _minPosition: {x: 0, y: 0}
   _maxPosition: {x: 0, y: 0}
   _defaultSize: {x: 400, y: 500}
-  cachedSize: {x: 400, y: 500}
-  _constrainSize: 1
+  cachedSize: {x: 600, y: 600}
+  _clampSize: 1
   _minSize: {x: 300, y: 300}
   _maxSize: {x: 600, y: 600}

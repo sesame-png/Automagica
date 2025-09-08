@@ -9,8 +9,8 @@ public class RectParamsSO : ScriptableObject
 
     public Vector2 cachedPosition = new Vector2(0, 0);
 
-    public bool constrainPosition { get { return _constrainPosition; } private set { _constrainPosition = value; } }
-    [SerializeField] private bool _constrainPosition = false;
+    public bool clampPosition { get { return _clampPosition; } private set { _clampPosition = value; } }
+    [SerializeField] private bool _clampPosition = false;
 
     public Vector2 minPosition { get { return _minPosition; } private set { _minPosition = value; } }
     [SerializeField] private Vector2 _minPosition = new Vector2(-10000, -10000);
@@ -24,8 +24,8 @@ public class RectParamsSO : ScriptableObject
 
     public Vector2 cachedSize = new Vector2(500, 400);
 
-    public bool constrainSize { get { return _constrainSize; } private set { _constrainSize = value; } }
-    [SerializeField] private bool _constrainSize = true;
+    public bool clampSize { get { return _clampSize; } private set { _clampSize = value; } } //Minimum size is ALWAYS considered, even when clamped.
+    [SerializeField] private bool _clampSize = true;
 
     public Vector2 minSize { get { return _minSize; } private set { _minSize = value; } }
     [SerializeField] private Vector2 _minSize = new Vector2(300, 300);

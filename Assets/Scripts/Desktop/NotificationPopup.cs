@@ -18,6 +18,7 @@ public class NotificationPopup : MonoBehaviour
 
     [SerializeField] private Image image;
     [SerializeField] private TMP_Text text;
+    private AppSO source;
 
     /// Tweens
     private Tween alphaTween;
@@ -39,10 +40,11 @@ public class NotificationPopup : MonoBehaviour
         rectTransform.sizeDelta = new Vector2(0f, rectTransform.sizeDelta.y);
     }
 
-    public void Initialize(Sprite sprite, string header, string body)
+    public void Initialize(Sprite sprite, string header, string body, AppSO source)
     {
         image.sprite = sprite;
         text.text = "<font-weight=\"700\">" + header + "</font-weight>\n<font-weight=\"400\">" + body + "</font-weight>";
+        this.source = source;
     }
 
 
@@ -86,22 +88,12 @@ public class NotificationPopup : MonoBehaviour
         sizeTween = rectTransform.DOSizeDelta(new Vector2(0f, size.y), tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => Destroy(gameObject));
     }
 
-    /*public void OnClick(List<RaycastResult> raycastHits, InputAction.CallbackContext context)
+
+
+    /// Redirect
+    public void Redirect()
     {
-        if (!context.canceled) { return; }
-
-        foreach (RaycastResult hit in raycastHits)
-        {
-            if (hit.gameObject.CompareTag("RaycastBlocker"))
-            {
-                break;
-            }
-            else if (hit.gameObject.CompareTag("NotificationPopup"))
-            {
-                return;
-            }
-        }
-
+        WindowManager.current.SetFocusedApp(source);
         Close();
-    }*/
+    }
 }

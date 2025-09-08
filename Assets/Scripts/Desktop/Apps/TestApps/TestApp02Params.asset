@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: TestApp02Params
   m_EditorClassIdentifier: 
   _defaultPosition: {x: 0, y: 0}
-  cachedPosition: {x: 0, y: 0}
+  cachedPosition: {x: 50.703613, y: -249.9972}
+  _clampPosition: 0
   _minPosition: {x: -10000, y: -10000}
   _maxPosition: {x: 10000, y: 10000}
   _defaultSize: {x: 500, y: 400}
-  cachedSize: {x: 500, y: 400}
+  cachedSize: {x: 902, y: 508}
+  _clampSize: 0
   _minSize: {x: 300, y: 300}
   _maxSize: {x: 10000, y: 10000}

@@ -59,16 +59,35 @@ public class ResizableRect : MonoBehaviour
         SetPosition(newPos);
     }
 
+
+
+    /// Setters
     public void SetPosition(Vector2 newPos)
     {
-        position = new Vector2(Mathf.Clamp(newPos.x, rectParams.minPosition.x, rectParams.maxPosition.x), Mathf.Clamp(newPos.y, rectParams.minPosition.y, rectParams.maxPosition.y));
+        if (rectParams.clampPosition)
+        {
+            position = new Vector2(Mathf.Clamp(newPos.x, rectParams.minPosition.x, rectParams.maxPosition.x), Mathf.Clamp(newPos.y, rectParams.minPosition.y, rectParams.maxPosition.y));
+        }
+        else
+        {
+            position = newPos;
+        }
+
         transform.localPosition = position;
         rectParams.cachedPosition = position;
     }
 
     public void SetSize(Vector2 newSize)
     {
-        size = new Vector2(Mathf.Clamp(newSize.x, rectParams.minSize.x, rectParams.maxSize.x), Mathf.Clamp(newSize.y, rectParams.minSize.y, rectParams.maxSize.y));
+        if (rectParams.clampSize)
+        {
+            size = new Vector2(Mathf.Clamp(newSize.x, rectParams.minSize.x, rectParams.maxSize.x), Mathf.Clamp(newSize.y, rectParams.minSize.y, rectParams.maxSize.y));
+        }
+        else
+        {
+            size = new Vector2(Mathf.Max(newSize.x, rectParams.minSize.x), Mathf.Max(newSize.y, rectParams.minSize.y));
+        }
+        
         rectTransform.sizeDelta = size;
         rectParams.cachedSize = size;
     }
