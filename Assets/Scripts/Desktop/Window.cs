@@ -115,7 +115,7 @@ public class Window : ResizableRect
 
         WindowManager.current.SetFocusedWindow(this);
         canvasGroup.blocksRaycasts = false;
-        PivotUtility.SetPivotInWorldSpace(rectTransform, taskbarIcon.transform.position);
+        RectUtility.SetPivotInWorldSpace(rectTransform, taskbarIcon.transform.position);
 
         alphaTween?.Kill();
         scaleTween?.Kill();
@@ -132,12 +132,12 @@ public class Window : ResizableRect
 
         WindowManager.current.SetFocusedWindow(this);
         canvas.enabled = true;
-        PivotUtility.SetPivotInWorldSpace(rectTransform, taskbarIcon.transform.position);
+        RectUtility.SetPivotInWorldSpace(rectTransform, taskbarIcon.transform.position);
 
         alphaTween?.Kill();
         scaleTween?.Kill();
         alphaTween = canvasGroup.DOFade(1.0f, tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => canvasGroup.blocksRaycasts = true);
-        scaleTween = transform.DOScale(1.0f, tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => PivotUtility.SetPivot(rectTransform, new Vector2(0.5f, 0.5f)));
+        scaleTween = transform.DOScale(1.0f, tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => RectUtility.SetPivotInPlace(rectTransform, new Vector2(0.5f, 0.5f)));
     }
 
 
@@ -166,13 +166,13 @@ public class Window : ResizableRect
 
         WindowManager.current.SetFocusedWindow(this);
         canvasGroup.blocksRaycasts = false;
-        //rectTransform.anchorMin = new Vector2(0f, 0f);
-        //rectTransform.anchorMax = new Vector2(1f, 1f);
+        RectUtility.SetAnchorsInPlace(rectTransform, Vector2.zero, Vector2.one);
 
         positionTween?.Kill();
         sizeTween?.Kill();
         positionTween = rectTransform.DOAnchorPos(parentRectTransform.anchoredPosition, tweenDuration).SetEase(Ease.OutExpo);
-        sizeTween = rectTransform.DOSizeDelta(new Vector2(parentRectTransform.rect.width, parentRectTransform.rect.height), tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => canvasGroup.blocksRaycasts = true);
+        sizeTween = rectTransform.DOSizeDelta(Vector2.zero, tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => canvasGroup.blocksRaycasts = true);
+
     }
 
     public void Unmaximize()
@@ -185,8 +185,7 @@ public class Window : ResizableRect
 
         WindowManager.current.SetFocusedWindow(this);
         canvasGroup.blocksRaycasts = false;
-        //rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
-        //rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
+        RectUtility.SetAnchorsInPlace(rectTransform, new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f));
 
         positionTween?.Kill();
         sizeTween?.Kill();
@@ -267,6 +266,6 @@ public class Window : ResizableRect
 
     public void OnEndDrag(Vector2 pos)
     {
-        PivotUtility.SetPivot(rectTransform, new Vector2(0.5f, 0.5f));
+        RectUtility.SetPivotInPlace(rectTransform, new Vector2(0.5f, 0.5f));
     }
 }

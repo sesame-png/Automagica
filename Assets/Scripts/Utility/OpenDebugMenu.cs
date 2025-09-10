@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class OpenDebugMenu : MonoBehaviour
 {
     [SerializeField] private InputReaderSO inputReader;
-    [SerializeField] private AppSO debugApp;
+    [SerializeField] private AppSO debugMenuApp;
     private Window debugWindow;
 
     private void OnEnable()
@@ -29,7 +29,7 @@ public class OpenDebugMenu : MonoBehaviour
             }
             else
             {
-                debugWindow = WindowManager.current.OpenWindow(debugApp);
+                debugWindow = WindowManager.current.OpenWindow(debugMenuApp);
             }
         }
     }

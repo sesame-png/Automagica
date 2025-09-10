@@ -146,14 +146,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 161566460025175323}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7142259544186783658}
   - {fileID: 8936977058978361190}
-  m_Father: {fileID: 9032392005476230003}
+  m_Father: {fileID: 8719439835872239504}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -1806,7 +1806,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4929675518483976249}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1821,7 +1821,7 @@ RectTransform:
   - {fileID: 701433094839133216}
   - {fileID: 677826347260243472}
   - {fileID: 499751776694796982}
-  m_Father: {fileID: 9032392005476230003}
+  m_Father: {fileID: 8719439835872239504}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3263,10 +3263,10 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 3055799144954096509, guid: 6e0a9e81ffc4b374c8a6a8405446fab8, type: 3}
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 70012636886006570, guid: 6e0a9e81ffc4b374c8a6a8405446fab8, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 333425691428374473, guid: 6e0a9e81ffc4b374c8a6a8405446fab8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2125207348098521585}
-    - targetCorrespondingSourceObject: {fileID: 70012636886006570, guid: 6e0a9e81ffc4b374c8a6a8405446fab8, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 333425691428374473, guid: 6e0a9e81ffc4b374c8a6a8405446fab8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2772577359559128913}
     m_AddedComponents:
@@ -3291,9 +3291,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13620f5f40da7d749aed5dc94574ff3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugApp: {fileID: 11400000, guid: 2c1bc5e5b63bf64469263cedf5dbdb22, type: 2}
---- !u!224 &9032392005476230003 stripped
+  debugMenuApp: {fileID: 11400000, guid: 2c1bc5e5b63bf64469263cedf5dbdb22, type: 2}
+--- !u!224 &8719439835872239504 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 70012636886006570, guid: 6e0a9e81ffc4b374c8a6a8405446fab8, type: 3}
+  m_CorrespondingSourceObject: {fileID: 333425691428374473, guid: 6e0a9e81ffc4b374c8a6a8405446fab8, type: 3}
   m_PrefabInstance: {fileID: 9052583465775388761}
   m_PrefabAsset: {fileID: 0}

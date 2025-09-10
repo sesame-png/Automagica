@@ -468,7 +468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputReader: {fileID: 11400000, guid: e7a3ef594049fc746918aad4882bcbcc, type: 2}
-  debugApp: {fileID: 11400000, guid: 2c1bc5e5b63bf64469263cedf5dbdb22, type: 2}
+  debugMenuApp: {fileID: 11400000, guid: 2c1bc5e5b63bf64469263cedf5dbdb22, type: 2}
 --- !u!114 &409654938
 MonoBehaviour:
   m_ObjectHideFlags: 0

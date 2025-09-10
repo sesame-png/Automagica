@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class DebugMenu : MonoBehaviour
 {
-    [SerializeField] private AppSO debugApp;
+    [SerializeField] private AppSO debugMenuApp;
 
     public void SendNotification()
     {
-        NotificationManager.current.SendNotification(debugApp.icon, "This is a test notification", "This is a body paragraph. This is a body paragraph. This is a body paragraph.", debugApp);
+        NotificationManager.current.SendNotification(debugMenuApp.icon, "This is a test notification", "This is a body paragraph. This is a body paragraph. This is a body paragraph.", debugMenuApp);
     }
 }
