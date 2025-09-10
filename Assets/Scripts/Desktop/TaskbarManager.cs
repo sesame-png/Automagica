@@ -16,7 +16,7 @@ public class TaskbarManager : MonoBehaviour
 
     private void AddWindow(Window window)
     {
-        TaskbarIcon icon = Instantiate(taskbarIconPrefab, this.transform).GetComponent<TaskbarIcon>();
+        TaskbarIcon icon = Instantiate(taskbarIconPrefab, transform).GetComponent<TaskbarIcon>();
         icon.Initialize(window);
     }
 }

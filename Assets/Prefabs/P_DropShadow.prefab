@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1584560294555556186}
   - component: {fileID: 2506707730482447349}
-  - component: {fileID: 302177613392652395}
   m_Layer: 5
   m_Name: P_DropShadow
   m_TagString: Untagged
@@ -46,35 +45,10 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1756032305791320597}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 0.65
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
---- !u!114 &302177613392652395
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1756032305791320597}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28fd0ae3986a2cc4f984e328e420bbb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playOnStart: 0
-  startIn: 0
-  fromValue: 0.45
-  toValue: 0.65
-  duration: 0.15
-  ease: 7
-  tweenStarted:
-    m_PersistentCalls:
-      m_Calls: []
-  tweenComplete:
-    m_PersistentCalls:
-      m_Calls: []
-  checkInteractable: 0
 --- !u!1 &4777872556506002739
 GameObject:
   m_ObjectHideFlags: 0

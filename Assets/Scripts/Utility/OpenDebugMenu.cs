@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEditor;
 using UnityEngine.InputSystem;
 
 public class OpenDebugMenu : MonoBehaviour

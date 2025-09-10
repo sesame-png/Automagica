@@ -24,7 +24,7 @@ public class RectParamsSO : ScriptableObject
 
     public Vector2 cachedSize = new Vector2(500, 400);
 
-    public bool clampSize { get { return _clampSize; } private set { _clampSize = value; } } //Minimum size is ALWAYS considered, even when clamped.
+    public bool clampSize { get { return _clampSize; } private set { _clampSize = value; } } // Minimum size is ALWAYS considered, even when clamped.
     [SerializeField] private bool _clampSize = true;
 
     public Vector2 minSize { get { return _minSize; } private set { _minSize = value; } }

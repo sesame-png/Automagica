@@ -1,8 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
+using Unity.Mathematics;
 
 /// <summary>
-/// I don't remember where I found this but it's not mine.
+/// https://discussions.unity.com/t/none-rectangle-shaped-button/547759
 /// </summary>
 [RequireComponent(typeof(RectTransform))]
 [RequireComponent(typeof(Image))]
@@ -21,57 +22,53 @@ public class RaycastMask : MonoBehaviour, ICanvasRaycastFilter
     {
         _sprite = _image.sprite;
 
-        var rectTransform = (RectTransform)transform;
+        RectTransform rectTransform = (RectTransform)transform;
         Vector2 localPositionPivotRelative;
-        RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)transform, sp, eventCamera, out localPositionPivotRelative);
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform, sp, eventCamera, out localPositionPivotRelative);
 
         // Convert to bottom-left origin coordinates.
-        var localPosition = new Vector2(localPositionPivotRelative.x + rectTransform.pivot.x * rectTransform.rect.width,
-            localPositionPivotRelative.y + rectTransform.pivot.y * rectTransform.rect.height);
+        Vector2 localPosition = new Vector2(localPositionPivotRelative.x + rectTransform.pivot.x * rectTransform.rect.width, localPositionPivotRelative.y + rectTransform.pivot.y * rectTransform.rect.height);
 
-        var spriteRect = _sprite.textureRect;
-        var maskRect = rectTransform.rect;
+        Rect spriteRect = _sprite.textureRect;
+        Rect maskRect = rectTransform.rect;
 
-        var x = 0;
-        var y = 0;
+        int x = 0;
+        int y = 0;
         // Convert to texture space.
         switch (_image.type)
         {
-
             case Image.Type.Sliced:
                 {
-                    var border = _sprite.border;
+                    float ppu = _image.pixelsPerUnit * _image.pixelsPerUnitMultiplier;
+                    Vector4 border = _sprite.border;
+                    Vector4 adjustedBorder = _sprite.border / ppu;
+                    
                     // X Slicing.
-                    if (localPosition.x < border.x)
+                    if (localPosition.x < adjustedBorder.x && localPosition.x < maskRect.width / 2)
                     {
-                        x = Mathf.FloorToInt(spriteRect.x + localPosition.x);
+                        x = Mathf.FloorToInt(spriteRect.x + (localPosition.x * ppu));
                     }
-                    else if (localPosition.x > maskRect.width - border.z)
+                    else if (localPosition.x > maskRect.width - adjustedBorder.z && localPosition.x > maskRect.width / 2)
                     {
-                        x = Mathf.FloorToInt(spriteRect.x + spriteRect.width - (maskRect.width - localPosition.x));
+                        x = Mathf.FloorToInt(spriteRect.x + spriteRect.width - ((maskRect.width - localPosition.x) * ppu));
                     }
                     else
                     {
-                        x = Mathf.FloorToInt(spriteRect.x + border.x +
-                                             ((localPosition.x - border.x) /
-                                             (maskRect.width - border.x - border.z)) *
-                                             (spriteRect.width - border.x - border.z));
+                        x = Mathf.FloorToInt(math.remap(adjustedBorder.x, maskRect.width - adjustedBorder.z, spriteRect.x + border.x, spriteRect.x + spriteRect.width - border.z, localPosition.x));
                     }
+
                     // Y Slicing.
-                    if (localPosition.y < border.y)
+                    if (localPosition.y < adjustedBorder.y && localPosition.y < maskRect.height / 2)
                     {
-                        y = Mathf.FloorToInt(spriteRect.y + localPosition.y);
+                        y = Mathf.FloorToInt(spriteRect.y + (localPosition.y * ppu));
                     }
-                    else if (localPosition.y > maskRect.height - border.w)
+                    else if (localPosition.y > maskRect.height - adjustedBorder.w && localPosition.y > maskRect.height / 2)
                     {
-                        y = Mathf.FloorToInt(spriteRect.y + spriteRect.height - (maskRect.height - localPosition.y));
+                        y = Mathf.FloorToInt(spriteRect.y + spriteRect.height - ((maskRect.height - localPosition.y) * ppu));
                     }
                     else
                     {
-                        y = Mathf.FloorToInt(spriteRect.y + border.y +
-                                             ((localPosition.y - border.y) /
-                                             (maskRect.height - border.y - border.w)) *
-                                             (spriteRect.height - border.y - border.w));
+                        y = Mathf.FloorToInt(math.remap(adjustedBorder.y, maskRect.height - adjustedBorder.w, spriteRect.y + border.y, spriteRect.y + spriteRect.height - border.w, localPosition.y));
                     }
                 }
                 break;
