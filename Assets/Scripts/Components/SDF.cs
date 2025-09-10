@@ -10,7 +10,8 @@ namespace UnityEngine.UI
     [RequireComponent(typeof(CanvasRenderer))]
     public class SDF : MaskableGraphic
     {
-        public float cornerRadius = 0;
+        public Vector4 cornerRadii = new Vector4();
+        //public bool alphaClip = true;
         public float edgeSoftness = 1f;
 
         /// <summary>
@@ -43,7 +44,8 @@ namespace UnityEngine.UI
             base.Awake();
             if (!materialInstance) { materialInstance = Instantiate(material); }
 
-            SetCorners(cornerRadius);
+            SetCorners(cornerRadii);
+            //SetAlphaClip(alphaClip);
             SetSoftness(edgeSoftness);
             SetDimensions();
 
@@ -72,7 +74,7 @@ namespace UnityEngine.UI
             base.OnRectTransformDimensionsChange();
             if (!materialInstance) { return; }
                 
-            SetCorners(cornerRadius);
+            SetCorners(cornerRadii);
             SetDimensions();
 
             UpdateMaterial();
@@ -88,20 +90,41 @@ namespace UnityEngine.UI
             SetMaterialDirty();
         }
 
-        public void SetCorners(float radius)
+        public void SetCorners(Vector4 radii)
         {
-            cornerRadius = radius;
+            cornerRadii = radii;
 
             #if UNITY_EDITOR
             if (!materialInstance) { return; }
             #endif
 
             float maxRadius = Mathf.Min(rectTransform.rect.width, rectTransform.rect.height);
-            radius = Mathf.Min(radius, maxRadius);
+            for (int i = 0; i < 4; i++)
+            {
+                if (radii[i] > maxRadius) { radii[i] = maxRadius; }
+            }
 
-            materialForRendering.SetFloat("_Corner_Radius", radius);
+            materialForRendering.SetVector("_Corner_Radii", radii);
             SetMaterialDirty();
         }
+
+        /*private void SetAlphaClip(bool clip)
+        {
+            #if UNITY_EDITOR
+            if (!materialInstance) { return; }
+            #endif
+
+            if (clip)
+            {
+                materialForRendering.SetFloat("_Alpha_Clip", 1);
+            }
+            else
+            {
+                materialForRendering.SetFloat("_Alpha_Clip", 0);
+            }
+
+            SetMaterialDirty();
+        }*/
 
         public void SetSoftness(float softness)
         {

@@ -114,5 +114,5 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  cornerRadius: 55
+  cornerRadii: {x: 55, y: 55, z: 55, w: 55}
   edgeSoftness: 1.5
