@@ -15,9 +15,10 @@ public class Window : ResizableRect
     /// Bools
     public bool isMaximized { get { return _isMaximized; } private set { _isMaximized = value; } }
     private bool _isMaximized = false;
-
     public bool isMinimized { get { return _isMinimized; } private set { _isMinimized = value; } }
     private bool _isMinimized = false;
+    public bool isBeingDragged { get { return _isBeingDragged; } private set { _isBeingDragged = value; } }
+    private bool _isBeingDragged = false;
 
     /// Events
     //[HideInInspector] public UnityEvent OnWindowOpening;
@@ -172,7 +173,6 @@ public class Window : ResizableRect
         sizeTween?.Kill();
         positionTween = rectTransform.DOAnchorPos(parentRectTransform.anchoredPosition, tweenDuration).SetEase(Ease.OutExpo);
         sizeTween = rectTransform.DOSizeDelta(Vector2.zero, tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => canvasGroup.blocksRaycasts = true);
-
     }
 
     public void Unmaximize()
@@ -189,11 +189,8 @@ public class Window : ResizableRect
 
         positionTween?.Kill();
         sizeTween?.Kill();
-        positionTween = rectTransform.DOAnchorPos(position, tweenDuration).SetEase(Ease.OutExpo);
+        if (!isBeingDragged) { positionTween = rectTransform.DOAnchorPos(position, tweenDuration).SetEase(Ease.OutExpo); }
         sizeTween = rectTransform.DOSizeDelta(size, tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => canvasGroup.blocksRaycasts = true);
-
-        //var dragTween = rectTransform.DOAnchorPos(position, tweenDuration).SetEase(Ease.OutExpo);
-        //dragTween.OnUpdate(() => dragTween.ChangeEndValue(position, true));
     }
 
 
@@ -246,17 +243,22 @@ public class Window : ResizableRect
     /// Drag
     public void OnBeginDrag(Vector2 pos)
     {
-        if (isMaximized) { Unmaximize(); }
+        isBeingDragged = true;
 
         //Debug.Log("Window Position: " + position);
         //Debug.Log("Mouse Position: " + pos);
+
         //Vector2 screenPosition = new Vector2();
         //RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform, pos, Camera.main, out screenPosition);
         //Debug.Log("ScreenPointToLocalPointInRectangle: " + screenPosition);
-        //PivotUtility.SetPivotInWorldSpace(rectTransform, screenPosition);
+
+        //RectUtility.SetPivotInWorldSpace(rectTransform, pos);
         //Debug.Log("SetPivotInWorldSpace: " + position);
-        //PivotUtility.SetPivot(rectTransform, screenPosition);
-        //Debug.Log("SetPivot: " + position);
+
+        Vector2 posDelta = RectUtility.SetPivotInPlace(rectTransform, new Vector2(0.5f, 1f));
+        MovePosition(-posDelta);
+
+        if (isMaximized) { Unmaximize(); }
     }
 
     public void OnDrag(Vector2 posDelta)
@@ -266,6 +268,9 @@ public class Window : ResizableRect
 
     public void OnEndDrag(Vector2 pos)
     {
-        RectUtility.SetPivotInPlace(rectTransform, new Vector2(0.5f, 0.5f));
+        isBeingDragged = false;
+
+        Vector2 posDelta = RectUtility.SetPivotInPlace(rectTransform, new Vector2(0.5f, 0.5f));
+        MovePosition(-posDelta);
     }
 }

@@ -2094,6 +2094,7 @@ GameObject:
   - component: {fileID: 1715680335768006758}
   - component: {fileID: 5323309126551956917}
   - component: {fileID: 3530293346750799601}
+  - component: {fileID: 5323309126551956918}
   m_Layer: 3
   m_Name: BackgroundCanvas
   m_TagString: Untagged
@@ -2124,6 +2125,29 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 0
+--- !u!114 &5323309126551956918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5247307693330730135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce8219a081ef636468f5b48376a788b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  background: {fileID: 7950619048840253132}
+  images:
+  - {fileID: 6034263966265521445, guid: 6efbf8dcd56e0ca4993147c3d0a10c51, type: 3}
+  - {fileID: 21300000, guid: dba53d515b763c347a09c83871ac18ee, type: 3}
+  - {fileID: -534444715846773556, guid: d8f8f26d533cff548932825359f93b82, type: 3}
+  - {fileID: -4560734992334422477, guid: 75dbea8abddd9e644b7a2b3ce16830e3, type: 3}
+  - {fileID: 6346729815359606821, guid: 7e6835188e7321f4897e56993d0a9e22, type: 3}
+  - {fileID: -4213503958521366536, guid: 49bbea9d3418dc14ab7c621635e34a62, type: 3}
+  randomize: 1
+  imageDuration: 30
+  fadeDuration: 2
 --- !u!224 &5384337600335061746
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2451,7 +2475,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: dba53d515b763c347a09c83871ac18ee, type: 3}
+  m_Sprite: {fileID: -4560734992334422477, guid: 75dbea8abddd9e644b7a2b3ce16830e3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2542,7 +2566,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AspectMode: 4
-  m_AspectRatio: 2.5906737
+  m_AspectRatio: 1.5015016
 --- !u!224 &8051351814700296210
 RectTransform:
   m_ObjectHideFlags: 0
