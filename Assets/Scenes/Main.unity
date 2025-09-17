@@ -428,9 +428,8 @@ GameObject:
   m_Component:
   - component: {fileID: 409654936}
   - component: {fileID: 409654937}
-  - component: {fileID: 409654938}
   m_Layer: 5
-  m_Name: Managers
+  m_Name: BackgroundProcesses
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -469,22 +468,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputReader: {fileID: 11400000, guid: e7a3ef594049fc746918aad4882bcbcc, type: 2}
   debugMenuApp: {fileID: 11400000, guid: 2c1bc5e5b63bf64469263cedf5dbdb22, type: 2}
---- !u!114 &409654938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 409654935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fd9ffcd51b74b1499c72c2ea61f13b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _notificationDuration: 3
-  notificationPrefab: {fileID: 7852051205935795058, guid: f429566733a0f9a489c27c3fe9fa03b4, type: 3}
-  popupCanvas: {fileID: 7878246762976700643}
-  notificationPopup: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1557,6 +1540,7 @@ GameObject:
   - component: {fileID: 7878246762976700643}
   - component: {fileID: 8075984405131581035}
   - component: {fileID: 4215876020471629987}
+  - component: {fileID: 8075984405131581036}
   m_Layer: 5
   m_Name: PopupCanvas
   m_TagString: Untagged
@@ -2640,6 +2624,22 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &8075984405131581036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789086873485807135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fd9ffcd51b74b1499c72c2ea61f13b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _notificationDuration: 3
+  notificationPrefab: {fileID: 7852051205935795058, guid: f429566733a0f9a489c27c3fe9fa03b4, type: 3}
+  popupCanvas: {fileID: 7878246762976700643}
+  notificationPopup: {fileID: 0}
 --- !u!223 &8132293494619812366
 Canvas:
   m_ObjectHideFlags: 0

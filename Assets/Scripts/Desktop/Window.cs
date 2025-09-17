@@ -150,7 +150,14 @@ public class Window : ResizableRect
         alphaTween?.Kill();
         scaleTween?.Kill();
         alphaTween = canvasGroup.DOFade(1.0f, tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => canvasGroup.blocksRaycasts = true);
-        scaleTween = transform.DOScale(1.0f, tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => RectUtility.SetPivotInPlace(rectTransform, new Vector2(0.5f, 0.5f)));
+        if (isMaximized)
+        {
+            scaleTween = transform.DOScale(1.0f, tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => rectTransform.pivot = new Vector2(0.5f, 0.5f)); //BUG HERE
+        }
+        else
+        {
+            scaleTween = transform.DOScale(1.0f, tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => RectUtility.SetPivotInPlace(rectTransform, new Vector2(0.5f, 0.5f)));
+        }
     }
 
 
@@ -259,20 +266,26 @@ public class Window : ResizableRect
     {
         isBeingDragged = true;
 
-        //Debug.Log("Window Position: " + position);
-        //Debug.Log("Mouse Position: " + pos);
+        Vector2 localPos = new Vector2();
+        if (isMaximized) 
+        {
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(transform.parent.GetComponent<RectTransform>(), pos, Camera.main, out localPos);
+            SetPosition(localPos);
+            
+            Vector2 normalizedPos = RectUtility.LocalToNormalizedPoint(rectTransform, localPos);
+            Vector2 posDelta = RectUtility.SetPivotInPlace(rectTransform, normalizedPos);
+            MovePosition(-posDelta);
 
-        //Vector2 screenPosition = new Vector2();
-        //RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform, pos, Camera.main, out screenPosition);
-        //Debug.Log("ScreenPointToLocalPointInRectangle: " + screenPosition);
-
-        //RectUtility.SetPivotInWorldSpace(rectTransform, pos);
-        //Debug.Log("SetPivotInWorldSpace: " + position);
-
-        Vector2 posDelta = RectUtility.SetPivotInPlace(rectTransform, new Vector2(0.5f, 1f));
-        MovePosition(-posDelta);
-
-        if (isMaximized) { Unmaximize(); }
+            Unmaximize(); 
+        }
+        else 
+        {
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform, pos, Camera.main, out localPos);
+            
+            Vector2 normalizedPos = RectUtility.LocalToNormalizedPoint(rectTransform, localPos);
+            Vector2 posDelta = RectUtility.SetPivotInPlace(rectTransform, normalizedPos);
+            MovePosition(-posDelta);
+        }
     }
 
     public void OnDrag(Vector2 posDelta)

@@ -19,10 +19,10 @@ namespace UnityEngine.UI
         }
 
         /// <summary>
-        /// Moves a RectTransform's pivot in world space.
+        /// Moves a RectTransform's pivot in world space, without changing its position.
         /// https://discussions.unity.com/t/moving-just-recttransform-pivot-in-world-space/904634
         /// </summary>
-        public static void SetPivotInWorldSpace(RectTransform rectTransform, Vector3 targetPos)
+        public static Vector2 SetPivotInWorldSpace(RectTransform rectTransform, Vector3 targetPos)
         {
             Vector3 inversePos = rectTransform.InverseTransformPoint(targetPos);
             Vector2 newPivot = new Vector2((inversePos.x - rectTransform.rect.xMin) / rectTransform.rect.width, (inversePos.y - rectTransform.rect.yMin) / rectTransform.rect.height);
@@ -33,6 +33,8 @@ namespace UnityEngine.UI
 
             rectTransform.pivot = newPivot;
             rectTransform.position = worldPos;
+
+            return worldPos;
         }
 
         /// <summary>
@@ -68,6 +70,21 @@ namespace UnityEngine.UI
             localPos.y = corners[0].y + (corners[2].y - corners[0].y) * pos.y;
 
             return localPos;
+        }
+
+        /// <summary>
+        /// Converts a local point to a normalized point (0 - 1) within a RectTransform.
+        /// </summary>
+        public static Vector2 LocalToNormalizedPoint(RectTransform rectTransform, Vector2 localPos)
+        {
+            Vector3[] corners = new Vector3[4];
+            rectTransform.GetLocalCorners(corners);
+
+            Vector2 pos = localPos;
+            pos.x = (localPos.x - corners[0].x) / (corners[2].x - corners[0].x);
+            pos.y = (localPos.y - corners[0].y) / (corners[2].y - corners[0].y);
+
+            return pos;
         }
     }
 }
