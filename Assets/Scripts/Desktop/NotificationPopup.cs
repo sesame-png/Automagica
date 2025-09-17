@@ -1,10 +1,7 @@
 using DG.Tweening;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class NotificationPopup : MonoBehaviour
@@ -46,19 +43,6 @@ public class NotificationPopup : MonoBehaviour
         text.text = "<font-weight=\"700\">" + header + "</font-weight>\n<font-weight=\"400\">" + body + "</font-weight>";
         this.source = source;
     }
-
-
-
-    /// Enable & Disable
-    /*private void OnEnable()
-    {
-        Raycaster.current?.OnAnyClick.AddListener(OnClick);
-    }
-
-    private void OnDisable()
-    {
-        Raycaster.current?.OnAnyClick.RemoveListener(OnClick);
-    }*/
 
 
 

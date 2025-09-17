@@ -18,3 +18,4 @@ MonoBehaviour:
   _icon: {fileID: 21300000, guid: 449aab1f80a282e49ac096def21f1981, type: 3}
   _allowMultipleInstances: 0
   _allowMaximize: 1
+  isMaximized: 0

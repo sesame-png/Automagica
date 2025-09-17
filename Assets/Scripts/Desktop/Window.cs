@@ -77,6 +77,18 @@ public class Window : ResizableRect
             SetPosition(rectParams.cachedPosition);
             SetSize(rectParams.cachedSize);
         }
+
+        if (app.isMaximized)
+        {
+            if (!app.allowMaximize) { return; }
+            isMaximized = true;
+            isMoveable = false;
+            isResizable = false;
+
+            RectUtility.SetAnchorsInPlace(rectTransform, Vector2.zero, Vector2.one);
+            rectTransform.anchoredPosition = parentRectTransform.anchoredPosition;
+            rectTransform.sizeDelta = Vector2.zero;
+        }
     }
 
 
@@ -161,6 +173,7 @@ public class Window : ResizableRect
         if (!app.allowMaximize) { return; }
         if (isMinimized) { Unminimize(); }
         if (isMaximized) { return; }
+        if (!app.allowMultipleInstances) { app.isMaximized = true; }
         isMaximized = true;
         isMoveable = false;
         isResizable = false;
@@ -179,6 +192,7 @@ public class Window : ResizableRect
     {
         if (isMinimized) { return; }
         if (!isMaximized) { return; }
+        if (!app.allowMultipleInstances) { app.isMaximized = false; }
         isMaximized = false;
         isMoveable = true;
         isResizable = true;

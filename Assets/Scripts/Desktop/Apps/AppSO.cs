@@ -19,4 +19,6 @@ public class AppSO : ScriptableObject
 
     public bool allowMaximize { get { return _allowMaximize; } private set { _allowMaximize = value; } }
     [SerializeField] private bool _allowMaximize = false;
+
+    public bool isMaximized  = false; // If allowMultipleInstances is false, the game uses this value to store the state of the Window after closing. If allowMultipleInstances is true, this value represents the starting state of the Window.
 }
