@@ -13,7 +13,7 @@ public class Raycaster : Singleton<Raycaster>
     [HideInInspector] public UnityEvent<List<RaycastResult>, InputAction.CallbackContext> OnAnyClick;
     //[HideInInspector] public UnityEvent<List<RaycastResult>, InputAction.CallbackContext> OnLeftClick;
     //[HideInInspector] public UnityEvent<List<RaycastResult>, InputAction.CallbackContext> OnMiddleClick;
-    //[HideInInspector] public UnityEvent<List<RaycastResult>, InputAction.CallbackContext> OnRightClick;
+    [HideInInspector] public UnityEvent<List<RaycastResult>, InputAction.CallbackContext> OnRightClick;
 
     /// Instance
     public static Raycaster current => Instance;
@@ -25,16 +25,16 @@ public class Raycaster : Singleton<Raycaster>
     {
         inputReader.anyClick += RaycastAnyClick;
         //inputReader.leftClick += RaycastLeftClick;
-        //inputReader.rightClick += RaycastMiddleClick;
-        //inputReader.middleClick += RaycastRightClick;
+        //inputReader.middleClick += RaycastMiddleClick;
+        inputReader.rightClick += RaycastRightClick;
     }
 
     private void OnDisable()
     {
         inputReader.anyClick -= RaycastAnyClick;
         //inputReader.leftClick -= RaycastLeftClick;
-        //inputReader.rightClick -= RaycastMiddleClick;
-        //inputReader.middleClick -= RaycastRightClick;
+        //inputReader.middleClick -= RaycastMiddleClick;
+        inputReader.rightClick -= RaycastRightClick;
     }
 
 
@@ -55,10 +55,10 @@ public class Raycaster : Singleton<Raycaster>
         OnMiddleClick.Invoke(RaycastAll(), context);
     }*/
 
-    /*private void RaycastRightClick(InputAction.CallbackContext context)
+    private void RaycastRightClick(InputAction.CallbackContext context)
     {
         OnRightClick.Invoke(RaycastAll(), context);
-    }*/
+    }
 
 
 

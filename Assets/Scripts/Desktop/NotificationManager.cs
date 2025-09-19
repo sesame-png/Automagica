@@ -7,7 +7,6 @@ public class NotificationManager : Singleton<NotificationManager>
     [SerializeField] private float _notificationDuration;
 
     [SerializeField] private GameObject notificationPrefab;
-    [SerializeField] private Transform popupCanvas;
     [HideInInspector] public NotificationPopup notificationPopup;
 
     public static NotificationManager current => Instance;
@@ -19,7 +18,7 @@ public class NotificationManager : Singleton<NotificationManager>
             notificationPopup.Close();
         }
 
-        notificationPopup = Instantiate(notificationPrefab, popupCanvas).GetComponent<NotificationPopup>();
+        notificationPopup = Instantiate(notificationPrefab, transform).GetComponent<NotificationPopup>();
         notificationPopup.Initialize(sprite, header, body, source);
         notificationPopup.Open();
     }

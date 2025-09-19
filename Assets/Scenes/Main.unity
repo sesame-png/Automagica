@@ -206,6 +206,7 @@ GameObject:
   - component: {fileID: 46859763}
   - component: {fileID: 46859765}
   - component: {fileID: 46859766}
+  - component: {fileID: 46859767}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -267,6 +268,18 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!114 &46859767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46859762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f2ab06cb078d164791fa3f76e0f96dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &248828976
 GameObject:
   m_ObjectHideFlags: 0
@@ -1188,6 +1201,9 @@ MonoBehaviour:
   OnAnyClick:
     m_PersistentCalls:
       m_Calls: []
+  OnRightClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1584142935
 GameObject:
   m_ObjectHideFlags: 0
@@ -1541,6 +1557,7 @@ GameObject:
   - component: {fileID: 8075984405131581035}
   - component: {fileID: 4215876020471629987}
   - component: {fileID: 8075984405131581036}
+  - component: {fileID: 8075984405131581037}
   m_Layer: 5
   m_Name: PopupCanvas
   m_TagString: Untagged
@@ -2638,8 +2655,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _notificationDuration: 3
   notificationPrefab: {fileID: 7852051205935795058, guid: f429566733a0f9a489c27c3fe9fa03b4, type: 3}
-  popupCanvas: {fileID: 7878246762976700643}
   notificationPopup: {fileID: 0}
+--- !u!114 &8075984405131581037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789086873485807135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e23d4d3d1bf52ce45ac4d4e692030a02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contextMenuPrefab: {fileID: 398910457859512743, guid: 627b95c49f22b5341a6d80f9c6edac86, type: 3}
 --- !u!223 &8132293494619812366
 Canvas:
   m_ObjectHideFlags: 0
