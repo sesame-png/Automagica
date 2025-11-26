@@ -210,6 +210,7 @@ GameObject:
   - component: {fileID: 3743232399372426415}
   - component: {fileID: 2232472035595600615}
   - component: {fileID: 6516530095973274782}
+  - component: {fileID: 8790998070924083210}
   m_Layer: 5
   m_Name: Button (1)
   m_TagString: Untagged
@@ -318,7 +319,40 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2232472035595600615}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8790998070924083210}
+        m_TargetAssemblyTypeName: SetPalette, Assembly-CSharp
+        m_MethodName: Set
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8790998070924083210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270187993258976775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53ffa2f3253e540429b17bacb652cc7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  primaryFrostedMat: {fileID: 2100000, guid: db7d293fac088d64bba4e4e539c0bd27, type: 2}
+  secondaryFrostedMat: {fileID: 2100000, guid: caa7be0ec37dfbe458af2c75d6cff7e2, type: 2}
+  primaryMat: {fileID: 2100000, guid: 118a56c7f6b13c34090506202dd2aab3, type: 2}
+  secondaryMat: {fileID: 2100000, guid: 1fd9cf2ec2b58954b9546b5209d89c3b, type: 2}
+  palettes:
+  - {fileID: 11400000, guid: b094769037d40a04685c253fa6cdc46f, type: 2}
+  - {fileID: 11400000, guid: 81a3b9f48ee7a5342b2c7f153618f41d, type: 2}
+  - {fileID: 11400000, guid: fbc1b1244d1ec9748a2866e27448cebc, type: 2}
+  - {fileID: 11400000, guid: ad232627a39f49044a63bf18e02d0720, type: 2}
 --- !u!1 &773091525460465774
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,8 +556,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Send Notification
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fb78652bcdd533240b70b068db1d415d, type: 2}
+  m_sharedMaterial: {fileID: 8497902800538254491, guid: fb78652bcdd533240b70b068db1d415d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -736,6 +770,7 @@ GameObject:
   - component: {fileID: 2841176390907729126}
   - component: {fileID: 4789498132503679454}
   - component: {fileID: 3491467370374886111}
+  - component: {fileID: 5778612222791045480}
   m_Layer: 5
   m_Name: Button (2)
   m_TagString: Untagged
@@ -844,7 +879,40 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4789498132503679454}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5778612222791045480}
+        m_TargetAssemblyTypeName: SetPalette, Assembly-CSharp
+        m_MethodName: Set
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5778612222791045480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629692383017936112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53ffa2f3253e540429b17bacb652cc7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  primaryFrostedMat: {fileID: 2100000, guid: db7d293fac088d64bba4e4e539c0bd27, type: 2}
+  secondaryFrostedMat: {fileID: 2100000, guid: caa7be0ec37dfbe458af2c75d6cff7e2, type: 2}
+  primaryMat: {fileID: 2100000, guid: 118a56c7f6b13c34090506202dd2aab3, type: 2}
+  secondaryMat: {fileID: 2100000, guid: 1fd9cf2ec2b58954b9546b5209d89c3b, type: 2}
+  palettes:
+  - {fileID: 11400000, guid: b094769037d40a04685c253fa6cdc46f, type: 2}
+  - {fileID: 11400000, guid: 81a3b9f48ee7a5342b2c7f153618f41d, type: 2}
+  - {fileID: 11400000, guid: fbc1b1244d1ec9748a2866e27448cebc, type: 2}
+  - {fileID: 11400000, guid: ad232627a39f49044a63bf18e02d0720, type: 2}
 --- !u!1 &1737365850252283958
 GameObject:
   m_ObjectHideFlags: 0
@@ -1537,6 +1605,7 @@ GameObject:
   - component: {fileID: 1710556696017751937}
   - component: {fileID: 6160978333888827486}
   - component: {fileID: 8926699104142616752}
+  - component: {fileID: 3131699792563005183}
   m_Layer: 5
   m_Name: Button (3)
   m_TagString: Untagged
@@ -1645,7 +1714,40 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6160978333888827486}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3131699792563005183}
+        m_TargetAssemblyTypeName: SetPalette, Assembly-CSharp
+        m_MethodName: Set
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3131699792563005183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3454208315114520200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53ffa2f3253e540429b17bacb652cc7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  primaryFrostedMat: {fileID: 2100000, guid: db7d293fac088d64bba4e4e539c0bd27, type: 2}
+  secondaryFrostedMat: {fileID: 2100000, guid: caa7be0ec37dfbe458af2c75d6cff7e2, type: 2}
+  primaryMat: {fileID: 2100000, guid: 118a56c7f6b13c34090506202dd2aab3, type: 2}
+  secondaryMat: {fileID: 2100000, guid: 1fd9cf2ec2b58954b9546b5209d89c3b, type: 2}
+  palettes:
+  - {fileID: 11400000, guid: b094769037d40a04685c253fa6cdc46f, type: 2}
+  - {fileID: 11400000, guid: 81a3b9f48ee7a5342b2c7f153618f41d, type: 2}
+  - {fileID: 11400000, guid: fbc1b1244d1ec9748a2866e27448cebc, type: 2}
+  - {fileID: 11400000, guid: ad232627a39f49044a63bf18e02d0720, type: 2}
 --- !u!1 &4453531501684010791
 GameObject:
   m_ObjectHideFlags: 0
@@ -1886,7 +1988,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -960, y: -540}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &780848986840121983
@@ -1917,10 +2019,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Send Notification
+  m_text: Set Palette 3
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fb78652bcdd533240b70b068db1d415d, type: 2}
+  m_sharedMaterial: {fileID: 8497902800538254491, guid: fb78652bcdd533240b70b068db1d415d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2158,7 +2260,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -960, y: -540}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9188813221566387145
@@ -2189,10 +2291,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Send Notification
+  m_text: Set Palette 2
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fb78652bcdd533240b70b068db1d415d, type: 2}
+  m_sharedMaterial: {fileID: 8497902800538254491, guid: fb78652bcdd533240b70b068db1d415d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2430,7 +2532,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -960, y: -540}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &249735966092920656
@@ -2461,10 +2563,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Send Notification
+  m_text: Set Palette 1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fb78652bcdd533240b70b068db1d415d, type: 2}
+  m_sharedMaterial: {fileID: 8497902800538254491, guid: fb78652bcdd533240b70b068db1d415d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

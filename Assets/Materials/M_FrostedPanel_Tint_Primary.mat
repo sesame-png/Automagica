@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_FrostedPanel_Tint_Light
+  m_Name: M_FrostedPanel_Tint_Primary
   m_Shader: {fileID: -6465566751694194690, guid: 5f698dc92d48e4d4a9b43aa968e1b689, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -19,7 +19,7 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
-  m_LockedProperties: 
+  m_LockedProperties: _Background_Texture
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -45,6 +45,6 @@ Material:
     - _ClipRect: {r: 0, g: 0, b: 0, a: 0}
     - _Primary_Color: {r: 0, g: 0, b: 0, a: 1}
     - _Secondary_Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Tint: {r: 1, g: 1, b: 1, a: 0.21176471}
+    - _Tint: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
