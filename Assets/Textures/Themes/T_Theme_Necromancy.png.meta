@@ -1,0 +1,542 @@
+fileFormatVersion: 2
+guid: 5cdd7f50d744c2b429ec14ea936295c6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 907444775083409366
+    second: T_Theme_Necromancy_0
+  - first:
+      213: 8200210799125451919
+    second: T_Theme_Necromancy_1
+  - first:
+      213: -405891267929972903
+    second: T_Theme_Necromancy_2
+  - first:
+      213: -5333623813803882045
+    second: T_Theme_Necromancy_3
+  - first:
+      213: 2724663535153476296
+    second: T_Theme_Necromancy_4
+  - first:
+      213: 3829943524508367546
+    second: T_Theme_Necromancy_5
+  - first:
+      213: 1020890883349758738
+    second: T_Theme_Necromancy_6
+  - first:
+      213: 3266308373791121447
+    second: T_Theme_Necromancy_7
+  - first:
+      213: 1921680195300229200
+    second: T_Theme_Necromancy_8
+  - first:
+      213: 7236331226380583253
+    second: T_Theme_Necromancy_9
+  - first:
+      213: 6929516826809965467
+    second: T_Theme_Necromancy_10
+  - first:
+      213: -510310017330977763
+    second: T_Theme_Necromancy_11
+  - first:
+      213: 3006679405169397244
+    second: T_Theme_Necromancy_12
+  - first:
+      213: -5124635375362770568
+    second: T_Theme_Necromancy_13
+  - first:
+      213: -2140480206363029624
+    second: T_Theme_Necromancy_14
+  - first:
+      213: 6830127022431341766
+    second: T_Theme_Necromancy_15
+  - first:
+      213: 3632988582170232272
+    second: T_Theme_Necromancy_16
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: T_Theme_Necromancy_0
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 971
+        width: 60
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6df71201734e79c00800000000000000
+      internalID: 907444775083409366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_Theme_Necromancy_1
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 845
+        width: 60
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f84d13576400dc170800000000000000
+      internalID: 8200210799125451919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_Theme_Necromancy_2
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 703
+        width: 57
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95fd995da0cfd5af0800000000000000
+      internalID: -405891267929972903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_Theme_Necromancy_3
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 363
+        width: 228
+        height: 308
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c9c7ac66692bf5b0800000000000000
+      internalID: -5333623813803882045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_Theme_Necromancy_4
+      rect:
+        serializedVersion: 2
+        x: 457
+        y: 389
+        width: 318
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c27841ac03ffc520800000000000000
+      internalID: 2724663535153476296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_Theme_Necromancy_5
+      rect:
+        serializedVersion: 2
+        x: 970
+        y: 386
+        width: 53
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abaf028f751b62530800000000000000
+      internalID: 3829943524508367546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_Theme_Necromancy_6
+      rect:
+        serializedVersion: 2
+        x: 1036
+        y: 370
+        width: 56
+        height: 164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2134f7879deea2e00800000000000000
+      internalID: 1020890883349758738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_Theme_Necromancy_7
+      rect:
+        serializedVersion: 2
+        x: 1099
+        y: 377
+        width: 116
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72024ba0922445d20800000000000000
+      internalID: 3266308373791121447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_Theme_Necromancy_8
+      rect:
+        serializedVersion: 2
+        x: 1225
+        y: 372
+        width: 62
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05006c4c4fd2baa10800000000000000
+      internalID: 1921680195300229200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_Theme_Necromancy_9
+      rect:
+        serializedVersion: 2
+        x: 1289
+        y: 460
+        width: 64
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5514b7129ec9c6460800000000000000
+      internalID: 7236331226380583253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_Theme_Necromancy_10
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 423
+        width: 62
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9b991ff6d69a2060800000000000000
+      internalID: 6929516826809965467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_Theme_Necromancy_11
+      rect:
+        serializedVersion: 2
+        x: 1453
+        y: 382
+        width: 119
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d14e9a33eb30be8f0800000000000000
+      internalID: -510310017330977763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_Theme_Necromancy_12
+      rect:
+        serializedVersion: 2
+        x: 1570
+        y: 362
+        width: 65
+        height: 209
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfdca9a2dfed9b920800000000000000
+      internalID: 3006679405169397244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_Theme_Necromancy_13
+      rect:
+        serializedVersion: 2
+        x: 1651
+        y: 414
+        width: 53
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 879f9101743a1e8b0800000000000000
+      internalID: -5124635375362770568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_Theme_Necromancy_14
+      rect:
+        serializedVersion: 2
+        x: 1707
+        y: 402
+        width: 57
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88f0af2d79c7b42e0800000000000000
+      internalID: -2140480206363029624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_Theme_Necromancy_15
+      rect:
+        serializedVersion: 2
+        x: 1776
+        y: 368
+        width: 60
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cc01ded65c79ce50800000000000000
+      internalID: 6830127022431341766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_Theme_Necromancy_16
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 47
+        width: 1940
+        height: 204
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d58e49fdd7fa6230800000000000000
+      internalID: 3632988582170232272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

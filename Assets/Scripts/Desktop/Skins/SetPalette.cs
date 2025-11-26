@@ -4,12 +4,13 @@ using System.Collections.Generic;
 
 public class SetPalette : MonoBehaviour
 {
+    [SerializeField] private IntSO currentPalette;
+    [SerializeField] private List<ColorListSO> palettes;
+
     [SerializeField] private Material primaryFrostedMat;
     [SerializeField] private Material secondaryFrostedMat;
     [SerializeField] private Material primaryMat;
     [SerializeField] private Material secondaryMat;
-
-    [SerializeField] private List<ColorListSO> palettes;
 
     private float tweenDuration = 2f;
     private Tween primaryFrostedTween;
@@ -19,7 +20,17 @@ public class SetPalette : MonoBehaviour
 
     public void Set(int index)
     {
-        ColorListSO palette = palettes[index];
+        ColorListSO palette;
+        if (0 <= index && index < palettes.Count)
+        {
+            palette = palettes[index];
+            currentPalette.SetValue(index);
+        }
+        else
+        {
+            palette = palettes[0];
+            currentPalette.SetValue(0);
+        }
 
         primaryFrostedTween?.Kill();
         secondaryFrostedTween?.Kill();

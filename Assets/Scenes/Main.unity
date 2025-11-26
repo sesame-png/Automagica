@@ -494,11 +494,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53ffa2f3253e540429b17bacb652cc7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentPalette: {fileID: 0}
+  palettes: []
   primaryFrostedMat: {fileID: 0}
   secondaryFrostedMat: {fileID: 0}
   primaryMat: {fileID: 2100000, guid: db7d293fac088d64bba4e4e539c0bd27, type: 2}
   secondaryMat: {fileID: 2100000, guid: caa7be0ec37dfbe458af2c75d6cff7e2, type: 2}
-  palettes: []
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
