@@ -3,25 +3,29 @@ using UnityEngine;
 
 public class DesktopManager : MonoBehaviour
 {
-    public List<AppSO> apps = new List<AppSO>(); //TODO: convert to AppListSO
-
+    [SerializeField] private AppListSO apps;
     [SerializeField] private GameObject desktopIconPrefab;
 
     private void Awake()
     {
-        foreach (AppSO app in apps) 
+        foreach (AppSO app in apps.GetValue()) 
         {
             Instantiate(desktopIconPrefab, this.transform).GetComponent<DesktopIcon>().Initialize(app);
         }
     }
 
-    public void AddApp()
+    /*private void OnEnable()
     {
-        //TODO: add functionality here
+        apps.Subscribe(UpdateDesktop);
     }
 
-    public void RemoveApp()
+    private void OnDisable()
+    {
+        apps.Unsubscribe(UpdateDesktop);
+    }
+
+    public void UpdateDesktop(AppListSO apps)
     {
         //TODO: add functionality here
-    }
+    }*/
 }

@@ -40,12 +40,12 @@ public class StartMenu : ResizableRect
     /// Enable & Disable
     private void OnEnable()
     {
-        Raycaster.current?.OnAnyClick.AddListener(OnClick);
+        Raycaster.current?.OnAnyClickCanceled.AddListener(OnClick);
     }
 
     private void OnDisable()
     {
-        Raycaster.current?.OnAnyClick.RemoveListener(OnClick);
+        Raycaster.current?.OnAnyClickCanceled.RemoveListener(OnClick);
     }
 
 
@@ -87,18 +87,13 @@ public class StartMenu : ResizableRect
         sizeTween = rectTransform.DOSizeDelta(new Vector2(size.x, 0f), tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => Destroy(gameObject));
     }
 
-    public void OnClick(List<RaycastResult> raycastHits, InputAction.CallbackContext context)
+    private void OnClick(List<GameObject> hitObjects)
     {
         if (!isOpen) { return; }
-        if (!context.canceled) { return; }
 
-        foreach (RaycastResult hit in raycastHits)
+        foreach (GameObject obj in hitObjects)
         {
-            if (hit.gameObject.CompareTag("RaycastBlocker"))
-            {
-                break;
-            }
-            else if (hit.gameObject.CompareTag("StartMenu"))
+            if (obj.CompareTag("StartMenu"))
             {
                 return;
             }

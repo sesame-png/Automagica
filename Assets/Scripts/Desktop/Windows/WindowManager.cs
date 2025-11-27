@@ -25,12 +25,12 @@ public class WindowManager : Singleton<WindowManager>
     /// Enable & Disable
     private void OnEnable()
     {
-        Raycaster.current?.OnAnyClick.AddListener(OnClick);
+        Raycaster.current?.OnAnyClickStarted.AddListener(OnClick);
     }
 
     private void OnDisable()
     {
-        Raycaster.current?.OnAnyClick.RemoveListener(OnClick);
+        Raycaster.current?.OnAnyClickStarted.RemoveListener(OnClick);
     }
 
 
@@ -73,19 +73,13 @@ public class WindowManager : Singleton<WindowManager>
 
 
     /// Focus window
-    public void OnClick(List<RaycastResult> raycastHits, InputAction.CallbackContext context)
+    private void OnClick(List<GameObject> hitObjects)
     {
-        if (!context.started) { return; }
-
-        foreach (RaycastResult hit in raycastHits)
+        foreach (GameObject obj in hitObjects)
         {
-            if (hit.gameObject.CompareTag("RaycastBlocker"))
+            if (obj.CompareTag("Window"))
             {
-                break;
-            }
-            else if (hit.gameObject.CompareTag("Window"))
-            {
-                SetFocusedWindow(hit.gameObject.GetComponentInParent<Window>());
+                SetFocusedWindow(obj.GetComponentInParent<Window>());
                 return;
             }
         }

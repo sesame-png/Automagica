@@ -32,7 +32,7 @@ public class InputReaderSO : ScriptableObject, InputActions.IUIActions
         if (inputActions == null)
         {
             #if UNITY_EDITOR
-            EditorUtility.SetDirty(this);
+                EditorUtility.SetDirty(this);
             #endif
 
             inputActions = new InputActions();

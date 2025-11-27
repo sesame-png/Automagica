@@ -7,7 +7,7 @@ TagManager:
   - RaycastBlocker
   - Window
   - StartMenu
-  - NotificationPopup
+  - ContextMenu
   layers:
   - Default
   - TransparentFX

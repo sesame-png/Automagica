@@ -9,30 +9,30 @@ using DG.Tweening;
 
 public class ContextMenu : MonoBehaviour
 {
-    /// Components
+    // Components
     [SerializeField] private GameObject buttonPrefab;
     [SerializeField] private Transform buttonHolder;
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
 
-    /// Variables
+    // Variables
     private Vector2 size;
     private bool isOpen;
 
-    /// Tweens
+    // Tweens
     private Tween alphaTween;
     private Tween sizeTween;
-    private float tweenDuration = 0.3f;
+    private float tweenDuration = 0.2f;
 
 
 
-    /// Initialization
-    public void Initialize(SerializedDictionary<string, UnityEvent> actions)
+    // Initialization
+    public void Initialize()
     {
-        foreach (var action in actions)
+        /*foreach (var action in actions)
         {
             Button button = Instantiate(buttonPrefab, buttonHolder).GetComponent<Button>();
-        }
+        }*/
 
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
@@ -46,29 +46,29 @@ public class ContextMenu : MonoBehaviour
 
 
 
-    /// Enable & Disable
+    // Enable & Disable
     private void OnEnable()
     {
-        Raycaster.current?.OnAnyClick.AddListener(OnClick);
+        Raycaster.current?.OnAnyClickCanceled.AddListener(OnClick);
     }
 
     private void OnDisable()
     {
-        Raycaster.current?.OnAnyClick.RemoveListener(OnClick);
+        Raycaster.current?.OnAnyClickCanceled.RemoveListener(OnClick);
     }
 
 
 
-    /// Open & Close
+    // Open & Close
     public void Open()
     {
         if (isOpen) { return; }
-        isOpen = true;
+        //isOpen = true;
 
         alphaTween?.Kill();
         sizeTween?.Kill();
-        alphaTween = canvasGroup.DOFade(1.0f, tweenDuration).SetEase(Ease.OutExpo);
-        sizeTween = rectTransform.DOSizeDelta(size, tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => canvasGroup.blocksRaycasts = true);
+        alphaTween = canvasGroup.DOFade(1.0f, tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => canvasGroup.blocksRaycasts = true);
+        sizeTween = rectTransform.DOSizeDelta(size, tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => isOpen = true);
     }
 
     public void Close()
@@ -84,18 +84,13 @@ public class ContextMenu : MonoBehaviour
         sizeTween = rectTransform.DOSizeDelta(new Vector2(size.x, 0f), tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => Destroy(gameObject));
     }
 
-    public void OnClick(List<RaycastResult> raycastHits, InputAction.CallbackContext context)
+    public void OnClick(List<GameObject> hitObjects)
     {
         if (!isOpen) { return; }
-        if (!context.canceled) { return; }
 
-        foreach (RaycastResult hit in raycastHits)
+        foreach (GameObject obj in hitObjects)
         {
-            if (hit.gameObject.CompareTag("RaycastBlocker"))
-            {
-                break;
-            }
-            else if (hit.gameObject.CompareTag("ContextMenu"))
+            if (obj.CompareTag("ContextMenu"))
             {
                 return;
             }
