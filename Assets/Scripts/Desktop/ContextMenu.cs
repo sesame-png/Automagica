@@ -1,11 +1,11 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
+using System.Collections.Generic;
 using AYellowpaper.SerializedCollections;
 using DG.Tweening;
+using TMPro;
 
 public class ContextMenu : MonoBehaviour
 {
@@ -27,12 +27,16 @@ public class ContextMenu : MonoBehaviour
 
 
     // Initialization
-    public void Initialize()
+    public void Initialize(SerializedDictionary<string, UnityEvent> actions)
     {
-        /*foreach (var action in actions)
+        foreach (KeyValuePair<string, UnityEvent> action in actions)
         {
             Button button = Instantiate(buttonPrefab, buttonHolder).GetComponent<Button>();
-        }*/
+            button.onClick.AddListener(() => action.Value.Invoke()); // Is this legal? Moral? Ethical?
+            button.onClick.AddListener(Close);
+            button.transform.GetComponentInChildren<TMP_Text>().text = action.Key;
+        }
+        LayoutRebuilder.ForceRebuildLayoutImmediate(buttonHolder.GetComponent<RectTransform>());
 
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
@@ -40,8 +44,8 @@ public class ContextMenu : MonoBehaviour
         canvasGroup.alpha = 0;
         canvasGroup.blocksRaycasts = false;
 
-        size = rectTransform.sizeDelta;
-        rectTransform.sizeDelta = new Vector2(rectTransform.sizeDelta.x, 0f);
+        size = new Vector2(rectTransform.sizeDelta.x, buttonHolder.GetComponent<RectTransform>().sizeDelta.y);
+        rectTransform.sizeDelta = new Vector2(size.x, 0f);
     }
 
 
@@ -63,12 +67,12 @@ public class ContextMenu : MonoBehaviour
     public void Open()
     {
         if (isOpen) { return; }
-        //isOpen = true;
+        isOpen = true;
 
         alphaTween?.Kill();
         sizeTween?.Kill();
-        alphaTween = canvasGroup.DOFade(1.0f, tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => canvasGroup.blocksRaycasts = true);
-        sizeTween = rectTransform.DOSizeDelta(size, tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => isOpen = true);
+        alphaTween = canvasGroup.DOFade(1.0f, tweenDuration).SetEase(Ease.OutExpo);
+        sizeTween = rectTransform.DOSizeDelta(size, tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => canvasGroup.blocksRaycasts = true);
     }
 
     public void Close()

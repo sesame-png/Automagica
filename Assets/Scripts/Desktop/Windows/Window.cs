@@ -1,18 +1,18 @@
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Events;
 using DG.Tweening;
 using TMPro;
-using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
 public class Window : ResizableRect
 {
-    /// Variables
+    // Variables
     public AppSO app { get { return _app; } private set { _app = value; } }
     private AppSO _app;
 
     [HideInInspector] public TaskbarIcon taskbarIcon;
 
-    /// Bools
+    // Bools
     public bool isMaximized { get { return _isMaximized; } private set { _isMaximized = value; } }
     private bool _isMaximized = false;
     public bool isMinimized { get { return _isMinimized; } private set { _isMinimized = value; } }
@@ -20,7 +20,7 @@ public class Window : ResizableRect
     public bool isBeingDragged { get { return _isBeingDragged; } private set { _isBeingDragged = value; } }
     private bool _isBeingDragged = false;
 
-    /// Events
+    // Events
     //[HideInInspector] public UnityEvent OnWindowOpening;
     //[HideInInspector] public UnityEvent OnWindowOpened;
     //[HideInInspector] public UnityEvent OnWindowClosing;
@@ -28,7 +28,7 @@ public class Window : ResizableRect
     //[HideInInspector] public UnityEvent OnWindowFocused;
     //[HideInInspector] public UnityEvent OnWindowUnfocused;
 
-    /// Components
+    // Components
     [SerializeField] private TMP_Text header;
     [SerializeField] private Image icon;
     [SerializeField] private FadeTween dropShadow;
@@ -36,7 +36,7 @@ public class Window : ResizableRect
     private CanvasGroup canvasGroup;
     private RectTransform parentRectTransform;
 
-    /// Tweens
+    // Tweens
     private Tween sizeTween;
     private Tween positionTween;
     private Tween alphaTween;
@@ -46,7 +46,7 @@ public class Window : ResizableRect
 
 
 
-    /// Initialization
+    // Initialization
     new protected void Awake()
     {
         base.Awake();
@@ -93,7 +93,7 @@ public class Window : ResizableRect
 
 
 
-    /// Open
+    // Open
     public void Open()
     {
         //OnWindowOpening.Invoke();
@@ -106,7 +106,7 @@ public class Window : ResizableRect
 
 
 
-    /// Minimize & Unminimize
+    // Minimize & Unminimize
     public void ToggleMinimized()
     {
         if (isMinimized)
@@ -162,7 +162,7 @@ public class Window : ResizableRect
 
 
 
-    /// Maximize & Unmaximize
+    // Maximize & Unmaximize
     public void ToggleMaximized()
     {
         if (isMaximized)
@@ -216,7 +216,7 @@ public class Window : ResizableRect
 
 
 
-    /// Close
+    // Close
     public void Close()
     {
         //OnWindowClosing.Invoke();
@@ -240,7 +240,7 @@ public class Window : ResizableRect
 
 
 
-    /// Focus & Unfocus
+    // Focus & Unfocus
     public void SetFocused()
     {
         dropShadow.PlayIn();
@@ -261,7 +261,7 @@ public class Window : ResizableRect
 
 
 
-    /// Drag
+    // Drag
     public void OnBeginDrag(Vector2 pos)
     {
         isBeingDragged = true;

@@ -5,19 +5,20 @@ using UnityEngine.UI;
 
 public class BackgroundManager : MonoBehaviour
 {
-    /// Components
+    // Components
     [SerializeField] private GameObject background;
     private GameObject nextBackground;
 
-    /// Variables
+    // Variables
     public Sprite[] images;
     [SerializeField] private bool randomize;
     [SerializeField] private float imageDuration;
     [SerializeField] private float fadeDuration;
-    private int currentIndex;
+    private int index;
 
-    /// Tweens
+    // Tweens
     private Tween fadeTween;
+    private bool isTweening;
 
 
 
@@ -32,33 +33,42 @@ public class BackgroundManager : MonoBehaviour
         PlayNext();
     }
 
+    public void Next()
+    {
+        if (isTweening) { return; }
+        StopCoroutine(Timer());
+        PlayNext();
+    }
+
     private void PlayNext()
     {
+        isTweening = true;
+
         if (randomize)
         {
-            int i = currentIndex;
-            while (currentIndex == i)
+            int i = index;
+            while (index == i)
             {
-                currentIndex = Random.Range(0, images.Length);
+                index = Random.Range(0, images.Length);
             }
         }
         else 
         {
-            if (currentIndex >= images.Length - 1)
+            if (index >= images.Length - 1)
             {
-                currentIndex = 0;
+                index = 0;
             }
             else
             {
-                currentIndex++;
+                index++;
             }
         }
 
         nextBackground = background;
         background = Instantiate(nextBackground, nextBackground.transform.parent);
         
-        nextBackground.GetComponent<Image>().sprite = images[currentIndex];
-        nextBackground.GetComponent<AspectRatioFitter>().aspectRatio = images[currentIndex].rect.width / images[currentIndex].rect.height;
+        nextBackground.GetComponent<Image>().sprite = images[index];
+        nextBackground.GetComponent<AspectRatioFitter>().aspectRatio = images[index].rect.width / images[index].rect.height;
 
         fadeTween?.Kill();
         fadeTween = background.GetComponent<Image>().DOFade(0f, fadeDuration).SetEase(Ease.InOutQuad).OnComplete(() => OnComplete());
@@ -68,6 +78,7 @@ public class BackgroundManager : MonoBehaviour
     {
         Destroy(background);
         background = nextBackground;
+        isTweening = false;
         StartCoroutine(Timer());
     }
 }

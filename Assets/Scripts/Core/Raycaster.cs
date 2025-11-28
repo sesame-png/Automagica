@@ -51,25 +51,24 @@ public class Raycaster : Singleton<Raycaster>
     }
 
     // Event Callbacks
-    // TODO: This could be better surely
     private void RaycastLeftClick(InputAction.CallbackContext context)
     {
         List<GameObject> hitObjects = Raycast();
 
         if (context.started)
         {
-            //OnLeftClickStarted.Invoke(hitObjects);
             OnAnyClickStarted.Invoke(hitObjects);
+            //OnLeftClickStarted.Invoke(hitObjects);
         }
         else if (context.performed)
         {
-            //OnLeftClickPerformed.Invoke(hitObjects);
             OnAnyClickPerformed.Invoke(hitObjects);
+            //OnLeftClickPerformed.Invoke(hitObjects);
         }
-        if (context.canceled)
+        else if (context.canceled)
         {
-            //OnLeftClickCanceled.Invoke(hitObjects);
             OnAnyClickCanceled.Invoke(hitObjects);
+            //OnLeftClickCanceled.Invoke(hitObjects);
         }
     }
 
@@ -79,18 +78,18 @@ public class Raycaster : Singleton<Raycaster>
 
         if (context.started)
         {
-            //OnMiddleClickStarted.Invoke(hitObjects);
             OnAnyClickStarted.Invoke(hitObjects);
+            //OnMiddleClickStarted.Invoke(hitObjects);
         }
-        if (context.performed)
+        else if (context.performed)
         {
-            //OnMiddleClickPerformed.Invoke(hitObjects);
             OnAnyClickPerformed.Invoke(hitObjects);
+            //OnMiddleClickPerformed.Invoke(hitObjects);
         }
-        if (context.canceled)
+        else if (context.canceled)
         {
-            //OnMiddleClickCanceled.Invoke(hitObjects);
             OnAnyClickCanceled.Invoke(hitObjects);
+            //OnMiddleClickCanceled.Invoke(hitObjects);
         }
     }
 
@@ -100,18 +99,18 @@ public class Raycaster : Singleton<Raycaster>
 
         if (context.started)
         {
-            OnRightClickStarted.Invoke(hitObjects);
             OnAnyClickStarted.Invoke(hitObjects);
+            OnRightClickStarted.Invoke(hitObjects);
         }
-        if (context.performed)
+        else if (context.performed)
         {
-            OnRightClickPerformed.Invoke(hitObjects);
             OnAnyClickPerformed.Invoke(hitObjects);
+            OnRightClickPerformed.Invoke(hitObjects);
         }
-        if (context.canceled)
+        else if (context.canceled)
         {
-            OnRightClickCanceled.Invoke(hitObjects);
             OnAnyClickCanceled.Invoke(hitObjects);
+            OnRightClickCanceled.Invoke(hitObjects);
         }
     }
 
@@ -126,7 +125,7 @@ public class Raycaster : Singleton<Raycaster>
         EventSystem.current.RaycastAll(eventData, raycastHits);
 
         // Converting the list of RaycastHits to GameObjects while discarding any objects below a RaycastBlocker for easier comparisons
-        // Note: This discards screenPosition and worldPosition pointer data, which might be useful in the future
+        // Note: This discards screenPosition and worldPosition pointer data, which could be useful in the future
         List<GameObject> hitObjects = new List<GameObject>();
         foreach (RaycastResult hit in raycastHits)
         {
