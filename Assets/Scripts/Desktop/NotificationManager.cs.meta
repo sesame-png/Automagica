@@ -1,2 +1,13 @@
 fileFormatVersion: 2
 guid: 3fd9ffcd51b74b1499c72c2ea61f13b5
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - notificationPrefab: {fileID: 7852051205935795058, guid: f429566733a0f9a489c27c3fe9fa03b4, type: 3}
+  - notificationPopup: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class ResizableRect : MonoBehaviour
 {
-    /// Variables
+    // Variables
     [HideInInspector] public bool isMoveable = true;
     [HideInInspector] public bool isResizable = true;
 
-    /// Position & Size
+    // Position & Size
     public RectParamsSO rectParams { get { return _rectParams; } protected set { _rectParams = value; } }
     private RectParamsSO _rectParams;
 
@@ -16,12 +16,12 @@ public class ResizableRect : MonoBehaviour
     public Vector2 size { get { return _size; } protected set { _size = value; } }
     private Vector2 _size;
 
-    /// Components
+    // Components
     protected RectTransform rectTransform;
 
 
 
-    /// Initialization
+    // Initialization
     protected void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -29,12 +29,12 @@ public class ResizableRect : MonoBehaviour
 
 
 
-    /// Transform Rect
+    // Transform Rect
     public virtual void MovePosition(Vector2 posDelta)
     {
         if (!isMoveable) { return; }
 
-        SetPosition(position + posDelta);
+        SetPosition(_position + posDelta);
     }
 
     public virtual void Resize(Vector2 inputDelta, int dirX, int dirY)
@@ -42,18 +42,18 @@ public class ResizableRect : MonoBehaviour
         if (!isResizable) { return; }
 
         Vector2 sizeDelta = new Vector2(inputDelta.x * dirX, inputDelta.y * dirY);
-        Vector2 newSize = size + sizeDelta;
+        Vector2 newSize = _size + sizeDelta;
 
         Vector2 posDelta = Vector2.zero;
-        if (newSize.x > rectParams.minSize.x && newSize.x < rectParams.maxSize.x)
+        if (newSize.x > _rectParams.minSize.x && newSize.x < _rectParams.maxSize.x)
         {
             posDelta.x = (inputDelta.x / 2) * Mathf.Abs(dirX);
         }
-        if (newSize.y > rectParams.minSize.y && newSize.y < rectParams.maxSize.y)
+        if (newSize.y > _rectParams.minSize.y && newSize.y < _rectParams.maxSize.y)
         {
             posDelta.y = (inputDelta.y / 2) * Mathf.Abs(dirY);
         }
-        Vector2 newPos = position + posDelta;
+        Vector2 newPos = _position + posDelta;
 
         SetSize(newSize);
         SetPosition(newPos);
@@ -61,34 +61,34 @@ public class ResizableRect : MonoBehaviour
 
 
 
-    /// Setters
+    // Setters
     public void SetPosition(Vector2 newPos)
     {
-        if (rectParams.clampPosition)
+        if (_rectParams.clampPosition)
         {
-            position = new Vector2(Mathf.Clamp(newPos.x, rectParams.minPosition.x, rectParams.maxPosition.x), Mathf.Clamp(newPos.y, rectParams.minPosition.y, rectParams.maxPosition.y));
+            _position = new Vector2(Mathf.Clamp(newPos.x, _rectParams.minPosition.x, _rectParams.maxPosition.x), Mathf.Clamp(newPos.y, _rectParams.minPosition.y, _rectParams.maxPosition.y));
         }
         else
         {
-            position = newPos;
+            _position = newPos;
         }
 
-        transform.localPosition = position;
-        rectParams.cachedPosition = position;
+        transform.localPosition = _position;
+        _rectParams.cachedPosition = _position;
     }
 
     public void SetSize(Vector2 newSize)
     {
-        if (rectParams.clampSize)
+        if (_rectParams.clampSize)
         {
-            size = new Vector2(Mathf.Clamp(newSize.x, rectParams.minSize.x, rectParams.maxSize.x), Mathf.Clamp(newSize.y, rectParams.minSize.y, rectParams.maxSize.y));
+            _size = new Vector2(Mathf.Clamp(newSize.x, _rectParams.minSize.x, _rectParams.maxSize.x), Mathf.Clamp(newSize.y, _rectParams.minSize.y, _rectParams.maxSize.y));
         }
         else
         {
-            size = new Vector2(Mathf.Max(newSize.x, rectParams.minSize.x), Mathf.Max(newSize.y, rectParams.minSize.y));
+            _size = new Vector2(Mathf.Max(newSize.x, _rectParams.minSize.x), Mathf.Max(newSize.y, _rectParams.minSize.y));
         }
         
-        rectTransform.sizeDelta = size;
-        rectParams.cachedSize = size;
+        rectTransform.sizeDelta = _size;
+        _rectParams.cachedSize = _size;
     }
 }

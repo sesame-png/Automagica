@@ -1,15 +1,13 @@
 namespace UnityEngine.UI
 {
-    /// <summary>
-    /// Layout class for arranging child elements vertically, with one expandable object which expands vertically to fill available space.
-    /// </summary>
+    // Layout class for arranging child elements vertically, with one expandable object which expands vertically to fill available space
     public class ExpandableVerticalLayoutGroup : VerticalLayoutGroup
     {
-        /// Expandable Object
-        [SerializeField] protected RectTransform m_ExpandableObject;
+        // Expandable Object
         public RectTransform expandableObject { get { return m_ExpandableObject; } set { SetProperty(ref m_ExpandableObject, value); } }
+        [SerializeField] private RectTransform m_ExpandableObject;
 
-        /// Overridden Variables
+        // Overridden Variables
         new public bool childForceExpandHeight { get { return m_ChildForceExpandHeight; } private set { SetProperty(ref m_ChildForceExpandHeight, value); } }
         new public bool childControlHeight { get { return m_ChildControlHeight; } private set { SetProperty(ref m_ChildControlHeight, value); } }
         new public bool childScaleHeight { get { return m_ChildScaleHeight; } private set { SetProperty(ref m_ChildScaleHeight, value); } }
@@ -23,7 +21,7 @@ namespace UnityEngine.UI
 
 
 
-        /// Set Dirty
+        // Set Dirty
         protected override void OnEnable()
         {
             base.OnEnable();
@@ -54,7 +52,7 @@ namespace UnityEngine.UI
 
 
 
-        /// Set Layout
+        // Set Layout
         public override void SetLayoutVertical()
         {
             UpdateExpandableObject();
@@ -71,7 +69,7 @@ namespace UnityEngine.UI
                 childrenHeight += child.rect.height;
             }
 
-            expandableObject.sizeDelta = new Vector2(expandableObject.rect.width, expandableObject.rect.height + (totalHeight - childrenHeight));
+            m_ExpandableObject.sizeDelta = new Vector2(m_ExpandableObject.rect.width, m_ExpandableObject.rect.height + (totalHeight - childrenHeight));
         }
     }
 }

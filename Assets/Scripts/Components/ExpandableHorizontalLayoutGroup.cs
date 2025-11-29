@@ -1,15 +1,13 @@
 namespace UnityEngine.UI
 {
-    /// <summary>
-    /// Layout class for arranging child elements horizontally, with one expandable object which expands horizontally to fill available space.
-    /// </summary>
+    // Layout class for arranging child elements horizontally, with one expandable object which expands horizontally to fill available space.
     public class ExpandableHorizontalLayoutGroup : HorizontalLayoutGroup
     {
-        /// Expandable Object
-        [SerializeField] protected RectTransform m_ExpandableObject;
+        // Expandable Object
         public RectTransform expandableObject { get { return m_ExpandableObject; } set { SetProperty(ref m_ExpandableObject, value); } }
+        [SerializeField] private RectTransform m_ExpandableObject;
 
-        /// Overridden variables
+        // Overridden Variables
         new public bool childForceExpandWidth { get { return m_ChildForceExpandWidth; } private set { SetProperty(ref m_ChildForceExpandWidth, value); } }
         new public bool childControlWidth { get { return m_ChildControlWidth; } private set { SetProperty(ref m_ChildControlWidth, value); } }
         new public bool childScaleWidth { get { return m_ChildScaleWidth; } private set { SetProperty(ref m_ChildScaleWidth, value); } }
@@ -23,7 +21,7 @@ namespace UnityEngine.UI
 
 
 
-        /// Set Dirty
+        // Set Dirty
         protected override void OnEnable()
         {
             base.OnEnable();
@@ -54,7 +52,7 @@ namespace UnityEngine.UI
 
 
 
-        /// Set Layout
+        // Set Layout
         public override void SetLayoutHorizontal()
         {
             UpdateExpandableObject();

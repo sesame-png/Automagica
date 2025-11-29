@@ -13,9 +13,8 @@ public class CursorManager : Singleton<CursorManager>
 
     public static CursorManager CM => Instance;
 
-    new private void Awake()
+    private void Start()
     {
-        base.Awake();
         SetCursor(CursorState.pointer);
     }
 

@@ -6,7 +6,7 @@ public class DesktopManager : MonoBehaviour
     [SerializeField] private AppListSO apps;
     [SerializeField] private GameObject desktopIconPrefab;
 
-    private void Awake()
+    private void Start()
     {
         foreach (AppSO app in apps.GetValue()) 
         {

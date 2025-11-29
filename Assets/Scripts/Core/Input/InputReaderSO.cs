@@ -6,13 +6,13 @@ using UnityEditor;
 [CreateAssetMenu(menuName = "Singletons/InputReader")]
 public class InputReaderSO : ScriptableObject, InputActions.IUIActions
 {
-    /// Input Actions
+    // Input Actions
     public InputActions inputActions;
 
-    /// Global Actions
+    // Global Actions
     public event Action<InputAction.CallbackContext> anyAction = delegate { };
 
-    /// UI Actions
+    // UI Actions
     public event Action<InputAction.CallbackContext> point = delegate { };
     public event Action<InputAction.CallbackContext> anyClick = delegate { };
     public event Action<InputAction.CallbackContext> leftClick = delegate { };
@@ -26,7 +26,7 @@ public class InputReaderSO : ScriptableObject, InputActions.IUIActions
 
 
 
-    /// Enable & Disable
+    // Enable & Disable
     private void OnEnable()
     {
         if (inputActions == null)
@@ -59,7 +59,7 @@ public class InputReaderSO : ScriptableObject, InputActions.IUIActions
 
 
 
-    /// Enable & Disable Controls
+    // Enable & Disable Controls
     public void EnableUIControls()
     {
         inputActions.UI.Enable();
@@ -72,7 +72,7 @@ public class InputReaderSO : ScriptableObject, InputActions.IUIActions
 
     
     
-    /// Event Callbacks
+    // Event Callbacks
     private void OnAnyAction(InputAction.CallbackContext context)
     {
         anyAction?.Invoke(context);

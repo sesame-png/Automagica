@@ -1,6 +1,6 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(RectTransform))]
 public class DragRect : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler

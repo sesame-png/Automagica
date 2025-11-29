@@ -1,30 +1,30 @@
-using UnityEngine;
 using System;
+using UnityEngine;
 
 public abstract class VariableSO<T> : ScriptableObject
 {
-    [SerializeField] protected T value;
+    [SerializeField] protected T Value;
     public event Action<T> OnValueChanged;
 
     public T GetValue()
     {
-        return value;
+        return Value;
     }
 
     public void SetValue(T v)
     {
-        value = v;
+        Value = v;
         InvokeChangedEvent(v);
     }
 
     private void OnValidate()
     {
-        InvokeChangedEvent(value);
+        InvokeChangedEvent(Value);
     }
 
     public void InvokeChangedEvent()
     {
-        InvokeChangedEvent(value);
+        InvokeChangedEvent(Value);
     }
 
     private void InvokeChangedEvent(T v)
@@ -44,6 +44,6 @@ public abstract class VariableSO<T> : ScriptableObject
 
     public override string ToString()
     {
-        return "" + value;
+        return "" + Value;
     }
 }

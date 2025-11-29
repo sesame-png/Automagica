@@ -2,14 +2,12 @@ using UnityEngine;
 
 namespace UnityEditor.UI
 {
-    /// <summary>
-    /// https://github.com/Unity-Technologies/uGUI/blob/2019.1/UnityEditor.UI/UI/SpriteDrawUtility.cs
-    /// </summary>
+    // https://github.com/Unity-Technologies/uGUI/blob/2019.1/UnityEditor.UI/UI/SpriteDrawUtility.cs
     public class SpriteDrawUtility
     {
         static Texture2D s_ContrastTex;
 
-        // Returns a usable texture that looks like a high-contrast checker board.
+        // Returns a usable texture that looks like a high-contrast checker board
         static Texture2D contrastTexture
         {
             get
@@ -22,7 +20,7 @@ namespace UnityEditor.UI
             }
         }
 
-        // Create a checker-background texture.
+        // Create a checker-background texture
         static Texture2D CreateCheckerTex(Color c0, Color c1)
         {
             Texture2D tex = new Texture2D(16, 16);
@@ -39,7 +37,7 @@ namespace UnityEditor.UI
             return tex;
         }
 
-        // Create a gradient texture.
+        // Create a gradient texture
         static Texture2D CreateGradientTex()
         {
             Texture2D tex = new Texture2D(1, 16);
@@ -61,7 +59,7 @@ namespace UnityEditor.UI
             return tex;
         }
 
-        // Draws the tiled texture. Like GUI.DrawTexture() but tiled instead of stretched.
+        // Draws the tiled texture. Like GUI.DrawTexture() but tiled instead of stretched
         static void DrawTiledTexture(Rect rect, Texture tex)
         {
             float u = rect.width / tex.width;
@@ -74,7 +72,7 @@ namespace UnityEditor.UI
             tex.wrapMode = originalMode;
         }
 
-        // Draw the specified Image.
+        // Draw the specified Image
         public static void DrawSprite(Sprite sprite, Rect drawArea, Color color)
         {
             if (sprite == null)
@@ -102,16 +100,16 @@ namespace UnityEditor.UI
             DrawSprite(tex, drawArea, padding, outer, inner, uv, color, null);
         }
 
-        // Draw the specified Image.
+        // Draw the specified Image
         public static void DrawSprite(Texture tex, Rect drawArea, Rect outer, Rect uv, Color color)
         {
             DrawSprite(tex, drawArea, Vector4.zero, outer, outer, uv, color, null);
         }
 
-        // Draw the specified Image.
+        // Draw the specified Image
         private static void DrawSprite(Texture tex, Rect drawArea, Vector4 padding, Rect outer, Rect inner, Rect uv, Color color, Material mat)
         {
-            // Create the texture rectangle that is centered inside rect.
+            // Create the texture rectangle that is centered inside rect
             Rect outerRect = drawArea;
             outerRect.width = Mathf.Abs(outer.width);
             outerRect.height = Mathf.Abs(outer.height);
@@ -137,10 +135,10 @@ namespace UnityEditor.UI
             if (drawArea.width > outerRect.width)
                 outerRect.x += (drawArea.width - outerRect.width) * 0.5f;
 
-            // Draw the background.
+            // Draw the background
             EditorGUI.DrawTextureTransparent(outerRect, null, ScaleMode.ScaleToFit, outer.width / outer.height);
 
-            // Draw the Image.
+            // Draw the Image
             GUI.color = color;
 
             Rect paddedTexArea = new Rect(
@@ -156,12 +154,11 @@ namespace UnityEditor.UI
             }
             else
             {
-                // NOTE: There is an issue in Unity that prevents it from clipping the drawn preview
-                // using BeginGroup/EndGroup, and there is no way to specify a UV rect...
+                // NOTE: There is an issue in Unity that prevents it from clipping the drawn preview using BeginGroup/EndGroup, and there is no way to specify a UV rect...
                 EditorGUI.DrawPreviewTexture(paddedTexArea, tex, mat);
             }
 
-            // Draw the border indicator lines.
+            // Draw the border indicator lines
             GUI.BeginGroup(outerRect);
             {
                 tex = contrastTexture;
@@ -181,7 +178,7 @@ namespace UnityEditor.UI
 
                 if (inner.yMin != outer.yMin)
                 {
-                    // GUI.DrawTexture is top-left based rather than bottom-left.
+                    // GUI.DrawTexture is top-left based rather than bottom-left
                     float y = (inner.yMin - outer.yMin) / outer.height * outerRect.height - 1;
                     DrawTiledTexture(new Rect(0f, outerRect.height - y, outerRect.width, 1f), tex);
                 }

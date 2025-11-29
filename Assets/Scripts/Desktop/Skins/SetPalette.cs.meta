@@ -1,2 +1,16 @@
 fileFormatVersion: 2
 guid: 53ffa2f3253e540429b17bacb652cc7a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - currentPalette: {fileID: 11400000, guid: 0c52d77e03c1c644799f30652cd1c277, type: 2}
+  - primaryFrostedMat: {fileID: 2100000, guid: db7d293fac088d64bba4e4e539c0bd27, type: 2}
+  - secondaryFrostedMat: {fileID: 2100000, guid: caa7be0ec37dfbe458af2c75d6cff7e2, type: 2}
+  - primaryMat: {fileID: 2100000, guid: 118a56c7f6b13c34090506202dd2aab3, type: 2}
+  - secondaryMat: {fileID: 2100000, guid: 1fd9cf2ec2b58954b9546b5209d89c3b, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

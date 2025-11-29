@@ -1,2 +1,13 @@
 fileFormatVersion: 2
 guid: 7d1ec7aa306a74d42bebfbd5616d85b3
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - startMenuPrefab: {fileID: 4181232407196612934, guid: dfd56d7b85a79544cb4b7f79c9cf8949, type: 3}
+  - popupCanvas: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

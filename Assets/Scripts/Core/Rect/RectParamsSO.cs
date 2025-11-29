@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Rect/Rect Params")]
 public class RectParamsSO : ScriptableObject
 {
-    /// Position
+    // Position
     public Vector2 defaultPosition { get { return _defaultPosition; } private set { _defaultPosition = value; } }
     [SerializeField] private Vector2 _defaultPosition = new Vector2(0, 0);
 
@@ -18,13 +18,13 @@ public class RectParamsSO : ScriptableObject
     public Vector2 maxPosition { get { return _maxPosition; } private set { _maxPosition = value; } }
     [SerializeField] private Vector2 _maxPosition = new Vector2(10000, 10000);
 
-    /// Size
+    // Size
     public Vector2 defaultSize { get { return _defaultSize; } private set { _defaultSize = value; } }
     [SerializeField] private Vector2 _defaultSize = new Vector2(500, 400);
 
     public Vector2 cachedSize = new Vector2(500, 400);
 
-    public bool clampSize { get { return _clampSize; } private set { _clampSize = value; } } // Minimum size is ALWAYS considered, even when clamped.
+    public bool clampSize { get { return _clampSize; } private set { _clampSize = value; } } // Minimum size is ALWAYS considered, even when not clamped
     [SerializeField] private bool _clampSize = true;
 
     public Vector2 minSize { get { return _minSize; } private set { _minSize = value; } }

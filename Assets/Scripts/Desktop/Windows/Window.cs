@@ -61,13 +61,13 @@ public class Window : ResizableRect
 
     public void Initialize(AppSO app)
     {
-        this.app = app;
-        rectParams = app.rectParams;
+        _app = app;
+        rectParams = _app.rectParams;
 
-        header.text = "<font-weight=\"700\">" + app.appName + "</font-weight>";
-        icon.sprite = app.icon;
+        header.text = "<font-weight=\"700\">" + _app.appName + "</font-weight>";
+        icon.sprite = _app.icon;
 
-        if (app.allowMultipleInstances)
+        if (_app.allowMultipleInstances)
         {
             SetPosition(rectParams.defaultPosition);
             SetSize(rectParams.defaultSize);
@@ -78,10 +78,10 @@ public class Window : ResizableRect
             SetSize(rectParams.cachedSize);
         }
 
-        if (app.isMaximized)
+        if (_app.isMaximized)
         {
-            if (!app.allowMaximize) { return; }
-            isMaximized = true;
+            if (!_app.allowMaximize) { return; }
+            _isMaximized = true;
             isMoveable = false;
             isResizable = false;
 
@@ -109,7 +109,7 @@ public class Window : ResizableRect
     // Minimize & Unminimize
     public void ToggleMinimized()
     {
-        if (isMinimized)
+        if (_isMinimized)
         {
             Unminimize();
         }
@@ -121,8 +121,8 @@ public class Window : ResizableRect
 
     public void Minimize()
     {
-        if (isMinimized) { return; }
-        isMinimized = true;
+        if (_isMinimized) { return; }
+        _isMinimized = true;
         isMoveable = false;
         isResizable = false;
 
@@ -138,8 +138,8 @@ public class Window : ResizableRect
 
     public void Unminimize()
     {
-        if (!isMinimized) { return; }
-        isMinimized = false;
+        if (!_isMinimized) { return; }
+        _isMinimized = false;
         isMoveable = true;
         isResizable = true;
 
@@ -150,7 +150,7 @@ public class Window : ResizableRect
         alphaTween?.Kill();
         scaleTween?.Kill();
         alphaTween = canvasGroup.DOFade(1.0f, tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => canvasGroup.blocksRaycasts = true);
-        if (isMaximized)
+        if (_isMaximized)
         {
             scaleTween = transform.DOScale(1.0f, tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => rectTransform.pivot = new Vector2(0.5f, 0.5f)); //BUG HERE
         }
@@ -165,7 +165,7 @@ public class Window : ResizableRect
     // Maximize & Unmaximize
     public void ToggleMaximized()
     {
-        if (isMaximized)
+        if (_isMaximized)
         {
             Unmaximize();
         }
@@ -177,11 +177,11 @@ public class Window : ResizableRect
 
     public void Maximize()
     {
-        if (!app.allowMaximize) { return; }
-        if (isMinimized) { Unminimize(); }
-        if (isMaximized) { return; }
-        if (!app.allowMultipleInstances) { app.isMaximized = true; }
-        isMaximized = true;
+        if (!_app.allowMaximize) { return; }
+        if (_isMinimized) { Unminimize(); }
+        if (_isMaximized) { return; }
+        if (!_app.allowMultipleInstances) { _app.isMaximized = true; }
+        _isMaximized = true;
         isMoveable = false;
         isResizable = false;
 
@@ -197,10 +197,10 @@ public class Window : ResizableRect
 
     public void Unmaximize()
     {
-        if (isMinimized) { return; }
-        if (!isMaximized) { return; }
-        if (!app.allowMultipleInstances) { app.isMaximized = false; }
-        isMaximized = false;
+        if (_isMinimized) { return; }
+        if (!_isMaximized) { return; }
+        if (!_app.allowMultipleInstances) { _app.isMaximized = false; }
+        _isMaximized = false;
         isMoveable = true;
         isResizable = true;
 
@@ -210,7 +210,7 @@ public class Window : ResizableRect
 
         positionTween?.Kill();
         sizeTween?.Kill();
-        if (!isBeingDragged) { positionTween = rectTransform.DOAnchorPos(position, tweenDuration).SetEase(Ease.OutExpo); }
+        if (!_isBeingDragged) { positionTween = rectTransform.DOAnchorPos(position, tweenDuration).SetEase(Ease.OutExpo); }
         sizeTween = rectTransform.DOSizeDelta(size, tweenDuration).SetEase(Ease.OutExpo).OnComplete(() => canvasGroup.blocksRaycasts = true);
     }
 
@@ -221,7 +221,7 @@ public class Window : ResizableRect
     {
         //OnWindowClosing.Invoke();
 
-        if (isMinimized)
+        if (_isMinimized)
         {
             OnWindowClosed.Invoke();
             WindowManager.current.CloseWindow(this);
@@ -264,10 +264,10 @@ public class Window : ResizableRect
     // Drag
     public void OnBeginDrag(Vector2 pos)
     {
-        isBeingDragged = true;
+        _isBeingDragged = true;
 
         Vector2 localPos = new Vector2();
-        if (isMaximized) 
+        if (_isMaximized) 
         {
             RectTransformUtility.ScreenPointToLocalPointInRectangle(transform.parent.GetComponent<RectTransform>(), pos, Camera.main, out localPos);
             SetPosition(localPos);
@@ -295,9 +295,30 @@ public class Window : ResizableRect
 
     public void OnEndDrag(Vector2 pos)
     {
-        isBeingDragged = false;
+        _isBeingDragged = false;
 
         Vector2 posDelta = RectUtility.SetPivotInPlace(rectTransform, new Vector2(0.5f, 0.5f));
         MovePosition(-posDelta);
+    }
+
+
+
+    // Helper Functions
+    public void Reset()
+    {
+        SetPosition(rectParams.defaultPosition);
+        SetSize(rectParams.defaultSize);
+
+        if (_app.isMaximized)
+        {
+            if (!_app.allowMaximize) { return; }
+            _isMaximized = true;
+            isMoveable = false;
+            isResizable = false;
+
+            RectUtility.SetAnchorsInPlace(rectTransform, Vector2.zero, Vector2.one);
+            rectTransform.anchoredPosition = parentRectTransform.anchoredPosition;
+            rectTransform.sizeDelta = Vector2.zero;
+        }
     }
 }

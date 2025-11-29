@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1ffab5517f508d449efabb5ab442e38, type: 3}
   m_Name: DesktopApps
   m_EditorClassIdentifier: 
-  value:
+  Value:
   - {fileID: 11400000, guid: 54095710a04e5d24b8da9f52948d0ba2, type: 2}
   - {fileID: 11400000, guid: cba7c2fa53142ca41a395353d43f239a, type: 2}
   - {fileID: 11400000, guid: bfb54ec2631e03a4eabda1dda8e1b118, type: 2}

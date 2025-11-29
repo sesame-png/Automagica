@@ -4,6 +4,7 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
+  - apps: {fileID: 11400000, guid: 8be693f7e3c6140499b8b47ed2ad381e, type: 2}
   - desktopIconPrefab: {fileID: 6566235988278776868, guid: 85f54e648ca09b74791564a2e24e7773, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}

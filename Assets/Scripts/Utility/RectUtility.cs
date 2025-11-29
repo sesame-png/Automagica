@@ -2,10 +2,8 @@ namespace UnityEngine.UI
 {
     internal static class RectUtility
     {
-        /// <summary>
-        /// Moves a RectTransform's pivot without changing its position.
-        /// https://discussions.unity.com/t/set-a-recttranforms-pivot-without-changing-its-position/139741
-        /// </summary>
+        // Moves a RectTransform's pivot without changing its position
+        // https://discussions.unity.com/t/set-a-recttranforms-pivot-without-changing-its-position/139741
         public static Vector2 SetPivotInPlace(RectTransform rectTransform, Vector2 targetPos)
         {
             Vector2 size = rectTransform.rect.size;
@@ -18,10 +16,8 @@ namespace UnityEngine.UI
             return posDelta;
         }
 
-        /// <summary>
-        /// Moves a RectTransform's pivot in world space, without changing its position.
-        /// https://discussions.unity.com/t/moving-just-recttransform-pivot-in-world-space/904634
-        /// </summary>
+        // Moves a RectTransform's pivot in world space, without changing its position
+        // https://discussions.unity.com/t/moving-just-recttransform-pivot-in-world-space/904634
         public static Vector2 SetPivotInWorldSpace(RectTransform rectTransform, Vector3 targetPos)
         {
             Vector3 inversePos = rectTransform.InverseTransformPoint(targetPos);
@@ -37,9 +33,7 @@ namespace UnityEngine.UI
             return worldPos;
         }
 
-        /// <summary>
-        /// Moves a RectTransform's anchors without changing its size or position.
-        /// </summary>
+        // Moves a RectTransform's anchors without changing its size or position
         public static void SetAnchorsInPlace(RectTransform rectTransform, Vector2 anchorMin, Vector2 anchorMax)
         {
             RectTransform parentRectTransform = rectTransform.transform.parent.GetComponent<RectTransform>();
@@ -57,9 +51,7 @@ namespace UnityEngine.UI
             rectTransform.offsetMax += posDelta;
         }
 
-        /// <summary>
-        /// Converts a normalized point (0 - 1) to a local point within a RectTransform.
-        /// </summary>
+        // Converts a normalized point (0 - 1) to a local point within a RectTransform
         public static Vector2 NormalizedToLocalPoint(RectTransform rectTransform, Vector2 pos)
         {
             Vector3[] corners = new Vector3[4];
@@ -72,9 +64,7 @@ namespace UnityEngine.UI
             return localPos;
         }
 
-        /// <summary>
-        /// Converts a local point to a normalized point (0 - 1) within a RectTransform.
-        /// </summary>
+        // Converts a local point to a normalized point (0 - 1) within a RectTransform
         public static Vector2 LocalToNormalizedPoint(RectTransform rectTransform, Vector2 localPos)
         {
             Vector3[] corners = new Vector3[4];

@@ -3,11 +3,9 @@ using UnityEngine.UI;
 
 namespace UnityEditor.UI
 {
+    // Custom Editor for the SDF Component
     [CustomEditor(typeof(SDF), true)]
     [CanEditMultipleObjects]
-    /// <summary>
-    /// Custom Editor for the SDF Component.
-    /// </summary>
     public class SDFEditor : GraphicEditor
     {
         SerializedProperty cornerRadii;

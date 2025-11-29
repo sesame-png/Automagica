@@ -1,6 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using System.Collections.Generic;
 
 public class SetPalette : MonoBehaviour
 {

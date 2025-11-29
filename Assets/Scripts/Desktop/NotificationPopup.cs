@@ -1,15 +1,15 @@
-using DG.Tweening;
 using System.Collections;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
+using TMPro;
 
 public class NotificationPopup : MonoBehaviour
 {
-    /// Variables
+    // Variables
     private Vector2 size;
 
-    /// Components
+    // Components
     private CanvasGroup canvasGroup;
     private RectTransform rectTransform;
 
@@ -17,15 +17,15 @@ public class NotificationPopup : MonoBehaviour
     [SerializeField] private TMP_Text text;
     private AppSO source;
 
-    /// Tweens
+    // Tweens
     private Tween alphaTween;
     private Tween sizeTween;
     private float tweenDuration = 0.5f;
 
 
 
-    /// Initialization
-    private void Awake()
+    // Initialization
+    private void Start()
     {
         canvasGroup = GetComponent<CanvasGroup>();
         rectTransform = GetComponent<RectTransform>();
@@ -46,7 +46,7 @@ public class NotificationPopup : MonoBehaviour
 
 
 
-    /// Open & Close
+    // Open & Close
     public void Open()
     {
         alphaTween?.Kill();
@@ -74,7 +74,7 @@ public class NotificationPopup : MonoBehaviour
 
 
 
-    /// Redirect
+    // Redirect
     public void Redirect()
     {
         WindowManager.current.SetFocusedApp(source);

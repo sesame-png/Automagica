@@ -1,2 +1,13 @@
 fileFormatVersion: 2
 guid: 2df0d313da496d5408b913288b05b810
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - buttonPrefab: {fileID: 825991998262699901, guid: d2a4b65b39ea4c74997615e5baa62c4c, type: 3}
+  - buttonHolder: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

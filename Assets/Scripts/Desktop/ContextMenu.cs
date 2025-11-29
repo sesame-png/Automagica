@@ -1,8 +1,8 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
-using System.Collections.Generic;
 using AYellowpaper.SerializedCollections;
 using DG.Tweening;
 using TMPro;

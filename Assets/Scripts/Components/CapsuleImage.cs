@@ -2,14 +2,12 @@ using System;
 
 namespace UnityEngine.UI
 {
-    /// <summary>
-    /// A type of Image that calculates and sets the correct pixels per unit multiplier needed to create a perfect capsule from a sliced texture.
-    /// Does not currently support tiled textures.
-    /// </summary>
+    // A type of Image that calculates and sets the correct pixels per unit multiplier needed to create a perfect capsule from a sliced texture
+    // Currently does not support tiled textures
     public class CapsuleImage : Image
     {
-        [SerializeField] private float m_PPUMultiplierOffset = 0.0f;
         public float ppuMultiplierOffset { get { return m_PPUMultiplierOffset; } set { if (SetPropertyUtility.SetStruct(ref m_PPUMultiplierOffset, value)) SetVerticesDirty(); } }
+        [SerializeField] private float m_PPUMultiplierOffset = 0.0f;
 
         protected override void OnEnable()
         {
@@ -35,7 +33,7 @@ namespace UnityEngine.UI
         public void CalculateCapsule()
         {
             float multiplier = Mathf.Max(mainTexture.width / GetPixelAdjustedRect().width, mainTexture.height / GetPixelAdjustedRect().height);
-            pixelsPerUnitMultiplier = multiplier + ppuMultiplierOffset;
+            pixelsPerUnitMultiplier = multiplier + m_PPUMultiplierOffset;
         }
     }
 }

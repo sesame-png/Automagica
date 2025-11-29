@@ -9,12 +9,12 @@ public class DesktopIcon : MonoBehaviour
     {
         this.app = app;
         GetComponent<Image>().sprite = app.icon;
-        //TODO: add text
+        // TODO: add text
     }
 
     public void OpenWindow()
     {
-        //TODO: add double click
+        // TODO: add double click
         WindowManager.current.OpenWindow(app);
     }
 }

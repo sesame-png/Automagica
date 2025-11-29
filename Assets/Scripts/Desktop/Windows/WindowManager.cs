@@ -6,23 +6,23 @@ using UnityEngine.InputSystem;
 
 public class WindowManager : Singleton<WindowManager>
 {
-    /// Variables
+    // Variables
     public IReadOnlyList<Window> windows => _windows;
     private List<Window> _windows = new List<Window>();
 
     public Window focusedWindow { get { return _focusedWindow; } private set { _focusedWindow = value; } }
     private Window _focusedWindow;
 
-    /// Events
+    // Events
     [HideInInspector] public UnityEvent<Window> OnWindowOpened;
     //[HideInInspector] public UnityEvent<Window> OnWindowClosed;
 
-    /// Instance
+    // Instance
     public static WindowManager current => Instance;
 
 
 
-    /// Enable & Disable
+    // Enable & Disable
     private void OnEnable()
     {
         Raycaster.current?.OnAnyClickStarted.AddListener(OnClick);
@@ -35,7 +35,7 @@ public class WindowManager : Singleton<WindowManager>
 
 
 
-    /// Open & Close
+    // Open & Close
     public Window OpenWindow(AppSO app)
     {
         Window openWindow = FindApp(app);
@@ -72,7 +72,7 @@ public class WindowManager : Singleton<WindowManager>
 
 
 
-    /// Focus window
+    // Focus window
     private void OnClick(List<GameObject> hitObjects)
     {
         foreach (GameObject obj in hitObjects)
@@ -103,20 +103,20 @@ public class WindowManager : Singleton<WindowManager>
 
     public void SetFocusedWindow(Window window = null)
     {
-        if (focusedWindow == window) { return; }
+        if (_focusedWindow == window) { return; }
 
-        focusedWindow?.SetUnfocused();
+        _focusedWindow?.SetUnfocused();
 
         if (window)
         {
-            focusedWindow = window;
+            _focusedWindow = window;
             window.transform.SetAsLastSibling();
-            focusedWindow.SetFocused();
+            _focusedWindow.SetFocused();
         }
         else if (transform.childCount > 0)
         {
-            focusedWindow = transform.GetChild(transform.childCount - 1).GetComponent<Window>();
-            focusedWindow.SetFocused();
+            _focusedWindow = transform.GetChild(transform.childCount - 1).GetComponent<Window>();
+            _focusedWindow.SetFocused();
         }
         else
         {
@@ -126,15 +126,23 @@ public class WindowManager : Singleton<WindowManager>
 
     public void RemoveFocusedWindow()
     {
-        focusedWindow?.SetUnfocused();
-        focusedWindow = null;
+        _focusedWindow?.SetUnfocused();
+        _focusedWindow = null;
     }
 
 
 
-    /// Helper Functions
+    // Helper Functions
     public Window FindApp(AppSO app)
     {
         return _windows.Find(window => window.app == app);
+    }
+
+    public void ResetWindows()
+    {
+        foreach (Window window in _windows)
+        {
+            window.Reset();
+        }
     }
 }

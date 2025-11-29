@@ -3,9 +3,7 @@ using UnityEngine.UI;
 
 namespace UnityEditor.UI
 {
-    /// <summary>
-    /// Custom Editor for the ExpandableVerticalLayoutGroup Component.
-    /// </summary>
+    // Custom Editor for the ExpandableVerticalLayoutGroup Component
     [CustomEditor(typeof(ExpandableVerticalLayoutGroup), true)]
     [CanEditMultipleObjects]
     public class ExpandableVerticalLayoutGroupEditor : Editor

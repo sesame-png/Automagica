@@ -1,10 +1,10 @@
-using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
+using DG.Tweening;
 
 public abstract class UITween : MonoBehaviour
 {
-    /// Variables
+    // Variables
     [SerializeField] protected bool playOnStart;
     [SerializeField] protected bool startIn;
     [SerializeField] protected float fromValue = 0f;
@@ -13,18 +13,16 @@ public abstract class UITween : MonoBehaviour
     [SerializeField] protected Ease ease;
     private bool isPlayingIn;
 
-    /// Tween
+    // Tween
     protected Tween tween;
 
-    /// Events
+    // Events
     [HideInInspector] public UnityEvent<bool> OnTweenStarted;
     [HideInInspector] public UnityEvent<bool> OnTweenComplete;
 
 
 
-    /// Initialization
-    protected abstract void Awake();
-
+    // Initialization
     protected virtual void Start()
     {
         if (playOnStart)
@@ -42,7 +40,7 @@ public abstract class UITween : MonoBehaviour
 
 
 
-    /// Play
+    // Play
     public virtual void PlayIn()
     {
         isPlayingIn = true;
@@ -57,7 +55,7 @@ public abstract class UITween : MonoBehaviour
 
 
 
-    /// Complete
+    // Complete
     public void Complete()
     {
         tween?.Complete();

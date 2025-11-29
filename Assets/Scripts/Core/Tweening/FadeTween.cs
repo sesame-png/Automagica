@@ -1,19 +1,19 @@
-using DG.Tweening;
 using UnityEngine;
+using DG.Tweening;
 
 [RequireComponent(typeof(CanvasGroup))]
 public class FadeTween : UITween
 {
-    /// Variables
+    // Variables
     [SerializeField] private bool checkInteractable;
 
-    /// Components
+    // Components
     private CanvasGroup canvasGroup;
 
 
 
-    /// Initialization
-    protected override void Awake()
+    // Initialization
+    protected override void Start()
     {
         canvasGroup = GetComponent<CanvasGroup>();
         canvasGroup.alpha = startIn ? toValue : fromValue;
@@ -22,11 +22,13 @@ public class FadeTween : UITween
         {
             SetInteractable();
         }
+
+        base.Start();
     }
 
 
 
-    /// Play
+    // Play
     public override void PlayIn()
     {
         base.PlayIn();
@@ -43,7 +45,7 @@ public class FadeTween : UITween
 
 
 
-    /// Complete
+    // Complete
     protected override void OnComplete()
     {
         if (checkInteractable)

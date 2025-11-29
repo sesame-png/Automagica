@@ -2,9 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Unity.Mathematics;
 
-/// <summary>
-/// https://discussions.unity.com/t/none-rectangle-shaped-button/547759
-/// </summary>
+// https://discussions.unity.com/t/none-rectangle-shaped-button/547759
 [RequireComponent(typeof(RectTransform))]
 [RequireComponent(typeof(Image))]
 [RequireComponent(typeof(Mask))]
@@ -26,7 +24,7 @@ public class RaycastMask : MonoBehaviour, ICanvasRaycastFilter
         Vector2 localPositionPivotRelative;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform, sp, eventCamera, out localPositionPivotRelative);
 
-        // Convert to bottom-left origin coordinates.
+        // Convert to bottom-left origin coordinates
         Vector2 localPosition = new Vector2(localPositionPivotRelative.x + rectTransform.pivot.x * rectTransform.rect.width, localPositionPivotRelative.y + rectTransform.pivot.y * rectTransform.rect.height);
 
         Rect spriteRect = _sprite.textureRect;
@@ -34,7 +32,7 @@ public class RaycastMask : MonoBehaviour, ICanvasRaycastFilter
 
         int x = 0;
         int y = 0;
-        // Convert to texture space.
+        // Convert to texture space
         switch (_image.type)
         {
             case Image.Type.Sliced:
@@ -43,7 +41,7 @@ public class RaycastMask : MonoBehaviour, ICanvasRaycastFilter
                     Vector4 border = _sprite.border;
                     Vector4 adjustedBorder = _sprite.border / ppu;
                     
-                    // X Slicing.
+                    // X Slicing
                     if (localPosition.x < adjustedBorder.x && localPosition.x < maskRect.width / 2)
                     {
                         x = Mathf.FloorToInt(spriteRect.x + (localPosition.x * ppu));
@@ -57,7 +55,7 @@ public class RaycastMask : MonoBehaviour, ICanvasRaycastFilter
                         x = Mathf.FloorToInt(math.remap(adjustedBorder.x, maskRect.width - adjustedBorder.z, spriteRect.x + border.x, spriteRect.x + spriteRect.width - border.z, localPosition.x));
                     }
 
-                    // Y Slicing.
+                    // Y Slicing
                     if (localPosition.y < adjustedBorder.y && localPosition.y < maskRect.height / 2)
                     {
                         y = Mathf.FloorToInt(spriteRect.y + (localPosition.y * ppu));
@@ -75,14 +73,14 @@ public class RaycastMask : MonoBehaviour, ICanvasRaycastFilter
             case Image.Type.Simple:
             default:
                 {
-                    // Conversion to uniform UV space.
+                    // Conversion to uniform UV space
                     x = Mathf.FloorToInt(spriteRect.x + spriteRect.width * localPosition.x / maskRect.width);
                     y = Mathf.FloorToInt(spriteRect.y + spriteRect.height * localPosition.y / maskRect.height);
                 }
                 break;
         }
 
-        // Destroy component if texture import settings are wrong.
+        // Destroy component if texture import settings are wrong
         try
         {
             return _sprite.texture.GetPixel(x, y).a > 0;

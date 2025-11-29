@@ -1,2 +1,13 @@
 fileFormatVersion: 2
 guid: 70837122b4649cf468fbe6ea6a40188f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - currentTheme: {fileID: 11400000, guid: 8331fc6741dc5db4088d7f2f04e6dbb3, type: 2}
+  - sprites: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -2,9 +2,7 @@ using System.Collections.Generic;
 
 namespace UnityEngine.UI
 {
-    /// <summary>
-    /// https://github.com/Unity-Technologies/uGUI/blob/2019.1/UnityEngine.UI/UI/Core/SetPropertyUtility.cs
-    /// </summary>
+    // https://github.com/Unity-Technologies/uGUI/blob/2019.1/UnityEngine.UI/UI/Core/SetPropertyUtility.cs
     internal static class SetPropertyUtility
     {
         public static bool SetColor(ref Color currentValue, Color newValue)

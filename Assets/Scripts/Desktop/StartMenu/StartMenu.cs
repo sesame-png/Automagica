@@ -1,27 +1,28 @@
-using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using DG.Tweening;
 
 public class StartMenu : ResizableRect
 {
-    /// Variables
+    // Variables
     [SerializeField] new private RectParamsSO rectParams;
+
     public bool isOpen { get { return _isOpen; } private set { _isOpen = value; } }
     private bool _isOpen;
 
-    /// Components
+    // Components
     private CanvasGroup canvasGroup;
 
-    /// Tweens
+    // Tweens
     private Tween alphaTween;
     private Tween sizeTween;
     private float tweenDuration = 0.3f;
 
 
 
-    /// Initialization
+    // Initialization
     new protected void Awake()
     {
         base.rectParams = rectParams;
@@ -37,7 +38,7 @@ public class StartMenu : ResizableRect
 
 
 
-    /// Enable & Disable
+    // Enable & Disable
     private void OnEnable()
     {
         Raycaster.current?.OnAnyClickCanceled.AddListener(OnClick);
@@ -50,10 +51,10 @@ public class StartMenu : ResizableRect
 
 
 
-    /// Open & Close
+    // Open & Close
     public void ToggleOpen()
     {
-        if (isOpen)
+        if (_isOpen)
         {
             Close();
         }
@@ -65,8 +66,8 @@ public class StartMenu : ResizableRect
 
     public void Open()
     {
-        if (isOpen) { return; }
-        isOpen = true;
+        if (_isOpen) { return; }
+        _isOpen = true;
 
         alphaTween?.Kill();
         sizeTween?.Kill();
@@ -76,8 +77,8 @@ public class StartMenu : ResizableRect
 
     public void Close()
     {
-        if (!isOpen) { return; }
-        isOpen = false;
+        if (!_isOpen) { return; }
+        _isOpen = false;
 
         canvasGroup.blocksRaycasts = false;
 
@@ -89,7 +90,7 @@ public class StartMenu : ResizableRect
 
     private void OnClick(List<GameObject> hitObjects)
     {
-        if (!isOpen) { return; }
+        if (!_isOpen) { return; }
 
         foreach (GameObject obj in hitObjects)
         {
