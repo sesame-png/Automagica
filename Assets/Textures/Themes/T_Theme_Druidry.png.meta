@@ -209,7 +209,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      T_Theme_Druidry_0: 996928558157825095
+      T_Theme_Druidry_1: -2152212364250636999
+      T_Theme_Druidry_2: -3751752340480709165
+      T_Theme_Druidry_3: 2031195507683706304
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

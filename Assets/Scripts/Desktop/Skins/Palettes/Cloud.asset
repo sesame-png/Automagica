@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d42e7b5ed1d04cb47a271dedd498dd65, type: 3}
   m_Name: Cloud
   m_EditorClassIdentifier: 
-  value:
-  - {r: 1, g: 1, b: 1, a: 1}
-  - {r: 1, g: 1, b: 1, a: 1}
-  - {r: 1, g: 1, b: 1, a: 1}
-  - {r: 1, g: 1, b: 1, a: 1}
+  Value:
+  - {r: 1, g: 1, b: 1, a: 0.4}
+  - {r: 1, g: 1, b: 1, a: 0.29803923}
+  - {r: 0, g: 0, b: 0, a: 0.2509804}
+  - {r: 0.5, g: 0.5, b: 0.5, a: 1}

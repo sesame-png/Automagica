@@ -534,7 +534,24 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      T_Theme_Necromancy_0: 907444775083409366
+      T_Theme_Necromancy_1: 8200210799125451919
+      T_Theme_Necromancy_10: 6929516826809965467
+      T_Theme_Necromancy_11: -510310017330977763
+      T_Theme_Necromancy_12: 3006679405169397244
+      T_Theme_Necromancy_13: -5124635375362770568
+      T_Theme_Necromancy_14: -2140480206363029624
+      T_Theme_Necromancy_15: 6830127022431341766
+      T_Theme_Necromancy_16: 3632988582170232272
+      T_Theme_Necromancy_2: -405891267929972903
+      T_Theme_Necromancy_3: -5333623813803882045
+      T_Theme_Necromancy_4: 2724663535153476296
+      T_Theme_Necromancy_5: 3829943524508367546
+      T_Theme_Necromancy_6: 1020890883349758738
+      T_Theme_Necromancy_7: 3266308373791121447
+      T_Theme_Necromancy_8: 1921680195300229200
+      T_Theme_Necromancy_9: 7236331226380583253
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
