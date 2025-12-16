@@ -24,7 +24,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Background_Texture:
-        m_Texture: {fileID: 8600000, guid: 8156a4f7c84181b4f891ac9ff3aaf9f9, type: 2}
+        m_Texture: {fileID: 8600000, guid: 510473238777f604fb225cb2771317ca, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -44,6 +44,6 @@ Material:
     - _UIMaskSoftnessY: 1
     m_Colors:
     - _ClipRect: {r: 0, g: 0, b: 0, a: 0}
-    - _Tint: {r: 1, g: 1, b: 1, a: 0.18431373}
+    - _Tint: {r: 1, g: 1, b: 1, a: 0.5019608}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
