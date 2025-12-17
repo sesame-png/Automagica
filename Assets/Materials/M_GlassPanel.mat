@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_Glass
+  m_Name: M_GlassPanel
   m_Shader: {fileID: -6465566751694194690, guid: 75a685310bf4d54409588aa9e3828418, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -24,7 +24,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Background_Texture:
-        m_Texture: {fileID: 8600000, guid: 510473238777f604fb225cb2771317ca, type: 2}
+        m_Texture: {fileID: 8600000, guid: 8156a4f7c84181b4f891ac9ff3aaf9f9, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
